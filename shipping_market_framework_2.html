@@ -594,6 +594,62 @@
   }
   .divider-label::before { max-width: 20px; }
 
+  /* ── Major section dividers ── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 36px 0 16px;
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .section-divider-icon { font-size: 20px; flex-shrink: 0; }
+  .section-divider-title { flex: 1; }
+  .section-divider-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+  .section-divider-line {
+    flex: 1;
+    height: 1px;
+    opacity: 0.4;
+  }
+  .sd-subtype {
+    background: rgba(56,189,248,0.08);
+    border: 1px solid rgba(56,189,248,0.3);
+    border-left: 4px solid var(--accent);
+    color: var(--accent);
+  }
+  .sd-subtype .section-divider-line { background: var(--accent); }
+  .sd-demand {
+    background: rgba(52,211,153,0.08);
+    border: 1px solid rgba(52,211,153,0.3);
+    border-left: 4px solid var(--demand);
+    color: var(--demand);
+  }
+  .sd-demand .section-divider-line { background: var(--demand); }
+  .sd-supply {
+    background: rgba(251,113,133,0.08);
+    border: 1px solid rgba(251,113,133,0.3);
+    border-left: 4px solid var(--supply);
+    color: var(--supply);
+  }
+  .sd-supply .section-divider-line { background: var(--supply); }
+  .sd-outlook {
+    background: rgba(251,191,36,0.07);
+    border: 1px solid rgba(251,191,36,0.3);
+    border-left: 4px solid #fbbf24;
+    color: #fbbf24;
+  }
+  .sd-outlook .section-divider-line { background: #fbbf24; }
+
   /* ── KPI row ── */
   .kpi-row {
     display: grid;
@@ -1075,7 +1131,11 @@
   </div>
 
   <!-- Sub-types -->
-  <div class="divider-label">船型区分（Sub-Types）</div>
+  <div class="section-divider sd-subtype">
+    <span class="section-divider-icon">🚢</span>
+    <div class="section-divider-title">船型区分（Sub-Types）<div class="section-divider-sub">VESSEL CLASSIFICATION</div></div>
+    <div class="section-divider-line"></div>
+  </div>
   <div class="subtype-grid">
     <div class="subtype-row" style="border-left:3px solid var(--bulker)">
       <div>
@@ -1115,7 +1175,11 @@
   </div>
 
   <!-- ═══════════ DEMAND DRIVERS ═══════════ -->
-  <div class="divider-label">需要ドライバー（Demand）</div>
+  <div class="section-divider sd-demand">
+    <span class="section-divider-icon">📈</span>
+    <div class="section-divider-title">需要ドライバー（Demand）<div class="section-divider-sub">DEMAND DRIVERS</div></div>
+    <div class="section-divider-line"></div>
+  </div>
 
   <!-- DRIVER 1: Iron Ore -->
   <div class="driver-category">
@@ -1372,7 +1436,11 @@
   </div>
 
   <!-- ═══════════ SUPPLY DRIVERS ═══════════ -->
-  <div class="divider-label">供給ドライバー（Supply）</div>
+  <div class="section-divider sd-supply">
+    <span class="section-divider-icon">⚓</span>
+    <div class="section-divider-title">供給ドライバー（Supply）<div class="section-divider-sub">SUPPLY DRIVERS</div></div>
+    <div class="section-divider-line"></div>
+  </div>
 
   <div class="driver-category">
     <div class="driver-header">
@@ -1464,7 +1532,11 @@
   </div>
 
   <!-- Current Market Forecast -->
-  <div class="divider-label">2026年 マーケット見通しサマリー</div>
+  <div class="section-divider sd-outlook">
+    <span class="section-divider-icon">🔭</span>
+    <div class="section-divider-title">2026年 マーケット見通しサマリー<div class="section-divider-sub">MARKET OUTLOOK</div></div>
+    <div class="section-divider-line"></div>
+  </div>
   <div class="evidence-box">
     <div class="evidence-box-label">Consensus View（DNV / BIMCO / S&P Global / Breakwave Advisors）</div>
     <strong>Cape：強気継続</strong>。ボーキサイト+シマンドゥのTon-Mile増、低Orderbook、船齢高齢化が支援。ただし中国粗鋼低迷がCap。季節下落を経てQ2以降再上昇シナリオ。<br>
@@ -1494,7 +1566,11 @@
   </div>
 
   <!-- Sub-types -->
-  <div class="divider-label">船型区分（Sub-Types）</div>
+  <div class="section-divider sd-subtype">
+    <span class="section-divider-icon">🚢</span>
+    <div class="section-divider-title">船型区分（Sub-Types）<div class="section-divider-sub">VESSEL CLASSIFICATION</div></div>
+    <div class="section-divider-line"></div>
+  </div>
   <div class="subtype-grid">
     <div class="subtype-row" style="border-left:3px solid var(--container)">
       <div>
@@ -1527,7 +1603,11 @@
   </div>
 
   <!-- ═══════════ DEMAND DRIVERS ═══════════ -->
-  <div class="divider-label">需要ドライバー（Demand）</div>
+  <div class="section-divider sd-demand">
+    <span class="section-divider-icon">📈</span>
+    <div class="section-divider-title">需要ドライバー（Demand）<div class="section-divider-sub">DEMAND DRIVERS</div></div>
+    <div class="section-divider-line"></div>
+  </div>
 
   <!-- DRIVER 1: Consumption -->
   <div class="driver-category">
@@ -1673,7 +1753,11 @@
   </div>
 
   <!-- DRIVER 3: Supply -->
-  <div class="divider-label">供給ドライバー（Supply · 2026年最大の構造問題）</div>
+  <div class="section-divider sd-supply">
+    <span class="section-divider-icon">⚓</span>
+    <div class="section-divider-title">供給ドライバー（Supply · 2026年最大の構造問題）<div class="section-divider-sub">SUPPLY DRIVERS</div></div>
+    <div class="section-divider-line"></div>
+  </div>
 
   <div class="driver-category">
     <div class="driver-header">
@@ -1773,7 +1857,11 @@
   </div>
 
   <!-- 2026 Outlook -->
-  <div class="divider-label">2026年 マーケット見通しサマリー</div>
+  <div class="section-divider sd-outlook">
+    <span class="section-divider-icon">🔭</span>
+    <div class="section-divider-title">2026年 マーケット見通しサマリー<div class="section-divider-sub">MARKET OUTLOOK</div></div>
+    <div class="section-divider-line"></div>
+  </div>
   <div class="evidence-box container-color">
     <div class="evidence-box-label">Consensus View（HSBC / Bank of America / Drewry / Xeneta / Freightos）</div>
     <strong>ベースシナリオ：2026年は下落基調。</strong>Red Sea再開が段階的に進行、艦隊6-8%解放で運賃更に-10〜-16%低下。Maersk 2026年赤字予測（2017年以来）、Hapag-Lloydも損失リスク。年内は「急下落→キャパシティ調整による一時反騰」の繰り返しパターン（cyclical pattern）。<br>
@@ -1807,7 +1895,11 @@
   </div>
 
   <!-- Sub-types -->
-  <div class="divider-label">船型区分（Sub-Types）</div>
+  <div class="section-divider sd-subtype">
+    <span class="section-divider-icon">🚢</span>
+    <div class="section-divider-title">船型区分（Sub-Types）<div class="section-divider-sub">VESSEL CLASSIFICATION</div></div>
+    <div class="section-divider-line"></div>
+  </div>
   <div class="subtype-grid">
     <div class="subtype-row" style="border-left:3px solid var(--tanker)">
       <div>
@@ -1893,7 +1985,11 @@
   </div>
 
   <!-- ═══════════ DEMAND DRIVERS ═══════════ -->
-  <div class="divider-label">需要ドライバー（Demand）</div>
+  <div class="section-divider sd-demand">
+    <span class="section-divider-icon">📈</span>
+    <div class="section-divider-title">需要ドライバー（Demand）<div class="section-divider-sub">DEMAND DRIVERS</div></div>
+    <div class="section-divider-line"></div>
+  </div>
 
   <div class="driver-category">
     <div class="driver-header">
@@ -2048,7 +2144,11 @@
   </div>
 
   <!-- ═══════════ SUPPLY ═══════════ -->
-  <div class="divider-label">供給ドライバー（Supply）</div>
+  <div class="section-divider sd-supply">
+    <span class="section-divider-icon">⚓</span>
+    <div class="section-divider-title">供給ドライバー（Supply）<div class="section-divider-sub">SUPPLY DRIVERS</div></div>
+    <div class="section-divider-line"></div>
+  </div>
 
   <div class="driver-category">
     <div class="driver-header">
@@ -2121,7 +2221,11 @@
   </div>
 
   <!-- Outlook -->
-  <div class="divider-label">2026年 マーケット見通しサマリー</div>
+  <div class="section-divider sd-outlook">
+    <span class="section-divider-icon">🔭</span>
+    <div class="section-divider-title">2026年 マーケット見通しサマリー<div class="section-divider-sub">MARKET OUTLOOK</div></div>
+    <div class="section-divider-line"></div>
+  </div>
   <div class="evidence-box tanker-color">
     <div class="evidence-box-label">Consensus View（Kpler / Tankers International / Breakwave / Jefferies / Frontline）</div>
     <strong>H1 2026：極めて強い運賃環境継続。</strong>ホルムズ危機でVLCC/Suezmax record highs、Aframaxも multi-year highs。制裁拡大 → shadow fleet機能劣化 → compliant tonnageにDemand集中。<br>
@@ -2172,14 +2276,14 @@
       <div class="chart-header">
         <div>
           <div class="chart-name">Brent Crude Oil</div>
-          <div class="chart-sub">ICE:BRN1!</div>
+          <div class="chart-sub">TVC:UKOIL</div>
         </div>
       </div>
       <div class="tv-container">
         <div class="tradingview-widget-container" style="height:100%;width:100%">
           <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"ICEEUR:BRN1!","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          {"symbol":"TVC:UKOIL","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
           </script>
         </div>
       </div>
@@ -2193,14 +2297,14 @@
       <div class="chart-header">
         <div>
           <div class="chart-name">WTI Crude Oil</div>
-          <div class="chart-sub">NYMEX:CL1!</div>
+          <div class="chart-sub">TVC:USOIL</div>
         </div>
       </div>
       <div class="tv-container">
         <div class="tradingview-widget-container" style="height:100%;width:100%">
           <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"NYMEX:CL1!","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          {"symbol":"TVC:USOIL","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
           </script>
         </div>
       </div>
@@ -2213,15 +2317,15 @@
     <div class="chart-card">
       <div class="chart-header">
         <div>
-          <div class="chart-name">Newcastle Coal Futures</div>
-          <div class="chart-sub">ICEEUR:NCF1!</div>
+          <div class="chart-name">Peabody Energy (Coal Proxy)</div>
+          <div class="chart-sub">NYSE:BTU</div>
         </div>
       </div>
       <div class="tv-container">
         <div class="tradingview-widget-container" style="height:100%;width:100%">
           <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"ICEEUR:NCF1!","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          {"symbol":"NYSE:BTU","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
           </script>
         </div>
       </div>
@@ -2255,15 +2359,15 @@
     <div class="chart-card">
       <div class="chart-header">
         <div>
-          <div class="chart-name">TTF European Gas</div>
-          <div class="chart-sub">ICEEUR:TFM1!</div>
+          <div class="chart-name">Natural Gas (Henry Hub)</div>
+          <div class="chart-sub">TVC:NATURALGAS</div>
         </div>
       </div>
       <div class="tv-container">
         <div class="tradingview-widget-container" style="height:100%;width:100%">
           <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"ICEEUR:TFM1!","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          {"symbol":"TVC:NATURALGAS","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
           </script>
         </div>
       </div>
@@ -2297,15 +2401,15 @@
     <div class="chart-card">
       <div class="chart-header">
         <div>
-          <div class="chart-name">Iron Ore 62% Fe</div>
-          <div class="chart-sub">SGX:FEF1!</div>
+          <div class="chart-name">Vale (Iron Ore Proxy)</div>
+          <div class="chart-sub">NYSE:VALE</div>
         </div>
       </div>
       <div class="tv-container">
         <div class="tradingview-widget-container" style="height:100%;width:100%">
           <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"SGX:FEF1!","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          {"symbol":"NYSE:VALE","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
           </script>
         </div>
       </div>
