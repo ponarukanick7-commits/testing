@@ -3084,7 +3084,7 @@
       <div style="font-size:22px;font-weight:700;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;color:var(--bulker)">
         PANAMAX / KAMSARMAX マーケット
       </div>
-      <div style="font-size:12px;color:var(--muted);margin-top:2px">Kamsarmax 82,000 DWT基準 ｜ Baltic Exchange基準 ｜ TradingView経由ライブ取得対応</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px">Panamax / Kamsarmax 82,000 DWT基準 ｜ Baltic Exchange基準 ｜ TradingView経由ライブ取得対応</div>
     </div>
     <div class="pmx-header-right">
       <span class="pmx-badge">PANAMAX</span>
@@ -3132,7 +3132,10 @@
   <div class="pmx-comm-section">
     <div class="pmx-section-title">📦 関連商品市況（需要先行指標）</div>
     <div id="pmx-commodity-panel">
-      <div class="pmx-comm-placeholder">「🔄 ライブ取得」を押すと石炭・穀物先物など需要先行指標を表示します</div>
+      <div class="pmx-comm-placeholder">
+        「🔄 ライブ取得」を押すと石炭・穀物先物など需要先行指標を表示します
+        <br><button class="pmx-toggle-btn" style="margin-top:10px;font-size:11px" onclick="fetchPmxLiveData()">🔄 今すぐ取得する</button>
+      </div>
     </div>
   </div>
 
@@ -3230,7 +3233,7 @@
 
   <!-- Vessel Values by Age -->
   <div class="pmx-section-title">🚢 中古船価・新造船価（船齢別）</div>
-  <div class="pmx-note">Kamsarmax 82,000 DWT基準。船価は先週のブローカー見積もりレンジ（$M）。</div>
+  <div class="pmx-note">Panamax / Kamsarmax 82,000 DWT基準。船価はブローカー見積もりレンジ（$M）。</div>
   <div class="pmx-age-grid" id="pmx-age-grid"></div>
 
   <!-- Fleet Visualization -->
@@ -4910,8 +4913,6 @@ function renderPmx() {
     </div>`;
   }).join('');
 
-  document.getElementById('pmx-sv-ob-ves').textContent  = fmt(d.ob_ves) + ' 隻';
-  document.getElementById('pmx-sv-ob-pct').textContent  = 'フリート比: ' + fmt(d.ob_pct, 1) + '%';
   const tm = Number(d.tonmile);
   document.getElementById('pmx-sv-tonmile').textContent = (tm >= 0 ? '+' : '') + fmt(tm, 1) + '%';
   document.getElementById('pmx-tonmile-bar').style.width = Math.min(100, Math.max(0, 50 + tm * 5)) + '%';
@@ -5228,13 +5229,17 @@ function applyAutoFetchedData(fetched) {
 async function fetchPmxLiveData() {
   const btn = document.getElementById('pmx-auto-fetch-btn');
   if (btn) { btn.disabled = true; btn.innerHTML = '<span class="pmx-auto-spin">⟳</span> 取得中…'; }
-  setFetchStatus('loading', '⏳ Step 1/2: TradingView から商品先物を取得中…');
+  setFetchStatus('loading', '⏳ Step 1/2: TradingView Scanner から商品先物・BDIを取得中…');
+  setCommodityState('loading');
 
   // Phase 1: TradingView（商品先物 + TVC:BDI）
   let tvData = null;
   try {
     tvData = await fetchCommAndBdiFromTV();
-    if (tvData.commOk) { saveCommodityCache(tvData); renderCommodityPanel(); }
+    if (tvData && tvData.commOk) {
+      saveCommodityCache(tvData);
+      renderCommodityPanel();
+    }
   } catch(e) { console.warn('[PMX] TV phase1 error:', e.message); }
 
   // BPI が Phase 1 で取れた場合はそのまま完了
@@ -5280,9 +5285,27 @@ async function fetchPmxLiveData() {
   }
 
   // 全失敗
-  setFetchStatus('err',
-    '✗ 全ソース取得失敗 · ネット接続またはブラウザのCORSポリシーを確認 · 手動入力をご使用ください');
+  const errMsg = 'TradingView・Stooq・Yahoo 全ソース取得失敗';
+  setFetchStatus('err', `✗ ${errMsg} · ネット接続またはCORSを確認 · 手動入力をご使用ください`);
+  setCommodityState('error', errMsg + ' · ネット接続を確認してください');
   if (btn) { btn.disabled = false; btn.textContent = '⚠ 再試行'; }
+}
+
+// ─── 商品パネル状態管理 ───
+let pmxCommState = 'idle'; // idle | loading | error | ok
+
+function setCommodityState(state, msg) {
+  pmxCommState = state;
+  const panel = document.getElementById('pmx-commodity-panel');
+  if (!panel) return;
+  if (state === 'loading') {
+    panel.innerHTML = `<div class="pmx-comm-placeholder"><span class="pmx-auto-spin" style="display:inline-block">⟳</span> 商品先物データ取得中… (TradingView Scanner)</div>`;
+  } else if (state === 'error') {
+    panel.innerHTML = `<div class="pmx-comm-placeholder">
+      ⚠ ${msg || '取得失敗'}<br>
+      <button class="pmx-toggle-btn" style="margin-top:10px;font-size:11px" onclick="fetchPmxLiveData()">🔄 再試行</button>
+    </div>`;
+  }
 }
 
 // ─── 商品指標パネルのレンダリング ───
@@ -5294,7 +5317,10 @@ function renderCommodityPanel() {
   try { cache = JSON.parse(localStorage.getItem(PMX_COMM_KEY)); } catch(e) {}
 
   if (!cache) {
-    panel.innerHTML = '<div class="pmx-comm-placeholder">「🔄 ライブ取得」を押すと石炭・穀物先物など需要先行指標を表示します</div>';
+    panel.innerHTML = `<div class="pmx-comm-placeholder">
+      「🔄 ライブ取得」を押すと石炭・穀物先物など需要先行指標を表示します<br>
+      <button class="pmx-toggle-btn" style="margin-top:10px;font-size:11px" onclick="fetchPmxLiveData()">🔄 今すぐ取得する</button>
+    </div>`;
     return;
   }
 
