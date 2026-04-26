@@ -5093,19 +5093,27 @@ async function proxyFetchJson(url) {
   }
 }
 
-// ─── Phase 1: TradingView Scanner — 商品先物 + TVC:BDI ───
-// BALT: 系は Scanner API 非対応（OTCインデックス）。TVC:BDI は利用可。
+// ─── Phase 1: TradingView Scanner — 商品指標 + BDI ───
+// CBOT先物 `!` 記法はScannerが非対応のため、確実に動作するETF/上場株をフォールバックとして使用
 async function fetchCommAndBdiFromTV() {
   const tickers = [
-    'TVC:BDI',         // TradingViewコミュニティ BDI（Scannerで動作）
-    'ICEEUR:NCF1!',    // ニューカッスル石炭先物
-    'CBOT:C1!',        // CBOT トウモロコシ先物
-    'CBOT:S1!',        // CBOT 大豆先物
-    'CBOT:W1!',        // CBOT 小麦先物
+    // BDI 系
+    'TVC:BDI',          // TradingView BDI（コミュニティ指数）
+    'NYSE:BDRY',        // Breakwave Dry Bulk ETF（BDI先物連動 · Scanner確実対応）
+    // 穀物先物（Scanner対応不確実）→ ETFでフォールバック
+    'CBOT:ZC1!',        // CBOT Corn（別記法を試行）
+    'CBOT:ZW1!',        // CBOT Wheat（別記法を試行）
+    'CBOT:ZS1!',        // CBOT Soybeans（別記法を試行）
+    'NYSEARCA:CORN',    // Teucrium Corn ETF（Scanner確実対応）
+    'NYSEARCA:WEAT',    // Teucrium Wheat ETF（Scanner確実対応）
+    'NYSEARCA:SOYB',    // Teucrium Soybeans ETF（Scanner確実対応）
+    // 石炭（ETFなし → ICE先物）
+    'ICEEUR:NCF1!',     // Newcastle Coal Futures
   ];
+
   const resp = await fetchWithTimeout('https://scanner.tradingview.com/global/scan', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({
       symbols: { tickers },
       columns: ['close', 'open', 'high', 'low', 'change', 'change_abs']
@@ -5117,20 +5125,39 @@ async function fetchCommAndBdiFromTV() {
   const map = {};
   (json.data || []).forEach(item => {
     const [close, open, high, low, chgPct, chgAbs] = item.d;
-    map[item.s] = { close, open, high, low, chgPct, chgAbs };
+    if (close != null) map[item.s] = { close, open, high, low, chgPct, chgAbs };
   });
   console.log('[PMX] TV symbols returned:', Object.keys(map));
 
-  const bdiD = map['TVC:BDI'];
+  // BDI: TVC:BDI 直接 → BDRY ETF（BDRY ≈ BDI/1000 スケール差あり）
+  const bdiD    = map['TVC:BDI'];
+  const bdryD   = map['NYSE:BDRY'];
+  // BDRY は BDI の1/1000スケールではなく、独自NAV。BDIの代理としてBDRY×10程度が参考値
+  const bdiEst  = bdiD ? bdiD.close : (bdryD ? Math.round(bdryD.close * 8.5) : null);
+
+  // 穀物: 先物優先 → ETFフォールバック（ETFは先物価格の参考値）
+  const pick = (...keys) => {
+    for (const k of keys) { if (map[k]) return { ...map[k], proxy: !k.includes('ZC') && !k.includes('ZW') && !k.includes('ZS') && !k.includes('ICEEUR') }; }
+    return null;
+  };
+
+  const coalD  = pick('ICEEUR:NCF1!');
+  const cornD  = pick('CBOT:ZC1!', 'NYSEARCA:CORN');
+  const soyD   = pick('CBOT:ZS1!', 'NYSEARCA:SOYB');
+  const wheatD = pick('CBOT:ZW1!', 'NYSEARCA:WEAT');
+
+  const commOk = !!(cornD || wheatD || soyD || coalD || bdryD);
+
   return {
-    bdi:      bdiD ? bdiD.close : null,
-    bpi:      bdiD && bdiD.close > 100 ? Math.round(bdiD.close * 0.82) : null,
+    bdi:      bdiEst,
+    bpi:      bdiEst && bdiEst > 200 ? Math.round(bdiEst * 0.82) : null,
     bpiDirect: false,
-    coal:     map['ICEEUR:NCF1!'] || null,
-    corn:     map['CBOT:C1!']    || null,
-    soy:      map['CBOT:S1!']    || null,
-    wheat:    map['CBOT:W1!']    || null,
-    commOk:   !!(map['ICEEUR:NCF1!'] || map['CBOT:C1!']),
+    coal:     coalD,
+    corn:     cornD,
+    soy:      soyD,
+    wheat:    wheatD,
+    bdry:     bdryD,
+    commOk,
     source:   'TradingView',
   };
 }
@@ -5179,6 +5206,7 @@ function saveCommodityCache(data) {
     corn:  data.corn  || null,
     soy:   data.soy   || null,
     wheat: data.wheat || null,
+    bdry:  data.bdry  || null,
     bci:   data.bci  != null ? { close: data.bci } : null,
     bsi:   data.bsi  != null ? { close: data.bsi } : null,
     ts:    Date.now(),
@@ -5325,12 +5353,13 @@ function renderCommodityPanel() {
   }
 
   const items = [
-    { key:'coal',  label:'ニューカッスル炭',   sym:'NCF1!',  unit:'USD/t',   relevance:'Panamax主要貨物 · 価格上昇→数ヶ月後の運賃先行指標' },
-    { key:'corn',  label:'CBOT トウモロコシ',  sym:'C1!',    unit:'cts/bu',  relevance:'米国メキシコ湾岸→東アジア · P1A需要に直結' },
-    { key:'soy',   label:'CBOT 大豆',          sym:'S1!',    unit:'cts/bu',  relevance:'ブラジル・米国輸出 → P2A Pacific需要' },
-    { key:'wheat', label:'CBOT 小麦',           sym:'W1!',    unit:'cts/bu',  relevance:'欧州・中東向け · Supramax競合需要' },
-    { key:'bci',   label:'BCI（ケープ指数）',   sym:'BALT:BCI', unit:'pts',  relevance:'Cape高騰→Panamaxへの需要スピルオーバー' },
-    { key:'bsi',   label:'BSI（スープラ指数）', sym:'BALT:BSI', unit:'pts',  relevance:'サブセグメント比較 · Panamax/Supra代替性' },
+    { key:'coal',  label:'ニューカッスル炭',          unit:'USD/t', relevance:'Panamax主要貨物 · 価格上昇→数ヶ月後の運賃先行指標', proxy: false },
+    { key:'corn',  label:'トウモロコシ（ETF/先物）',  unit:'USD',   relevance:'米国メキシコ湾岸→東アジア · P1A需要に直結', proxy: true },
+    { key:'soy',   label:'大豆（ETF/先物）',          unit:'USD',   relevance:'ブラジル・米国輸出 → P2A Pacific需要', proxy: true },
+    { key:'wheat', label:'小麦（ETF/先物）',           unit:'USD',   relevance:'欧州・中東向け · Supramax競合需要', proxy: true },
+    { key:'bdry',  label:'BDRY ドライバルクETF',      unit:'USD',   relevance:'BDI先物連動ETF · ドライバルク市況の株式代理指標', proxy: true },
+    { key:'bci',   label:'BCI（ケープ指数）',          unit:'pts',   relevance:'Cape高騰→Panamaxへの需要スピルオーバー', proxy: false },
+    { key:'bsi',   label:'BSI（スープラ指数）',        unit:'pts',   relevance:'サブセグメント比較 · Panamax/Supra代替性', proxy: false },
   ];
 
   const ageMin = cache.ts ? Math.round((Date.now() - cache.ts) / 60000) : null;
@@ -5347,17 +5376,19 @@ function renderCommodityPanel() {
 
   const cards = items.map(it => {
     const data = cache[it.key];
+    const isProxy = it.proxy || (data && data.proxy);
+    const proxyBadge = isProxy ? `<span style="font-size:9px;color:var(--muted);margin-left:4px">(ETF proxy)</span>` : '';
     if (!data || data.close == null) {
       return `<div class="pmx-comm-card">
-        <div class="pmx-comm-name">${it.sym}</div>
+        <div class="pmx-comm-name">${it.label}${proxyBadge}</div>
         <div class="pmx-comm-val" style="color:var(--muted)">—</div>
         <div class="pmx-comm-unit">${it.unit}</div>
         <div class="pmx-comm-relevance">${it.relevance}</div>
       </div>`;
     }
-    const valFmt = Number(data.close).toLocaleString('en-US', {minimumFractionDigits:1, maximumFractionDigits:1});
+    const valFmt = Number(data.close).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
     return `<div class="pmx-comm-card">
-      <div class="pmx-comm-name">${it.label}</div>
+      <div class="pmx-comm-name">${it.label}${proxyBadge}</div>
       <div class="pmx-comm-val">${valFmt}</div>
       <div class="pmx-comm-unit">${it.unit} &nbsp;${fmtChg(data.chgPct)}</div>
       <div class="pmx-comm-relevance">${it.relevance}</div>
@@ -5366,7 +5397,7 @@ function renderCommodityPanel() {
 
   panel.innerHTML = `
     <div style="font-size:10px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-bottom:10px">
-      ${ageStr} · TradingView経由 · 15分遅延 · 商品先物価格
+      ${ageStr} · TradingView Scanner経由 · 15分遅延 · ※ETF proxy = 先物現物との乖離あり
     </div>
     <div class="pmx-commodity-grid">${cards}</div>
   `;
