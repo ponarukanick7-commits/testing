@@ -1099,6 +1099,200 @@
   .cfn-bull { background: rgba(52,211,153,0.08); color: var(--demand); border: 1px solid rgba(52,211,153,0.2); }
   .cfn-bear { background: rgba(251,113,133,0.08); color: var(--supply); border: 1px solid rgba(251,113,133,0.2); }
   .cfn-neut { background: rgba(251,191,36,0.08); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+
+  /* ── Panamax Tab ── */
+  .pmx-header { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
+  .pmx-badge { background:rgba(245,158,11,0.15); border:1px solid var(--bulker-border); color:var(--bulker);
+    font-family:'IBM Plex Mono',monospace; font-size:11px; padding:3px 10px; border-radius:4px; letter-spacing:1px; }
+  .pmx-kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:28px; }
+  .pmx-kpi { background:var(--surface); border:1px solid var(--bulker-border); border-radius:8px;
+    padding:16px; display:flex; flex-direction:column; gap:4px; }
+  .pmx-kpi-label { font-size:10px; color:var(--muted); letter-spacing:.5px; text-transform:uppercase; }
+  .pmx-kpi-val { font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:600; color:var(--bulker); }
+  .pmx-kpi-sub { font-size:10px; color:var(--muted); }
+  .pmx-kpi-range { font-size:11px; color:var(--text); margin-top:4px; }
+
+  .pmx-update-toggle { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .pmx-toggle-btn { background:rgba(245,158,11,0.1); border:1px solid var(--bulker-border); color:var(--bulker);
+    font-size:12px; padding:6px 16px; border-radius:5px; cursor:pointer; transition:all .2s; }
+  .pmx-toggle-btn:hover { background:rgba(245,158,11,0.22); }
+  .pmx-form { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:20px;
+    margin-bottom:28px; display:none; }
+  .pmx-form.open { display:block; }
+  .pmx-form-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:14px; }
+  .pmx-field { display:flex; flex-direction:column; gap:4px; }
+  .pmx-field label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
+  .pmx-field input { background:var(--surface2); border:1px solid var(--border); color:var(--text);
+    font-family:'IBM Plex Mono',monospace; font-size:13px; padding:7px 10px; border-radius:5px; width:100%; }
+  .pmx-field input:focus { outline:none; border-color:var(--bulker); }
+  .pmx-save-btn { background:var(--bulker); color:#000; font-weight:700; font-size:13px;
+    padding:8px 24px; border:none; border-radius:5px; cursor:pointer; }
+  .pmx-save-btn:hover { opacity:.85; }
+  .pmx-form-note { font-size:10px; color:var(--muted); margin-top:8px; }
+
+  .pmx-section-title { font-size:13px; font-weight:700; color:var(--bulker); letter-spacing:.5px;
+    text-transform:uppercase; margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid var(--bulker-border); }
+
+  .pmx-rate-table { width:100%; border-collapse:collapse; margin-bottom:32px; }
+  .pmx-rate-table th { font-size:10px; color:var(--muted); text-align:left; padding:6px 10px;
+    border-bottom:1px solid var(--border); text-transform:uppercase; letter-spacing:.4px; }
+  .pmx-rate-table td { padding:9px 10px; border-bottom:1px solid rgba(30,45,69,0.6); vertical-align:middle; }
+  .pmx-rate-table tr:hover td { background:rgba(245,158,11,0.04); }
+  .pmx-rate-name { font-size:12px; color:var(--text); font-weight:500; }
+  .pmx-rate-mono { font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--bulker); white-space:nowrap; }
+  .pmx-bar-wrap { position:relative; height:8px; background:rgba(255,255,255,0.07); border-radius:4px; min-width:120px; }
+  .pmx-bar-fill { position:absolute; top:0; left:0; height:100%; background:var(--bulker); border-radius:4px; opacity:.7; }
+  .pmx-bar-dot { position:absolute; top:-3px; width:14px; height:14px; background:var(--bulker);
+    border-radius:50%; border:2px solid #0a0e1a; transform:translateX(-50%); }
+  .pmx-bar-labels { display:flex; justify-content:space-between; font-size:9px; color:var(--muted); margin-top:2px; }
+
+  .pmx-age-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; margin-bottom:32px; }
+  .pmx-age-card { background:var(--surface); border:1px solid var(--border); border-radius:8px;
+    padding:14px; text-align:center; }
+  .pmx-age-label { font-size:10px; color:var(--muted); margin-bottom:6px; }
+  .pmx-age-nb { font-size:9px; color:var(--bulker); font-weight:700; margin-bottom:2px; }
+  .pmx-age-val { font-family:'IBM Plex Mono',monospace; font-size:18px; font-weight:700; color:var(--text); }
+  .pmx-age-unit { font-size:9px; color:var(--muted); }
+  .pmx-age-range { font-size:10px; color:var(--muted); margin-top:4px; }
+
+  .pmx-struct-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:28px; }
+  .pmx-struct-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px; }
+  .pmx-struct-label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; }
+  .pmx-struct-val { font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:700; color:var(--accent); }
+  .pmx-struct-sub { font-size:10px; color:var(--muted); margin-top:3px; }
+
+  .pmx-tonmile-bar { height:10px; background:rgba(255,255,255,0.07); border-radius:5px; margin-top:8px; overflow:hidden; }
+  .pmx-tonmile-fill { height:100%; border-radius:5px; }
+
+  .pmx-note { background:rgba(245,158,11,0.05); border:1px solid rgba(245,158,11,0.2);
+    border-left:3px solid var(--bulker); padding:10px 14px; border-radius:5px; font-size:11px; color:var(--muted); margin-bottom:20px; }
+
+  @media(max-width:900px) {
+    .pmx-kpi-grid { grid-template-columns:repeat(2,1fr); }
+    .pmx-age-grid { grid-template-columns:repeat(3,1fr); }
+    .pmx-struct-grid { grid-template-columns:repeat(2,1fr); }
+    .pmx-form-grid { grid-template-columns:repeat(2,1fr); }
+  }
+
+  /* ── Panamax Auto-Fetch ── */
+  .pmx-header-right { display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
+  .pmx-auto-btn {
+    background: rgba(245,158,11,0.15);
+    border: 1px solid var(--bulker-border);
+    color: var(--bulker);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 5px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .pmx-auto-btn:hover { background: rgba(245,158,11,0.28); border-color: var(--bulker); }
+  .pmx-auto-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .pmx-auto-spin { display:inline-block; animation: spin 1s linear infinite; margin-right:4px; }
+  @keyframes spin { 100% { transform: rotate(360deg); } }
+
+  .pmx-fetch-bar {
+    background: rgba(245,158,11,0.05);
+    border: 1px solid rgba(245,158,11,0.18);
+    border-radius: 5px;
+    padding: 8px 14px;
+    margin-bottom: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .pmx-fetch-bar .fetch-ok  { color: #4ade80; }
+  .pmx-fetch-bar .fetch-warn { color: #fbbf24; }
+  .pmx-fetch-bar .fetch-err  { color: var(--supply); }
+  .pmx-fetch-bar .fetch-hint { color: var(--muted); }
+  .pmx-auto-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: rgba(245,158,11,0.15);
+    color: var(--bulker);
+    border: 1px solid rgba(245,158,11,0.3);
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+  .pmx-manual-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: rgba(100,116,139,0.15);
+    color: var(--muted);
+    border: 1px solid rgba(100,116,139,0.3);
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+
+  /* ── Commodity Context Panel ── */
+  .pmx-comm-section { margin-bottom: 28px; }
+  .pmx-commodity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 10px;
+  }
+  .pmx-comm-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 13px;
+  }
+  .pmx-comm-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .pmx-comm-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .pmx-comm-unit { font-size: 9px; color: var(--muted); }
+  .pmx-comm-chg { font-family: 'IBM Plex Mono', monospace; font-size: 10px; margin-top: 3px; }
+  .pmx-comm-up { color: var(--demand); }
+  .pmx-comm-dn { color: var(--supply); }
+  .pmx-comm-relevance {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.45;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(30,45,69,0.8);
+  }
+  .pmx-comm-placeholder {
+    color: var(--muted);
+    font-size: 12px;
+    padding: 16px 0;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .pmx-tc-note {
+    background: rgba(56,189,248,0.05);
+    border: 1px solid rgba(56,189,248,0.2);
+    border-left: 3px solid var(--accent);
+    border-radius: 5px;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .pmx-tc-note strong { color: var(--accent); }
 </style>
 </head>
 <body>
@@ -1122,6 +1316,9 @@
   </button>
   <button class="tab-btn" data-tab="tanker">
     <span class="tab-dot" style="background:var(--tanker)"></span>タンカー
+  </button>
+  <button class="tab-btn" data-tab="panamax">
+    <span class="tab-dot" style="background:var(--bulker)"></span>🚢 Panamax
   </button>
   <button class="tab-btn" data-tab="dashboard">
     <span class="tab-dot" style="background:#4ade80"></span>📡 ライブ・ダッシュボード
@@ -1370,6 +1567,120 @@
     </table>
   </div>
 
+  <!-- Ship Finance KPI Framework -->
+  <div class="framework-block">
+    <div class="fw-title"><span class="fw-title-icon">🏦</span>バンク・シップファイナンス KPIフレームワーク</div>
+
+    <div class="divider-label">損益分岐運賃（Break-even Freight Rate）目安</div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-title"><span class="card-title-icon">🟡</span>バルカー Break-even</div>
+        <ul class="factor-list">
+          <li class="factor-item"><span class="factor-icon">⚓</span>
+            <div class="factor-text"><div class="factor-label">Capesize（新造 ~$75M）</div>
+            <div class="factor-desc">OpEx+資本費: <strong style="color:#fff">$18,000–22,000/日</strong>。TCE $25,000超で健全。BCI換算 ~1,200pt相当</div></div></li>
+          <li class="factor-item"><span class="factor-icon">⚓</span>
+            <div class="factor-text"><div class="factor-label">Panamax（新造 ~$40M）</div>
+            <div class="factor-desc">Break-even: <strong style="color:#fff">$12,000–15,000/日</strong>。市況 $18,000超で良好なDSCR</div></div></li>
+          <li class="factor-item"><span class="factor-icon">⚓</span>
+            <div class="factor-text"><div class="factor-label">Supramax（新造 ~$36M）</div>
+            <div class="factor-desc">Break-even: <strong style="color:#fff">$10,000–13,000/日</strong>。多品種対応で収益安定性高い</div></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-title-icon">🔵</span>コンテナ Break-even</div>
+        <ul class="factor-list">
+          <li class="factor-item"><span class="factor-icon">⚓</span>
+            <div class="factor-text"><div class="factor-label">ULCV 24,000TEU（新造 ~$220M）</div>
+            <div class="factor-desc">Break-even: <strong style="color:#fff">$45,000–55,000/日</strong>。SCFI $1,500/FEU前後が採算ライン</div></div></li>
+          <li class="factor-item"><span class="factor-icon">⚓</span>
+            <div class="factor-text"><div class="factor-label">Neo-Panamax 14,000TEU（~$130M）</div>
+            <div class="factor-desc">Break-even: <strong style="color:#fff">$28,000–35,000/日</strong>。現状SCFI低迷で多数が赤字圏</div></div></li>
+          <li class="factor-item"><span class="factor-icon">⚓</span>
+            <div class="factor-text"><div class="factor-label">Feeder 1,800TEU（~$35M）</div>
+            <div class="factor-desc">Break-even: <strong style="color:#fff">$8,000–11,000/日</strong>。域内需要で比較的安定</div></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-title-icon">🟣</span>タンカー Break-even</div>
+        <ul class="factor-list">
+          <li class="factor-item"><span class="factor-icon">⚓</span>
+            <div class="factor-text"><div class="factor-label">VLCC（新造 ~$130M）</div>
+            <div class="factor-desc">Break-even: <strong style="color:#fff">$30,000–40,000/日</strong>。WS60前後が採算分岐。現状WS70-80で良好</div></div></li>
+          <li class="factor-item"><span class="factor-icon">⚓</span>
+            <div class="factor-text"><div class="factor-label">Suezmax（新造 ~$85M）</div>
+            <div class="factor-desc">Break-even: <strong style="color:#fff">$22,000–28,000/日</strong>。大西洋原油輸送で安定的</div></div></li>
+          <li class="factor-item"><span class="factor-icon">⚓</span>
+            <div class="factor-text"><div class="factor-label">MR Product Tanker（新造 ~$45M）</div>
+            <div class="factor-desc">Break-even: <strong style="color:#fff">$13,000–17,000/日</strong>。精製マージン連動。現状好調</div></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider-label">LTV・DSCR 標準フレームワーク</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title"><span class="card-title-icon">📊</span>標準的な融資条件（船舶ローン）</div>
+        <ul class="factor-list">
+          <li class="factor-item"><span class="factor-icon">💰</span>
+            <div class="factor-text"><div class="factor-label">LTV（Loan-to-Value）</div>
+            <div class="factor-desc">新造: <strong style="color:#fff">60–70%</strong>、中古（10年以内）: <strong style="color:#fff">55–65%</strong>、老齢船（15年超）: 50%以下。好況期は緩和傾向、底値期は厳格化</div></div></li>
+          <li class="factor-item"><span class="factor-icon">📈</span>
+            <div class="factor-text"><div class="factor-label">DSCR（債務返済カバレッジ比率）</div>
+            <div class="factor-desc">最低水準: <strong style="color:#fff">1.15–1.20x</strong>。余裕ある水準: 1.30x超。コベナント: 12ヶ月ローリングTCEベース計算が標準</div></div></li>
+          <li class="factor-item"><span class="factor-icon">⚠️</span>
+            <div class="factor-text"><div class="factor-label">スプレッド目安（2026年現在）</div>
+            <div class="factor-desc">SOFR/SONIA + <strong style="color:#fff">150–225bps</strong>（船種・船齢・借手信用力により変動）。VLCC新造は150bps前後、Capesize中古は200bps超</div></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-title-icon">🚨</span>市場局面別ファイナンス判断基準</div>
+        <ul class="factor-list">
+          <li class="factor-item"><span class="factor-icon">🟢</span>
+            <div class="factor-text"><div class="factor-label">Recovery〜Peak期（積極姿勢）</div>
+            <div class="factor-desc">TCE > Break-even × 1.3倍、DSCR > 1.30x、LTV < 65%。<strong style="color:var(--demand)">新規組成・増額とも前向きに検討</strong></div></div></li>
+          <li class="factor-item"><span class="factor-icon">🟡</span>
+            <div class="factor-text"><div class="factor-label">Decline初期（選別姿勢）</div>
+            <div class="factor-desc">TCE = Break-even ± 10%。<strong style="color:#fbbf24">優良オーナー・長期TC付きのみ対応</strong>。LTV 60%以下に厳格化</div></div></li>
+          <li class="factor-item"><span class="factor-icon">🔴</span>
+            <div class="factor-text"><div class="factor-label">Trough期（防衛姿勢）</div>
+            <div class="factor-desc">TCE < Break-even、DSCRブレーチリスク高。<strong style="color:var(--supply)">新規停止・既存案件ワイバー交渉・担保再評価優先</strong></div></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider-label">サイクルフェーズ判定の定量的基準</div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-title" style="color:var(--bulker)">🟡 バルカー フェーズ判定</div>
+        <ul class="factor-list">
+          <li class="factor-item"><span class="factor-icon" style="color:var(--supply)">▼</span><div class="factor-text"><div class="factor-label">Trough</div><div class="factor-desc">BCI &lt; 600、BDI &lt; 800、中国粗鋼生産前年比 -3%超</div></div></li>
+          <li class="factor-item"><span class="factor-icon" style="color:#fbbf24">→</span><div class="factor-text"><div class="factor-label">Recovery</div><div class="factor-desc">BCI 600–1,500、BDI 800–1,500、鉄鉱石在庫減少傾向</div></div></li>
+          <li class="factor-item"><span class="factor-icon" style="color:var(--demand)">▲</span><div class="factor-text"><div class="factor-label">Peak</div><div class="factor-desc">BCI &gt; 1,500、Cape TCE $30,000超、Orderbook急増</div></div></li>
+          <li class="factor-item"><span class="factor-icon" style="color:#a78bfa">↘</span><div class="factor-text"><div class="factor-label">Decline</div><div class="factor-desc">BCI 下降トレンド + Cape竣工加速（年50隻超）</div></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--container)">🔵 コンテナ フェーズ判定</div>
+        <ul class="factor-list">
+          <li class="factor-item"><span class="factor-icon" style="color:var(--supply)">▼</span><div class="factor-text"><div class="factor-label">Trough</div><div class="factor-desc">SCFI &lt; 800、Orderbook/Fleet &gt; 25%、大手キャリア赤字</div></div></li>
+          <li class="factor-item"><span class="factor-icon" style="color:#fbbf24">→</span><div class="factor-text"><div class="factor-label">Recovery</div><div class="factor-desc">SCFI 800–1,500、ブランクセーリング減少、需給均衡へ</div></div></li>
+          <li class="factor-item"><span class="factor-icon" style="color:var(--demand)">▲</span><div class="factor-text"><div class="factor-label">Peak</div><div class="factor-desc">SCFI &gt; 2,000、港湾混雑、WCI $4,000/FEU超</div></div></li>
+          <li class="factor-item"><span class="factor-icon" style="color:#a78bfa">↘</span><div class="factor-text"><div class="factor-label">Decline</div><div class="factor-desc">SCFI 下降 + 大量竣工継続、大手の値引き競争激化</div></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--tanker)">🟣 タンカー フェーズ判定</div>
+        <ul class="factor-list">
+          <li class="factor-item"><span class="factor-icon" style="color:var(--supply)">▼</span><div class="factor-text"><div class="factor-label">Trough</div><div class="factor-desc">VLCC TCE &lt; $20,000、OPEC大幅減産、Utilization &lt; 80%</div></div></li>
+          <li class="factor-item"><span class="factor-icon" style="color:#fbbf24">→</span><div class="factor-text"><div class="factor-label">Recovery</div><div class="factor-desc">VLCC TCE $20,000–35,000、OPEC増産、Ton-Mile拡大</div></div></li>
+          <li class="factor-item"><span class="factor-icon" style="color:var(--demand)">▲</span><div class="factor-text"><div class="factor-label">Peak</div><div class="factor-desc">VLCC TCE &gt; $50,000、地政学リスク高、Utilization &gt; 90%</div></div></li>
+          <li class="factor-item"><span class="factor-icon" style="color:#a78bfa">↘</span><div class="factor-text"><div class="factor-label">Decline</div><div class="factor-desc">運賃下降 + VLCC新造竣工加速 + 制裁緩和による影の艦隊流入</div></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ══════════════════════════════════
@@ -1386,7 +1697,7 @@
   <div class="market-snapshot">
     <div class="snapshot-title">📍 MARKET SNAPSHOT · 2026Q1</div>
     <div class="snapshot-body">
-      <strong>Capesize は構造変化期に突入。</strong>BCI（Baltic Capesize Index）は2026年初頭に <span class="key-stat">前年比+121%</span> の急騰を経験。C5TC平均は一時 <span class="key-stat">$30,000/日超</span> まで上昇後、旧正月期で $20,000-22,000/日台へ調整。<strong>最大の構造変化は西アフリカ（ギニア）</strong>：シマンドゥ鉄鉱山の初出荷（2025年11月・Newcastlemax「Winning Youth」）、ボーキサイト貿易 <span class="key-stat">2025年183Mt（+22% YoY）</span>。一方で中国粗鋼生産は <span class="key-stat">2025年 -4.4%（7年ぶり低水準960.8Mt）</span>、不動産危機継続で2026年も -3%予測。港湾在庫は <span class="key-stat">3/12時点179.5Mt（過去最高）</span>。Orderbookは歴史的低位も、Cape級275隻発注済で2027-28年リスク。
+      <strong>Capesize は構造変化期に突入。</strong>BCI（Baltic Capesize Index）は2026年初頭に <span class="key-stat">前年比+121%（2025年平均比較）</span> の急騰を経験（2025年平均BCI約800ptに対し2026年1月最大約1,760pt）。C5TC平均は一時 <span class="key-stat">$30,000/日超</span> まで上昇後、旧正月期で $20,000–22,000/日台へ調整。<strong>最大の構造変化は西アフリカ（ギニア）</strong>：シマンドゥ鉄鉱山の初出荷（2025年11月・Newcastlemax「Winning Youth」）、ボーキサイト貿易 <span class="key-stat">2025年183Mt（+22% YoY）</span>。一方で中国粗鋼生産は <span class="key-stat">2025年 -4.4%（7年ぶり低水準960.8Mt）</span>、不動産危機継続で2026年も -3%予測。鉄鉱石港湾在庫は <span class="key-stat">2026年3月12日時点 179.5Mt（過去最高・Mysteelデータ）</span>。Orderbookは歴史的低位だが、<strong>Cape級：2026年竣工約45–50隻（適度）、2027年約54隻（リスク本格化）</strong>、275隻発注済で2027–28年が最大の供給リスク期。EAF（電炉）転換：中国比率現在40–45%→鉄鉱石需要に▲40Mt/+10pt相当のダウンサイドリスク（10年スパン）。
     </div>
   </div>
 
@@ -1821,7 +2132,7 @@
   <div class="market-snapshot">
     <div class="snapshot-title">📍 MARKET SNAPSHOT · 2026Q1</div>
     <div class="snapshot-body">
-      <strong>コンテナ船は構造的過剰供給サイクルに突入。</strong>Drewry WCIは2026年1月末に <span class="key-stat">$2,107/FEU（-4.7% WoW）</span>、SCFI総合指数はRed Sea危機前の2023年12月水準まで<em>ラウンドトリップ</em>。主因：(1) <strong>Red Sea段階的再開</strong>（Maersk MECL恒久化、CMA CGMが主要3航路再開、1航路あたり1隻解放）、(2) <strong>艦隊急膨張</strong>（Clarksons Orderbook/Fleet比率 <span class="key-stat">31.6%</span>、2023年比 +19%拡大）、(3) 米中貿易戦争による需要ダメージ。2026年は<em>過剰供給主導の弱気相場</em>、2027年に更なる船腹竣工加速（2.8M TEU）で市況ピーク・ボトム予測。ただしホルムズ危機再燃で緊急運賃上昇リスクあり。
+      <strong>コンテナ船は構造的過剰供給サイクルに突入するも、地政学リスクが下支え。</strong>Drewry WCIは2026年1月末に <span class="key-stat">$2,107/FEU（-4.7% WoW）</span>、SCFI総合指数はRed Sea危機前の2023年12月水準まで<em>ラウンドトリップ</em>。構造的弱気要因：(1) <strong>艦隊急膨張</strong>（Clarksons Orderbook/Fleet比率 <span class="key-stat">31.6%</span>、2023年比 +19%拡大）、(2) 米中貿易戦争による需要ダメージ、(3) 2027年竣工加速（2.8M TEU）。<strong>⚠️ 2026年Q2更新：</strong>1月時点の「Red Sea段階的再開」予測は<em>ホルムズ危機長期化（2/28〜）により無効化</em>。MaerskのMECL恒久化発表も実質再見直し中。迂回継続でTon-Mileが再び拡大し、過剰供給の一部を吸収。地政学リスクが需給ファンダメンタルズを圧倒する<em>「二重構造相場」</em>が継続中。保険コスト急騰（P&amp;I +30〜50%）で名目運賃上昇でも実質利益は限定的。
     </div>
   </div>
 
@@ -2148,8 +2459,8 @@
     <div class="snapshot-body">
       <strong>タンカー市場は2026年史上最強の運賃環境。ホルムズ危機が爆発中。</strong><br>
       <span class="key-stat">VLCC TD3C: 3/2 過去最高 $423,736/日（+94% WoW）</span>
-      <span class="key-stat">VLCC Utilization: 2026 92% 予測（2019年以来最高）</span>
-      <span class="key-stat">Frontline CEO: 「VLCC 44% が15年超、18% が制裁対象」</span><br>
+      <span class="key-stat">VLCC Utilization: 2026 H1 92% / H2 87% 予測（Jefferies、2019年以来最高水準）</span>
+      <span class="key-stat">Frontline CEO（2026 Q1）: 「VLCC 44〜46% が15年超、うち18% が制裁関連歴あり」</span><br>
       <strong>Trigger：2026/2/28 米イ戦争勃発（Operation Epic Fury）</strong> → ハメネイ師暗殺 → IRGCがホルムズ海峡封鎖 → タンカー輸送 -70%→-95% → 主要P&I保険がWar Risk Cover取消。<strong>20%世界原油・LNG輸送が危機</strong>。4/19時点でホルムズ通航<em>3隻のみ</em>（ブロケード開始以来最低）、880隻がGulfに滞留。4/18にSanmar Herald（VLCC・インド籍）、CMA CGM Everglade（コンテナ）がIRGC攻撃受ける。Chabahar港東側に7 VLCC集結 = 代替輸出路開拓の兆候。ベネズエラ制裁解除 + Red Sea段階再開 + ロシア制裁強化 = 制裁ダークフリート構造崩壊期にも突入。
     </div>
   </div>
@@ -2228,8 +2539,8 @@
           <span class="tag tag-critical">EXTREME</span>
         </div>
         <div class="detail-row-body">
-          <strong>Insurance Premium：</strong>戦争リスク保険料 0.125% → 0.2-0.4%（VLCC 1回通航で<em>+$250k</em>）。<strong>多くの船主が保険取消で通航不可能</strong>。<br>
-          <strong>Freight Rates：</strong>VLCC TD3C $423k/日（史上最高）、Suezmaxも連動高騰。<br>
+          <strong>Insurance Premium：</strong>戦争リスク保険料 0.125% → 0.2–0.4%（VLCC 1回通航で<em>+$200–300k</em>）。P&amp;Iクラブも付保範囲限定・保険料+30〜50%。<strong>名目運賃$423k/日でも船主手取りは実質$300–330k/日（保険・諸費用で▲20〜25%）</strong>。多くの船主が保険取消で通航不可。<br>
+          <strong>Freight Rates：</strong>VLCC TD3C $423k/日（史上最高）、Suezmaxも連動高騰。保険コスト急騰を考慮した実質利益はWS換算で▲15pt相当。<br>
           <strong>Spillover Effects：</strong>(1) Jet fuel Singaporeスポットが3倍、(2) 豪州石炭先物 +30%（バルカー市場にも波及）、(3) アジア精油所（中国・韓国・台湾）が稼働率削減、(4) 中国が全精製品輸出を一時停止（香港・マカオ除く）、(5) LR2/MR2タンカーが大西洋側へballastで移動=欧州市場で過剰供給リスク。
           <div class="evidence-box tanker-color">
             <div class="evidence-box-label">Breakwave Advisors Scenario（Jan 2026）</div>
@@ -2498,6 +2809,214 @@
 </div>
 
 <!-- ══════════════════════════════════
+     PANAMAX MARKET TAB
+═══════════════════════════════════ -->
+<div class="tab-panel" id="panel-panamax">
+
+  <!-- Header -->
+  <div class="pmx-header">
+    <div>
+      <div style="font-size:22px;font-weight:700;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;color:var(--bulker)">
+        PANAMAX / KAMSARMAX マーケット
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px">Kamsarmax 82,000 DWT基準 ｜ Baltic Exchange基準 ｜ TradingView経由ライブ取得対応</div>
+    </div>
+    <div class="pmx-header-right">
+      <span class="pmx-badge">PANAMAX</span>
+      <button class="pmx-auto-btn" id="pmx-auto-fetch-btn" onclick="fetchPmxLiveData()">🔄 ライブ取得</button>
+    </div>
+  </div>
+
+  <!-- Fetch Status Bar -->
+  <div class="pmx-fetch-bar" id="pmx-fetch-bar">
+    <span id="pmx-fetch-status" class="fetch-hint">
+      <strong style="color:var(--bulker)">🔄 ライブ取得</strong> を押すと BPI・商品市況を自動取得します
+      &nbsp;·&nbsp; ソース: TradingView (BALT) → Stooq → Yahoo Finance
+    </span>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="pmx-kpi-grid" id="pmx-kpi-grid">
+    <div class="pmx-kpi">
+      <div class="pmx-kpi-label">BPI（バルチック・パナマックス指数）</div>
+      <div class="pmx-kpi-val" id="pmx-kv-bpi">—</div>
+      <div class="pmx-kpi-sub">ポイント</div>
+      <div class="pmx-kpi-range" id="pmx-kr-bpi">週間レンジ: —</div>
+    </div>
+    <div class="pmx-kpi">
+      <div class="pmx-kpi-label">P2A 太平洋 R/V（中心レート）</div>
+      <div class="pmx-kpi-val" id="pmx-kv-p2a">—</div>
+      <div class="pmx-kpi-sub">USD/日</div>
+      <div class="pmx-kpi-range" id="pmx-kr-p2a">週間レンジ: —</div>
+    </div>
+    <div class="pmx-kpi">
+      <div class="pmx-kpi-label">1年TC レート</div>
+      <div class="pmx-kpi-val" id="pmx-kv-tc1y">—</div>
+      <div class="pmx-kpi-sub">USD/日</div>
+      <div class="pmx-kpi-range" id="pmx-kr-tc1y">週間レンジ: —</div>
+    </div>
+    <div class="pmx-kpi">
+      <div class="pmx-kpi-label">発注残（フリート比率）</div>
+      <div class="pmx-kpi-val" id="pmx-kv-ob">—</div>
+      <div class="pmx-kpi-sub">%</div>
+      <div class="pmx-kpi-range" id="pmx-kr-ob">発注残隻数: — 隻</div>
+    </div>
+  </div>
+
+  <!-- Commodity Context Panel -->
+  <div class="pmx-comm-section">
+    <div class="pmx-section-title">📦 関連商品市況（需要先行指標）</div>
+    <div id="pmx-commodity-panel">
+      <div class="pmx-comm-placeholder">「🔄 ライブ取得」を押すと石炭・穀物先物など需要先行指標を表示します</div>
+    </div>
+  </div>
+
+  <!-- Weekly Update Form -->
+  <div class="pmx-update-toggle">
+    <button class="pmx-toggle-btn" onclick="togglePmxForm()">📝 手動データ入力（ブローカー見積もり）</button>
+    <span style="font-size:11px;color:var(--muted)" id="pmx-last-update">最終更新: —</span>
+  </div>
+  <div class="pmx-form" id="pmx-form">
+    <div style="font-size:13px;font-weight:700;color:var(--bulker);margin-bottom:14px">先週1週間のレンジ入力（USD/日、ポイント、$M）</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px">▼ 運賃・傭船料</div>
+    <div class="pmx-form-grid">
+      <div class="pmx-field"><label>BPI Lo</label><input id="fi-bpi-lo" type="number" placeholder="1100"></div>
+      <div class="pmx-field"><label>BPI Hi</label><input id="fi-bpi-hi" type="number" placeholder="1450"></div>
+      <div class="pmx-field"><label>BPI 週末終値</label><input id="fi-bpi-cur" type="number" placeholder="1280"></div>
+      <div class="pmx-field"><label>P2A 太平洋RV Lo</label><input id="fi-p2a-lo" type="number" placeholder="10500"></div>
+      <div class="pmx-field"><label>P2A 太平洋RV Hi</label><input id="fi-p2a-hi" type="number" placeholder="13500"></div>
+      <div class="pmx-field"><label>P2A 週末終値</label><input id="fi-p2a-cur" type="number" placeholder="11800"></div>
+      <div class="pmx-field"><label>P3A 大西洋RV Lo</label><input id="fi-p3a-lo" type="number" placeholder="11000"></div>
+      <div class="pmx-field"><label>P3A 大西洋RV Hi</label><input id="fi-p3a-hi" type="number" placeholder="14500"></div>
+      <div class="pmx-field"><label>P3A 週末終値</label><input id="fi-p3a-cur" type="number" placeholder="12500"></div>
+      <div class="pmx-field"><label>P1A Trans-Pacific Lo</label><input id="fi-p1a-lo" type="number" placeholder="9800"></div>
+      <div class="pmx-field"><label>P1A Trans-Pacific Hi</label><input id="fi-p1a-hi" type="number" placeholder="13000"></div>
+      <div class="pmx-field"><label>P1A 週末終値</label><input id="fi-p1a-cur" type="number" placeholder="11000"></div>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px">▼ 期間傭船料</div>
+    <div class="pmx-form-grid">
+      <div class="pmx-field"><label>TC 6-12M Lo</label><input id="fi-tc6m-lo" type="number" placeholder="10500"></div>
+      <div class="pmx-field"><label>TC 6-12M Hi</label><input id="fi-tc6m-hi" type="number" placeholder="13500"></div>
+      <div class="pmx-field"><label>TC 6-12M 中間値</label><input id="fi-tc6m-cur" type="number" placeholder="12000"></div>
+      <div class="pmx-field"><label>TC 1Y Lo</label><input id="fi-tc1y-lo" type="number" placeholder="11000"></div>
+      <div class="pmx-field"><label>TC 1Y Hi</label><input id="fi-tc1y-hi" type="number" placeholder="13500"></div>
+      <div class="pmx-field"><label>TC 1Y 中間値</label><input id="fi-tc1y-cur" type="number" placeholder="12300"></div>
+      <div class="pmx-field"><label>TC 3Y Lo</label><input id="fi-tc3y-lo" type="number" placeholder="12000"></div>
+      <div class="pmx-field"><label>TC 3Y Hi</label><input id="fi-tc3y-hi" type="number" placeholder="14500"></div>
+      <div class="pmx-field"><label>TC 3Y 中間値</label><input id="fi-tc3y-cur" type="number" placeholder="13200"></div>
+      <div class="pmx-field"><label>TC 5Y Lo</label><input id="fi-tc5y-lo" type="number" placeholder="12500"></div>
+      <div class="pmx-field"><label>TC 5Y Hi</label><input id="fi-tc5y-hi" type="number" placeholder="15000"></div>
+      <div class="pmx-field"><label>TC 5Y 中間値</label><input id="fi-tc5y-cur" type="number" placeholder="13800"></div>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px">▼ 船価（$M）</div>
+    <div class="pmx-form-grid">
+      <div class="pmx-field"><label>新造船 Lo ($M)</label><input id="fi-nb-lo" type="number" step="0.5" placeholder="38"></div>
+      <div class="pmx-field"><label>新造船 Hi ($M)</label><input id="fi-nb-hi" type="number" step="0.5" placeholder="42"></div>
+      <div class="pmx-field"><label>新造船 中間 ($M)</label><input id="fi-nb-cur" type="number" step="0.5" placeholder="40"></div>
+      <div class="pmx-field"><label>5歳船 Lo ($M)</label><input id="fi-s5-lo" type="number" step="0.5" placeholder="30"></div>
+      <div class="pmx-field"><label>5歳船 Hi ($M)</label><input id="fi-s5-hi" type="number" step="0.5" placeholder="35"></div>
+      <div class="pmx-field"><label>5歳船 中間 ($M)</label><input id="fi-s5-cur" type="number" step="0.5" placeholder="32.5"></div>
+      <div class="pmx-field"><label>10歳船 Lo ($M)</label><input id="fi-s10-lo" type="number" step="0.5" placeholder="22"></div>
+      <div class="pmx-field"><label>10歳船 Hi ($M)</label><input id="fi-s10-hi" type="number" step="0.5" placeholder="27"></div>
+      <div class="pmx-field"><label>10歳船 中間 ($M)</label><input id="fi-s10-cur" type="number" step="0.5" placeholder="24.5"></div>
+      <div class="pmx-field"><label>15歳船 Lo ($M)</label><input id="fi-s15-lo" type="number" step="0.5" placeholder="15"></div>
+      <div class="pmx-field"><label>15歳船 Hi ($M)</label><input id="fi-s15-hi" type="number" step="0.5" placeholder="19"></div>
+      <div class="pmx-field"><label>15歳船 中間 ($M)</label><input id="fi-s15-cur" type="number" step="0.5" placeholder="17"></div>
+      <div class="pmx-field"><label>20歳船 Lo ($M)</label><input id="fi-s20-lo" type="number" step="0.5" placeholder="9"></div>
+      <div class="pmx-field"><label>20歳船 Hi ($M)</label><input id="fi-s20-hi" type="number" step="0.5" placeholder="13"></div>
+      <div class="pmx-field"><label>20歳船 中間 ($M)</label><input id="fi-s20-cur" type="number" step="0.5" placeholder="11"></div>
+      <div class="pmx-field"><label>25歳船 Lo ($M)</label><input id="fi-s25-lo" type="number" step="0.5" placeholder="5"></div>
+      <div class="pmx-field"><label>25歳船 Hi ($M)</label><input id="fi-s25-hi" type="number" step="0.5" placeholder="8"></div>
+      <div class="pmx-field"><label>25歳船 中間 ($M)</label><input id="fi-s25-cur" type="number" step="0.5" placeholder="6.5"></div>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px">▼ マーケット構造</div>
+    <div class="pmx-form-grid">
+      <div class="pmx-field"><label>発注残（隻数）</label><input id="fi-ob-ves" type="number" placeholder="185"></div>
+      <div class="pmx-field"><label>発注残（%）</label><input id="fi-ob-pct" type="number" step="0.1" placeholder="8.2"></div>
+      <div class="pmx-field"><label>トンマイル YoY%</label><input id="fi-tonmile" type="number" step="0.1" placeholder="2.5"></div>
+      <div class="pmx-field"><label>週間解撤（隻数）</label><input id="fi-scr-wk" type="number" placeholder="2"></div>
+      <div class="pmx-field"><label>YTD解撤（隻数）</label><input id="fi-scr-ytd" type="number" placeholder="18"></div>
+      <div class="pmx-field"><label>集計週（例: 2026-W17）</label><input id="fi-week" type="text" placeholder="2026-W17"></div>
+    </div>
+    <button class="pmx-save-btn" onclick="savePmxData()">💾 保存して更新</button>
+    <div class="pmx-form-note">※ データはブラウザのlocalStorageに保存されます。ページをリロードしても維持されます。</div>
+  </div>
+
+  <!-- Freight Rates Table -->
+  <div class="pmx-section-title">📈 運賃・傭船料</div>
+  <div class="pmx-tc-note" id="pmx-tc-note" style="display:none">
+    <strong>AUTO</strong> BPIスポットから自動推計 ·
+    TC推計倍率: 6-12M×0.96 / 1Y×0.92 / 3Y×0.88 / 5Y×0.85 ·
+    ルート換算: P2A≈BPI×9.2 / P3A≈BPI×9.8 / P1A≈BPI×8.5 ·
+    <span style="color:#fbbf24">期間傭船料はブローカー見積もりで要確認</span>
+  </div>
+  <div class="pmx-note">Baltic Exchangeレート基準。レンジバーは週間Lo〜Hiを表示し、●が週末終値の位置を示します。<span id="pmx-rate-data-tag"></span></div>
+  <table class="pmx-rate-table" id="pmx-rate-table">
+    <thead>
+      <tr>
+        <th style="width:200px">ルート / 期間</th>
+        <th>週間レンジ (USD/日)</th>
+        <th style="width:180px">レンジバー</th>
+        <th>週末終値</th>
+      </tr>
+    </thead>
+    <tbody id="pmx-rate-tbody"></tbody>
+  </table>
+
+  <!-- Vessel Values by Age -->
+  <div class="pmx-section-title">🚢 中古船価・新造船価（船齢別）</div>
+  <div class="pmx-note">Kamsarmax 82,000 DWT基準。船価は先週のブローカー見積もりレンジ（$M）。</div>
+  <div class="pmx-age-grid" id="pmx-age-grid"></div>
+
+  <!-- Market Structure -->
+  <div class="pmx-section-title">📊 マーケット構造指標</div>
+  <div class="pmx-struct-grid" id="pmx-struct-grid">
+    <div class="pmx-struct-card">
+      <div class="pmx-struct-label">発注残（隻数）</div>
+      <div class="pmx-struct-val" id="pmx-sv-ob-ves">—</div>
+      <div class="pmx-struct-sub" id="pmx-sv-ob-pct">フリート比: —%</div>
+    </div>
+    <div class="pmx-struct-card">
+      <div class="pmx-struct-label">トンマイル需要 YoY</div>
+      <div class="pmx-struct-val" id="pmx-sv-tonmile">—</div>
+      <div class="pmx-struct-sub">前年同期比</div>
+      <div class="pmx-tonmile-bar"><div class="pmx-tonmile-fill" id="pmx-tonmile-bar" style="width:50%;background:var(--demand)"></div></div>
+    </div>
+    <div class="pmx-struct-card">
+      <div class="pmx-struct-label">週間解撤量</div>
+      <div class="pmx-struct-val" id="pmx-sv-scr-wk">—</div>
+      <div class="pmx-struct-sub">隻（先週）</div>
+    </div>
+    <div class="pmx-struct-card">
+      <div class="pmx-struct-label">YTD解撤量</div>
+      <div class="pmx-struct-val" id="pmx-sv-scr-ytd">—</div>
+      <div class="pmx-struct-sub">隻（年初来）</div>
+    </div>
+  </div>
+
+  <!-- Finance Context -->
+  <div class="pmx-section-title">🏦 銀行ファイナンス参考値（Panamax）</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px">
+    <div class="pmx-struct-card">
+      <div class="pmx-struct-label">損益分岐運賃（BreakEven）</div>
+      <div class="pmx-struct-val" style="font-size:16px;color:var(--bulker)">$8,500〜$12,000</div>
+      <div class="pmx-struct-sub">USD/日（融資条件・船齢で変動）</div>
+    </div>
+    <div class="pmx-struct-card">
+      <div class="pmx-struct-label">LTV目安（新造）</div>
+      <div class="pmx-struct-val" style="font-size:16px;color:var(--accent)">60〜70%</div>
+      <div class="pmx-struct-sub">中古10年: 55〜65%、15年+: &lt;50%</div>
+    </div>
+    <div class="pmx-struct-card">
+      <div class="pmx-struct-label">DSCR最低水準</div>
+      <div class="pmx-struct-val" style="font-size:16px;color:var(--demand)">1.15〜1.20x</div>
+      <div class="pmx-struct-sub">健全水準: &gt;1.30x</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════
      DASHBOARD TAB (LIVE)
 ═══════════════════════════════════ -->
 <div class="tab-panel" id="panel-dashboard">
@@ -2982,13 +3501,13 @@
 
   <div class="link-grid">
 
-    <a href="https://www.balticexchange.com/en/data-services/market-information0/dry-services.html" target="_blank" class="link-card">
+    <a href="https://www.balticexchange.com/en/data/market-information/dry-services/" target="_blank" class="link-card">
       <div class="link-title"><span class="link-freq-tag freq-tag-daily">DAILY</span>Baltic Dry Index (BDI)</div>
       <div class="link-source">Baltic Exchange</div>
       <div class="link-note">バルカー総合運賃指数。BCI（Cape）、BPI（Panamax）、BSI（Supra）、BHSI（Handy）の内訳も確認。毎営業日17:00 London公表。</div>
     </a>
 
-    <a href="https://www.balticexchange.com/en/data-services/market-information0/tanker-services.html" target="_blank" class="link-card">
+    <a href="https://www.balticexchange.com/en/data/market-information/tanker-services/" target="_blank" class="link-card">
       <div class="link-title"><span class="link-freq-tag freq-tag-daily">DAILY</span>Baltic Tanker Indices</div>
       <div class="link-source">Baltic Exchange</div>
       <div class="link-note">BDTI（原油）、BCTI（プロダクト）。TD3C（中東→中国VLCC）、TD20（西アフリカ→UKC Suezmax）等の個別ルート指数。</div>
@@ -3142,9 +3661,9 @@
 
   <div class="link-grid">
 
-    <a href="https://www.marinavi.com/" target="_blank" class="link-card">
+    <a href="https://www.jmd.co.jp/" target="_blank" class="link-card">
       <div class="link-title"><span class="link-freq-tag freq-tag-daily">DAILY</span>日本海事新聞</div>
-      <div class="link-source">marinavi.com</div>
+      <div class="link-source">jmd.co.jp</div>
       <div class="link-note">日本最大の海事業界紙。邦船・日本造船所・日系船主の動向を詳細カバー。</div>
     </a>
 
@@ -3154,7 +3673,7 @@
       <div class="link-note">海事プレス社が運営。日本の海事業界の速報・分析記事。</div>
     </a>
 
-    <a href="https://secretary.jsanet.or.jp/" target="_blank" class="link-card">
+    <a href="https://www.jsanet.or.jp/" target="_blank" class="link-card">
       <div class="link-title"><span class="link-freq-tag freq-tag-weekly">WEEKLY</span>日本船主協会</div>
       <div class="link-source">jsanet.or.jp</div>
       <div class="link-note">業界統計・政策動向・船員問題等。日本の船主業界の公式情報源。</div>
@@ -3446,12 +3965,13 @@
   </div>
 
   <div class="news-toolbar">
-    <button class="news-filter-btn nf-active" data-filter="all">ALL</button>
+    <button class="news-filter-btn nf-active" data-filter="all">📰 総合</button>
     <button class="news-filter-btn cat-bulker" data-filter="bulker">🟡 バルカー</button>
     <button class="news-filter-btn cat-container" data-filter="container">🔵 コンテナ</button>
     <button class="news-filter-btn cat-tanker" data-filter="tanker">🟣 タンカー</button>
     <button class="news-filter-btn cat-finance" data-filter="finance">💚 ファイナンス</button>
     <button class="news-filter-btn" data-filter="regulation">🌿 規制・環境</button>
+    <button class="news-filter-btn" data-filter="japan">🇯🇵 日本関連</button>
     <span class="news-last-updated" id="news-last-updated"></span>
     <button class="news-refresh-btn" id="news-refresh-btn" onclick="loadAllNews()">🔄 最新に更新</button>
   </div>
@@ -3651,6 +4171,12 @@ btns.forEach(btn => {
     document.getElementById('panel-' + target).classList.add('active');
     if (target === 'dashboard') window.dispatchEvent(new Event('resize'));
     if (target === 'news' && !newsLoaded) { loadAllNews(); newsLoaded = true; }
+    if (target === 'panamax') {
+      const cache = (() => { try { return JSON.parse(localStorage.getItem('pmx_comm_cache')); } catch(e){ return null; } })();
+      const stale = !cache || (Date.now() - (cache.ts || 0)) > 4 * 3600 * 1000;
+      if (stale) fetchPmxLiveData();
+      else renderCommodityPanel();
+    }
   });
 });
 
@@ -3685,7 +4211,14 @@ function fmtDate(d) {
   return d.toLocaleDateString('ja-JP', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 }
 
-const CAT_LABELS = { bulker:'バルカー', container:'コンテナ', tanker:'タンカー', finance:'ファイナンス', regulation:'規制・環境', general:'総合' };
+const CAT_LABELS = { bulker:'バルカー', container:'コンテナ', tanker:'タンカー', finance:'ファイナンス', regulation:'規制・環境', general:'総合', japan:'日本関連' };
+
+const JAPAN_KW = ['japan','japanese','nyk','mol','k-line','kawasaki kisen','nippon yusen','mitsui osk','imabari','tsuneishi','JMU','namura','tokyo','osaka','kobe','yokohama','yen','jsanet','nippon','japan shipowners','japanese bank','smbc','mizuho','mufg','showa','shin kurushima'];
+
+function isJapanRelated(article) {
+  const t = (article.title + ' ' + article.snippet).toLowerCase();
+  return JAPAN_KW.some(k => t.includes(k));
+}
 
 async function fetchFeed(feed) {
   const PROXIES = [
@@ -3753,7 +4286,9 @@ async function loadAllNews() {
 
 function renderNews(articles, filter) {
   const grid = document.getElementById('news-articles-grid');
-  const list = filter === 'all' ? articles : articles.filter(a => a.category === filter);
+  const list = filter === 'all'   ? articles
+             : filter === 'japan' ? articles.filter(isJapanRelated)
+             : articles.filter(a => a.category === filter);
   if (!list.length) {
     grid.innerHTML = '<div class="news-loading">このカテゴリの記事は見つかりませんでした。</div>';
     return;
@@ -4010,10 +4545,424 @@ function initOutlookTab() {
 }
 
 /* ═══════════════════════════════════
+   PANAMAX TAB
+═══════════════════════════════════ */
+const PMX_KEY = 'panamax_weekly_data';
+
+const PMX_DEFAULT = {
+  week: '2026-W17',
+  bpi:  { lo: 1100, hi: 1450, cur: 1280 },
+  p2a:  { lo: 10500, hi: 13500, cur: 11800 },
+  p3a:  { lo: 11000, hi: 14500, cur: 12500 },
+  p1a:  { lo: 9800,  hi: 13000, cur: 11000 },
+  tc6m: { lo: 10500, hi: 13500, cur: 12000 },
+  tc1y: { lo: 11000, hi: 13500, cur: 12300 },
+  tc3y: { lo: 12000, hi: 14500, cur: 13200 },
+  tc5y: { lo: 12500, hi: 15000, cur: 13800 },
+  nb:   { lo: 38,    hi: 42,    cur: 40    },
+  s5:   { lo: 30,    hi: 35,    cur: 32.5  },
+  s10:  { lo: 22,    hi: 27,    cur: 24.5  },
+  s15:  { lo: 15,    hi: 19,    cur: 17    },
+  s20:  { lo: 9,     hi: 13,    cur: 11    },
+  s25:  { lo: 5,     hi: 8,     cur: 6.5   },
+  ob_ves: 185, ob_pct: 8.2,
+  tonmile: 2.5,
+  scr_wk: 2, scr_ytd: 18,
+};
+
+function loadPmxData() {
+  try { return JSON.parse(localStorage.getItem(PMX_KEY)) || PMX_DEFAULT; }
+  catch(e) { return PMX_DEFAULT; }
+}
+
+function fmt(n, dec=0) {
+  if(n === undefined || n === null) return '—';
+  return Number(n).toLocaleString('en-US', {minimumFractionDigits:dec, maximumFractionDigits:dec});
+}
+
+function renderPmxBar(lo, hi, cur) {
+  const pct = hi > lo ? Math.min(100, Math.max(0, (cur - lo)/(hi - lo)*100)) : 50;
+  return `<div class="pmx-bar-wrap">
+    <div class="pmx-bar-fill" style="width:${pct}%"></div>
+    <div class="pmx-bar-dot" style="left:${pct}%"></div>
+  </div>
+  <div class="pmx-bar-labels"><span>${fmt(lo)}</span><span>${fmt(hi)}</span></div>`;
+}
+
+function renderPmx() {
+  const d = loadPmxData();
+
+  document.getElementById('pmx-last-update').textContent = '最終更新: ' + (d.week || '—');
+
+  document.getElementById('pmx-kv-bpi').textContent  = fmt(d.bpi.cur);
+  document.getElementById('pmx-kr-bpi').textContent  = `週間レンジ: ${fmt(d.bpi.lo)} – ${fmt(d.bpi.hi)}`;
+  document.getElementById('pmx-kv-p2a').textContent  = '$' + fmt(d.p2a.cur);
+  document.getElementById('pmx-kr-p2a').textContent  = `週間レンジ: $${fmt(d.p2a.lo)} – $${fmt(d.p2a.hi)}`;
+  document.getElementById('pmx-kv-tc1y').textContent = '$' + fmt(d.tc1y.cur);
+  document.getElementById('pmx-kr-tc1y').textContent = `週間レンジ: $${fmt(d.tc1y.lo)} – $${fmt(d.tc1y.hi)}`;
+  document.getElementById('pmx-kv-ob').textContent   = fmt(d.ob_pct, 1) + '%';
+  document.getElementById('pmx-kr-ob').textContent   = `発注残隻数: ${fmt(d.ob_ves)} 隻`;
+
+  const rates = [
+    { name:'BPI（バルチック指数）', unit:'pts', d:d.bpi },
+    { name:'P2A 太平洋 Round Voyage', unit:'$/日', d:d.p2a },
+    { name:'P3A 大西洋 Round Voyage', unit:'$/日', d:d.p3a },
+    { name:'P1A Trans-Pacific（FH）', unit:'$/日', d:d.p1a },
+    { name:'TC 6〜12ヶ月',           unit:'$/日', d:d.tc6m },
+    { name:'TC 1年',                  unit:'$/日', d:d.tc1y },
+    { name:'TC 3年',                  unit:'$/日', d:d.tc3y },
+    { name:'TC 5年',                  unit:'$/日', d:d.tc5y },
+  ];
+  const tbody = document.getElementById('pmx-rate-tbody');
+  tbody.innerHTML = rates.map(r => `<tr>
+    <td><span class="pmx-rate-name">${r.name}</span></td>
+    <td><span class="pmx-rate-mono">${fmt(r.d.lo)} – ${fmt(r.d.hi)} ${r.unit}</span></td>
+    <td>${renderPmxBar(r.d.lo, r.d.hi, r.d.cur)}</td>
+    <td><span class="pmx-rate-mono" style="color:var(--text)">${fmt(r.d.cur)} ${r.unit}</span></td>
+  </tr>`).join('');
+
+  const ages = [
+    { label:'新造船',  nb:'82k DWT', key:'nb'  },
+    { label:'5歳船',   nb:'約77k',   key:'s5'  },
+    { label:'10歳船',  nb:'約72k',   key:'s10' },
+    { label:'15歳船',  nb:'約67k',   key:'s15' },
+    { label:'20歳船',  nb:'約62k',   key:'s20' },
+    { label:'25歳船',  nb:'解撤検討', key:'s25' },
+  ];
+  document.getElementById('pmx-age-grid').innerHTML = ages.map(a => {
+    const v = d[a.key];
+    return `<div class="pmx-age-card">
+      <div class="pmx-age-label">${a.label}</div>
+      <div class="pmx-age-nb">${a.nb}</div>
+      <div class="pmx-age-val">$${fmt(v.cur, 1)}</div>
+      <div class="pmx-age-unit">M USD</div>
+      <div class="pmx-age-range">$${fmt(v.lo, 1)}〜$${fmt(v.hi, 1)}M</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('pmx-sv-ob-ves').textContent  = fmt(d.ob_ves) + ' 隻';
+  document.getElementById('pmx-sv-ob-pct').textContent  = 'フリート比: ' + fmt(d.ob_pct, 1) + '%';
+  const tm = Number(d.tonmile);
+  document.getElementById('pmx-sv-tonmile').textContent = (tm >= 0 ? '+' : '') + fmt(tm, 1) + '%';
+  document.getElementById('pmx-tonmile-bar').style.width = Math.min(100, Math.max(0, 50 + tm * 5)) + '%';
+  document.getElementById('pmx-tonmile-bar').style.background = tm >= 0 ? 'var(--demand)' : 'var(--supply)';
+  document.getElementById('pmx-sv-scr-wk').textContent  = fmt(d.scr_wk) + ' 隻';
+  document.getElementById('pmx-sv-scr-ytd').textContent = fmt(d.scr_ytd) + ' 隻';
+}
+
+function togglePmxForm() {
+  const f = document.getElementById('pmx-form');
+  f.classList.toggle('open');
+  if(f.classList.contains('open')) {
+    const d = loadPmxData();
+    const map = {
+      'fi-bpi-lo':d.bpi.lo,'fi-bpi-hi':d.bpi.hi,'fi-bpi-cur':d.bpi.cur,
+      'fi-p2a-lo':d.p2a.lo,'fi-p2a-hi':d.p2a.hi,'fi-p2a-cur':d.p2a.cur,
+      'fi-p3a-lo':d.p3a.lo,'fi-p3a-hi':d.p3a.hi,'fi-p3a-cur':d.p3a.cur,
+      'fi-p1a-lo':d.p1a.lo,'fi-p1a-hi':d.p1a.hi,'fi-p1a-cur':d.p1a.cur,
+      'fi-tc6m-lo':d.tc6m.lo,'fi-tc6m-hi':d.tc6m.hi,'fi-tc6m-cur':d.tc6m.cur,
+      'fi-tc1y-lo':d.tc1y.lo,'fi-tc1y-hi':d.tc1y.hi,'fi-tc1y-cur':d.tc1y.cur,
+      'fi-tc3y-lo':d.tc3y.lo,'fi-tc3y-hi':d.tc3y.hi,'fi-tc3y-cur':d.tc3y.cur,
+      'fi-tc5y-lo':d.tc5y.lo,'fi-tc5y-hi':d.tc5y.hi,'fi-tc5y-cur':d.tc5y.cur,
+      'fi-nb-lo':d.nb.lo,'fi-nb-hi':d.nb.hi,'fi-nb-cur':d.nb.cur,
+      'fi-s5-lo':d.s5.lo,'fi-s5-hi':d.s5.hi,'fi-s5-cur':d.s5.cur,
+      'fi-s10-lo':d.s10.lo,'fi-s10-hi':d.s10.hi,'fi-s10-cur':d.s10.cur,
+      'fi-s15-lo':d.s15.lo,'fi-s15-hi':d.s15.hi,'fi-s15-cur':d.s15.cur,
+      'fi-s20-lo':d.s20.lo,'fi-s20-hi':d.s20.hi,'fi-s20-cur':d.s20.cur,
+      'fi-s25-lo':d.s25.lo,'fi-s25-hi':d.s25.hi,'fi-s25-cur':d.s25.cur,
+      'fi-ob-ves':d.ob_ves,'fi-ob-pct':d.ob_pct,'fi-tonmile':d.tonmile,
+      'fi-scr-wk':d.scr_wk,'fi-scr-ytd':d.scr_ytd,'fi-week':d.week,
+    };
+    Object.entries(map).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if(el) el.value = val;
+    });
+  }
+}
+
+function savePmxData() {
+  const g = id => { const el = document.getElementById(id); return el ? Number(el.value) : 0; };
+  const gs = id => { const el = document.getElementById(id); return el ? el.value : ''; };
+  const d = {
+    week: gs('fi-week'),
+    bpi:  { lo:g('fi-bpi-lo'),   hi:g('fi-bpi-hi'),   cur:g('fi-bpi-cur') },
+    p2a:  { lo:g('fi-p2a-lo'),   hi:g('fi-p2a-hi'),   cur:g('fi-p2a-cur') },
+    p3a:  { lo:g('fi-p3a-lo'),   hi:g('fi-p3a-hi'),   cur:g('fi-p3a-cur') },
+    p1a:  { lo:g('fi-p1a-lo'),   hi:g('fi-p1a-hi'),   cur:g('fi-p1a-cur') },
+    tc6m: { lo:g('fi-tc6m-lo'),  hi:g('fi-tc6m-hi'),  cur:g('fi-tc6m-cur') },
+    tc1y: { lo:g('fi-tc1y-lo'),  hi:g('fi-tc1y-hi'),  cur:g('fi-tc1y-cur') },
+    tc3y: { lo:g('fi-tc3y-lo'),  hi:g('fi-tc3y-hi'),  cur:g('fi-tc3y-cur') },
+    tc5y: { lo:g('fi-tc5y-lo'),  hi:g('fi-tc5y-hi'),  cur:g('fi-tc5y-cur') },
+    nb:   { lo:g('fi-nb-lo'),    hi:g('fi-nb-hi'),    cur:g('fi-nb-cur') },
+    s5:   { lo:g('fi-s5-lo'),    hi:g('fi-s5-hi'),    cur:g('fi-s5-cur') },
+    s10:  { lo:g('fi-s10-lo'),   hi:g('fi-s10-hi'),   cur:g('fi-s10-cur') },
+    s15:  { lo:g('fi-s15-lo'),   hi:g('fi-s15-hi'),   cur:g('fi-s15-cur') },
+    s20:  { lo:g('fi-s20-lo'),   hi:g('fi-s20-hi'),   cur:g('fi-s20-cur') },
+    s25:  { lo:g('fi-s25-lo'),   hi:g('fi-s25-hi'),   cur:g('fi-s25-cur') },
+    ob_ves: g('fi-ob-ves'), ob_pct: g('fi-ob-pct'),
+    tonmile: g('fi-tonmile'),
+    scr_wk: g('fi-scr-wk'), scr_ytd: g('fi-scr-ytd'),
+  };
+  localStorage.setItem(PMX_KEY, JSON.stringify(d));
+  document.getElementById('pmx-form').classList.remove('open');
+  renderPmx();
+}
+
+/* ═══════════════════════════════════
+   PANAMAX AUTO-FETCH ENGINE
+═══════════════════════════════════ */
+
+// TC期間倍率（スポットP2A比）
+const TC_MULT = { tc6m: 0.96, tc1y: 0.92, tc3y: 0.88, tc5y: 0.85 };
+// BPIポイント→ルート$/日 換算係数（BPI1280 → P2A≈11800 の実績値から導出）
+const BPI_ROUTE = { p2a: 9.22, p3a: 9.84, p1a: 8.48 };
+// 商品キャッシュキー・TTL
+const PMX_COMM_KEY = 'pmx_comm_cache';
+const PMX_COMM_TTL = 4 * 3600 * 1000; // 4時間
+
+function setFetchStatus(type, html) {
+  const el = document.getElementById('pmx-fetch-status');
+  if (!el) return;
+  el.className = { ok:'fetch-ok', warn:'fetch-warn', err:'fetch-err', loading:'fetch-hint' }[type] || 'fetch-hint';
+  el.innerHTML = html;
+}
+
+function getISOWeek(d) {
+  const dt = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  const day = dt.getUTCDay() || 7;
+  dt.setUTCDate(dt.getUTCDate() + 4 - day);
+  const y1 = new Date(Date.UTC(dt.getUTCFullYear(), 0, 1));
+  return Math.ceil((((dt - y1) / 86400000) + 1) / 7);
+}
+
+// ─── Source 1: TradingView Scanner（CORS対応・プロキシ不要）───
+async function fetchFromTradingView() {
+  const tickers = [
+    'BALT:BPI','BALT:BDI','BALT:BCI','BALT:BSI',
+    'ICEEUR:NCF1!','CBOT:C1!','CBOT:S1!','CBOT:W1!'
+  ];
+  const resp = await fetch('https://scanner.tradingview.com/global/scan', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      symbols: { tickers },
+      columns: ['close','open','high','low','change','change_abs','description']
+    }),
+    signal: AbortSignal.timeout(10000)
+  });
+  if (!resp.ok) throw new Error('TV HTTP ' + resp.status);
+  const json = await resp.json();
+
+  const map = {};
+  (json.data || []).forEach(item => {
+    const [close, open, high, low, chgPct, chgAbs, desc] = item.d;
+    map[item.s] = { close, open, high, low, chgPct, chgAbs, desc };
+  });
+
+  const bpiD = map['BALT:BPI'];
+  const bdiD = map['BALT:BDI'];
+  if (!bpiD && !bdiD) return null;
+
+  const bpiVal = bpiD ? bpiD.close : (bdiD ? Math.round(bdiD.close * 0.82) : null);
+  return {
+    bpi: bpiVal, bpiDirect: !!bpiD,
+    bdi: bdiD ? bdiD.close : null,
+    bci: map['BALT:BCI'] ? map['BALT:BCI'].close : null,
+    bsi: map['BALT:BSI'] ? map['BALT:BSI'].close : null,
+    coal:  map['ICEEUR:NCF1!'] || null,
+    corn:  map['CBOT:C1!']    || null,
+    soy:   map['CBOT:S1!']    || null,
+    wheat: map['CBOT:W1!']    || null,
+    source: 'TradingView'
+  };
+}
+
+// ─── Source 2: Stooq BDI（allorigins.win プロキシ経由）───
+async function fetchFromStooq() {
+  const stooqUrl = 'https://stooq.com/q/l/?s=bdi.f&f=sd2t2ohlcv&e=csv';
+  const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(stooqUrl)}`;
+  const resp = await fetch(proxy, { signal: AbortSignal.timeout(9000) });
+  const csv  = await resp.text();
+  const vals = csv.trim().split('\n')[1]?.split(',');
+  if (!vals) throw new Error('empty CSV');
+  const close = parseFloat(vals[6]);
+  if (isNaN(close) || close < 100) throw new Error('invalid BDI: ' + close);
+  return { bdi: close, bpi: Math.round(close * 0.82), bpiDirect: false, source: 'Stooq' };
+}
+
+// ─── Source 3: Yahoo Finance BDI（allorigins.win プロキシ経由）───
+async function fetchFromYahoo() {
+  const yahooUrl = 'https://query1.finance.yahoo.com/v8/finance/chart/%5EBDIY?range=5d&interval=1d';
+  const proxy = `https://api.allorigins.win/get?url=${encodeURIComponent(yahooUrl)}`;
+  const resp  = await fetch(proxy, { signal: AbortSignal.timeout(9000) });
+  const outer = await resp.json();
+  const chart = JSON.parse(outer.contents)?.chart?.result?.[0];
+  if (!chart) throw new Error('no chart data');
+  const closes = chart.indicators?.quote?.[0]?.close?.filter(v => v != null) || [];
+  const close  = closes[closes.length - 1];
+  if (!close) throw new Error('no close');
+  return { bdi: close, bpi: Math.round(close * 0.82), bpiDirect: false, source: 'Yahoo Finance' };
+}
+
+// ─── データをPMX_KEYに反映してrenderPmxを呼ぶ ───
+function applyAutoFetchedData(fetched) {
+  const d   = loadPmxData();
+  const bpi = fetched.bpi;
+
+  if (bpi && bpi > 200) {
+    // スポット運賃を更新
+    const p2a = Math.round(bpi * BPI_ROUTE.p2a);
+    const p3a = Math.round(bpi * BPI_ROUTE.p3a);
+    const p1a = Math.round(bpi * BPI_ROUTE.p1a);
+    const spread = bpi => Math.round(bpi * 0.08);
+
+    d.bpi  = { lo: bpi - spread(bpi), hi: bpi + spread(bpi), cur: bpi };
+    d.p2a  = { lo: Math.round(p2a*0.92), hi: Math.round(p2a*1.08), cur: p2a };
+    d.p3a  = { lo: Math.round(p3a*0.92), hi: Math.round(p3a*1.08), cur: p3a };
+    d.p1a  = { lo: Math.round(p1a*0.92), hi: Math.round(p1a*1.08), cur: p1a };
+
+    // TC推計（スポットP2A × 期間倍率）
+    ['tc6m','tc1y','tc3y','tc5y'].forEach(k => {
+      const mid = Math.round(p2a * TC_MULT[k]);
+      const sp  = Math.round(mid * 0.09);
+      d[k] = { lo: mid - sp, hi: mid + sp, cur: mid };
+    });
+  }
+
+  // 週ラベル更新
+  const now = new Date();
+  const wk  = getISOWeek(now);
+  d.week = `${now.getFullYear()}-W${String(wk).padStart(2,'0')} (AUTO · ${fetched.source})`;
+
+  localStorage.setItem(PMX_KEY, JSON.stringify(d));
+
+  // 商品データをキャッシュ
+  const commPayload = {
+    coal: fetched.coal, corn: fetched.corn,
+    soy:  fetched.soy,  wheat: fetched.wheat,
+    bci:  fetched.bci  ? { close: fetched.bci }  : null,
+    bsi:  fetched.bsi  ? { close: fetched.bsi }  : null,
+    ts: Date.now()
+  };
+  localStorage.setItem(PMX_COMM_KEY, JSON.stringify(commPayload));
+
+  // TC推計注記を表示
+  const tcNote = document.getElementById('pmx-tc-note');
+  if (tcNote) tcNote.style.display = 'block';
+  const tag = document.getElementById('pmx-rate-data-tag');
+  if (tag) tag.innerHTML = `<span class="pmx-auto-tag">AUTO · ${fetched.source}</span>`;
+
+  renderPmx();
+  renderCommodityPanel();
+}
+
+// ─── メイン取得オーケストレーター ───
+async function fetchPmxLiveData() {
+  const btn = document.getElementById('pmx-auto-fetch-btn');
+  if (btn) { btn.disabled = true; btn.innerHTML = '<span class="pmx-auto-spin">⟳</span> 取得中…'; }
+  setFetchStatus('loading', '⏳ データ取得中… (TradingView → Stooq → Yahoo Finance)');
+
+  const sources = [
+    { fn: fetchFromTradingView, label: 'TradingView (BALT)' },
+    { fn: fetchFromStooq,       label: 'Stooq (BDI proxy)' },
+    { fn: fetchFromYahoo,       label: 'Yahoo Finance' },
+  ];
+
+  for (const src of sources) {
+    try {
+      const result = await src.fn();
+      if (result && result.bpi) {
+        applyAutoFetchedData(result);
+        const direct = result.bpiDirect;
+        const ts = new Date().toLocaleTimeString('ja-JP');
+        if (direct) {
+          setFetchStatus('ok',
+            `✓ 取得完了 · <strong>${src.label}</strong> · BPI直接取得 · ${ts}`);
+        } else {
+          setFetchStatus('warn',
+            `⚠ 取得完了（推計） · <strong>${src.label}</strong> · BDI×0.82でBPI推計 · TC要ブローカー確認 · ${ts}`);
+        }
+        if (btn) { btn.disabled = false; btn.textContent = '🔄 再取得'; }
+        return;
+      }
+    } catch(e) {
+      console.warn(`[PMX] ${src.label} failed:`, e.message);
+    }
+  }
+
+  // 全ソース失敗
+  setFetchStatus('err', '✗ 自動取得失敗（全ソース） · 手動入力を使用してください');
+  if (btn) { btn.disabled = false; btn.textContent = '⚠ 再試行'; }
+}
+
+// ─── 商品指標パネルのレンダリング ───
+function renderCommodityPanel() {
+  const panel = document.getElementById('pmx-commodity-panel');
+  if (!panel) return;
+
+  let cache = null;
+  try { cache = JSON.parse(localStorage.getItem(PMX_COMM_KEY)); } catch(e) {}
+
+  if (!cache) {
+    panel.innerHTML = '<div class="pmx-comm-placeholder">「🔄 ライブ取得」を押すと石炭・穀物先物など需要先行指標を表示します</div>';
+    return;
+  }
+
+  const items = [
+    { key:'coal',  label:'ニューカッスル炭',   sym:'NCF1!',  unit:'USD/t',   relevance:'Panamax主要貨物 · 価格上昇→数ヶ月後の運賃先行指標' },
+    { key:'corn',  label:'CBOT トウモロコシ',  sym:'C1!',    unit:'cts/bu',  relevance:'米国メキシコ湾岸→東アジア · P1A需要に直結' },
+    { key:'soy',   label:'CBOT 大豆',          sym:'S1!',    unit:'cts/bu',  relevance:'ブラジル・米国輸出 → P2A Pacific需要' },
+    { key:'wheat', label:'CBOT 小麦',           sym:'W1!',    unit:'cts/bu',  relevance:'欧州・中東向け · Supramax競合需要' },
+    { key:'bci',   label:'BCI（ケープ指数）',   sym:'BALT:BCI', unit:'pts',  relevance:'Cape高騰→Panamaxへの需要スピルオーバー' },
+    { key:'bsi',   label:'BSI（スープラ指数）', sym:'BALT:BSI', unit:'pts',  relevance:'サブセグメント比較 · Panamax/Supra代替性' },
+  ];
+
+  const ageMin = cache.ts ? Math.round((Date.now() - cache.ts) / 60000) : null;
+  const ageStr = ageMin !== null
+    ? (ageMin < 60 ? `${ageMin}分前取得` : `${Math.round(ageMin/60)}時間前取得`)
+    : '';
+
+  const fmtChg = (chg) => {
+    if (chg == null || isNaN(chg)) return '';
+    const sign = chg >= 0 ? '+' : '';
+    const cls  = chg >= 0 ? 'pmx-comm-up' : 'pmx-comm-dn';
+    return `<span class="${cls}">${sign}${Number(chg).toFixed(2)}%</span>`;
+  };
+
+  const cards = items.map(it => {
+    const data = cache[it.key];
+    if (!data || data.close == null) {
+      return `<div class="pmx-comm-card">
+        <div class="pmx-comm-name">${it.sym}</div>
+        <div class="pmx-comm-val" style="color:var(--muted)">—</div>
+        <div class="pmx-comm-unit">${it.unit}</div>
+        <div class="pmx-comm-relevance">${it.relevance}</div>
+      </div>`;
+    }
+    const valFmt = Number(data.close).toLocaleString('en-US', {minimumFractionDigits:1, maximumFractionDigits:1});
+    return `<div class="pmx-comm-card">
+      <div class="pmx-comm-name">${it.label}</div>
+      <div class="pmx-comm-val">${valFmt}</div>
+      <div class="pmx-comm-unit">${it.unit} &nbsp;${fmtChg(data.chgPct)}</div>
+      <div class="pmx-comm-relevance">${it.relevance}</div>
+    </div>`;
+  }).join('');
+
+  panel.innerHTML = `
+    <div style="font-size:10px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-bottom:10px">
+      ${ageStr} · TradingView経由 · 15分遅延 · 商品先物価格
+    </div>
+    <div class="pmx-commodity-grid">${cards}</div>
+  `;
+}
+
+/* ═══════════════════════════════════
    INIT
 ═══════════════════════════════════ */
 initCycleWheel();
 initOutlookTab();
+renderPmx();
+renderCommodityPanel();
 </script>
 </body>
 </html>
