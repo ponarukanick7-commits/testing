@@ -5059,11 +5059,12 @@ function fetchWithTimeout(url, opts, ms = 9000) {
 
 // ─── CORS プロキシ一覧 ───
 const PROXIES_RAW = [
-  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
   u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
   u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
 ];
 const PROXIES_JSON = [
+  u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
   u => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`,
 ];
 
@@ -5080,17 +5081,23 @@ async function proxyFetchText(url) {
 }
 
 async function proxyFetchJson(url) {
-  // allorigins /get returns { contents: "..." }
-  try {
-    const resp = await fetchWithTimeout(PROXIES_JSON[0](url), {});
-    const outer = await resp.json();
-    const raw = typeof outer.contents === 'string' ? outer.contents : JSON.stringify(outer.contents);
-    return JSON.parse(raw);
-  } catch(e) {
-    // fallback: raw proxy then parse
-    const text = await proxyFetchText(url);
-    return JSON.parse(text);
+  // Try each proxy in order; corsproxy returns raw JSON, allorigins wraps in {contents}
+  for (const prx of PROXIES_JSON) {
+    try {
+      const resp = await fetchWithTimeout(prx(url), {});
+      if (!resp.ok) continue;
+      const text = await resp.text();
+      if (!text || text.startsWith('<!')) continue;
+      try {
+        const outer = JSON.parse(text);
+        if (outer && typeof outer.contents === 'string') return JSON.parse(outer.contents);
+        return outer;
+      } catch(e) { continue; }
+    } catch(e) { console.warn('[PMX] proxyFetchJson failed:', e.message); }
   }
+  // last resort: raw text proxy
+  const text = await proxyFetchText(url);
+  return JSON.parse(text);
 }
 
 // ─── Phase 1: TradingView Scanner — 商品指標 + BDI ───
@@ -5111,9 +5118,10 @@ async function fetchCommAndBdiFromTV() {
     'ICEEUR:NCF1!',     // Newcastle Coal Futures
   ];
 
+  // text/plain avoids CORS preflight (simple request) — TV still parses the JSON body
   const resp = await fetchWithTimeout('https://scanner.tradingview.com/global/scan', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify({
       symbols: { tickers },
       columns: ['close', 'open', 'high', 'low', 'change', 'change_abs']
@@ -5163,11 +5171,13 @@ async function fetchCommAndBdiFromTV() {
 }
 
 // ─── Phase 2a: Stooq BDI（複数ティッカー × 複数プロキシ）───
+// Stooq ticker convention: plain "bdi" — "^" prefix is Yahoo Finance only
 async function fetchBdiFromStooq() {
-  const tickers = ['^bdi', 'bdi.i', 'bdi.f', 'bdi'];
+  const tickers = ['bdi', 'bdi.i', 'bdi.uk'];
   for (const t of tickers) {
     try {
-      const url = `https://stooq.com/q/l/?s=${encodeURIComponent(t)}&f=sd2t2ohlcv&e=csv`;
+      // Stooq CSV: fields s,d,t,o,h,l,c,v — close is index 6
+      const url = `https://stooq.com/q/l/?s=${t}&f=sd2t2ohlcv&e=csv`;
       const csv = await proxyFetchText(url);
       const line = csv.trim().split('\n')[1];
       if (!line) continue;
@@ -5175,7 +5185,7 @@ async function fetchBdiFromStooq() {
       const close = parseFloat(vals[6]);
       if (!isNaN(close) && close > 100) {
         console.log(`[PMX] Stooq BDI: ${close} (${t})`);
-        return { bdi: close, bpi: Math.round(close * 0.82), source: 'Stooq/' + t };
+        return { bdi: close, bpi: Math.round(close * 0.82), source: 'Stooq' };
       }
     } catch(e) { console.warn('[PMX] Stooq ' + t + ':', e.message); }
   }
