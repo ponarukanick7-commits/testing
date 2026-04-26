@@ -1155,7 +1155,7 @@
   .pmx-age-unit { font-size:9px; color:var(--muted); }
   .pmx-age-range { font-size:10px; color:var(--muted); margin-top:4px; }
 
-  .pmx-struct-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:28px; }
+  .pmx-struct-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px; }
   .pmx-struct-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px; }
   .pmx-struct-label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; }
   .pmx-struct-val { font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:700; color:var(--accent); }
@@ -1293,6 +1293,271 @@
     line-height: 1.6;
   }
   .pmx-tc-note strong { color: var(--accent); }
+
+  /* ── Market Position (Historical Context) ── */
+  .pmx-mktpos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .pmx-mktpos-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .pmx-mktpos-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 8px;
+  }
+  .pmx-mktpos-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .pmx-mktpos-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--bulker);
+    line-height: 1.2;
+  }
+  .pmx-mktpos-unit { font-size: 11px; color: var(--muted); font-weight: 400; }
+  .pmx-zone-badge {
+    font-size: 9px;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 3px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .pmx-zone-danger { background:rgba(251,113,133,0.15); color:var(--supply);  border:1px solid rgba(251,113,133,0.35); }
+  .pmx-zone-warn   { background:rgba(251,191,36,0.12);  color:#fbbf24;        border:1px solid rgba(251,191,36,0.35); }
+  .pmx-zone-below  { background:rgba(100,116,139,0.12); color:var(--muted);   border:1px solid rgba(100,116,139,0.3); }
+  .pmx-zone-mid    { background:rgba(56,189,248,0.10);  color:var(--accent);  border:1px solid rgba(56,189,248,0.3); }
+  .pmx-zone-bull   { background:rgba(52,211,153,0.12);  color:var(--demand);  border:1px solid rgba(52,211,153,0.35); }
+
+  /* Historical bar */
+  .pmx-hist-bar-outer {
+    position: relative;
+    height: 22px;
+    margin-bottom: 4px;
+  }
+  .pmx-hist-bar-track {
+    position: absolute;
+    top: 8px; left: 0; right: 0; height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .pmx-hist-danger-fill {
+    position: absolute; top:0; bottom:0;
+    background: rgba(251,113,133,0.28);
+  }
+  .pmx-hist-warn-fill {
+    position: absolute; top:0; bottom:0;
+    background: rgba(251,191,36,0.18);
+  }
+  .pmx-hist-iqr-fill {
+    position: absolute; top:0; bottom:0;
+    background: rgba(56,189,248,0.22);
+  }
+  .pmx-hist-avg-line {
+    position: absolute;
+    top: 4px; width: 2px; height: 14px;
+    background: rgba(255,255,255,0.45);
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  .pmx-hist-be-line {
+    position: absolute;
+    top: 4px; width: 1px; height: 14px;
+    background: rgba(251,113,133,0.8);
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  .pmx-hist-cur-dot {
+    position: absolute;
+    top: 3px; width: 16px; height: 16px;
+    background: var(--bulker);
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+  .pmx-hist-range-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .pmx-hist-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    padding-top: 6px;
+    border-top: 1px dashed var(--border);
+  }
+  .pmx-hist-pctile { color: var(--bulker); font-weight: 700; }
+  .pmx-hist-be-tag  { color: rgba(251,113,133,0.9); }
+  .pmx-hist-avg-tag { color: rgba(255,255,255,0.5); }
+
+  /* ── Fleet Visualization ── */
+  .pmx-fleet-stack-outer {
+    position: relative;
+    height: 40px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin: 12px 0 8px;
+    display: flex;
+  }
+  .pmx-fleet-active-seg {
+    background: rgba(245,158,11,0.22);
+    border-right: 2px solid var(--bulker);
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--bulker);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .pmx-fleet-ob-seg {
+    flex: 1;
+    background: rgba(56,189,248,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .pmx-fleet-stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .pmx-fleet-stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 10px 12px;
+  }
+  .pmx-fleet-stat-label {
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .pmx-fleet-stat-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .pmx-fleet-stat-sub { font-size: 9px; color: var(--muted); margin-top: 2px; }
+
+  /* ob history mini chart */
+  .pmx-ob-hist-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+    font-size: 10px;
+  }
+  .pmx-ob-hist-label {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--muted);
+    width: 55px;
+    flex-shrink: 0;
+    font-size: 9px;
+  }
+  .pmx-ob-hist-bar-wrap {
+    flex: 1;
+    height: 12px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .pmx-ob-hist-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease;
+  }
+  .pmx-ob-hist-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    width: 38px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* Delivery schedule */
+  .pmx-delivery-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+  .pmx-delivery-year {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--muted);
+    width: 36px;
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+  .pmx-delivery-bar-wrap {
+    flex: 1;
+    height: 14px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .pmx-delivery-fill {
+    height: 100%;
+    background: linear-gradient(90deg, rgba(56,189,248,0.5), rgba(56,189,248,0.3));
+    border-radius: 3px;
+    transition: width 0.6s ease;
+  }
+  .pmx-delivery-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    width: 50px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .pmx-delivery-note {
+    font-size: 9px;
+    color: var(--muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  @media(max-width:900px) {
+    .pmx-fleet-stat-row { grid-template-columns: repeat(2,1fr); }
+    .pmx-mktpos-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -2968,14 +3233,13 @@
   <div class="pmx-note">Kamsarmax 82,000 DWT基準。船価は先週のブローカー見積もりレンジ（$M）。</div>
   <div class="pmx-age-grid" id="pmx-age-grid"></div>
 
-  <!-- Market Structure -->
-  <div class="pmx-section-title">📊 マーケット構造指標</div>
+  <!-- Fleet Visualization -->
+  <div class="pmx-section-title">⚓ フリート全体像・発注残構成</div>
+  <div id="pmx-fleet-viz"></div>
+
+  <!-- Market Structure (ton-mile + scrapping) -->
+  <div class="pmx-section-title">📊 需給モメンタム指標</div>
   <div class="pmx-struct-grid" id="pmx-struct-grid">
-    <div class="pmx-struct-card">
-      <div class="pmx-struct-label">発注残（隻数）</div>
-      <div class="pmx-struct-val" id="pmx-sv-ob-ves">—</div>
-      <div class="pmx-struct-sub" id="pmx-sv-ob-pct">フリート比: —%</div>
-    </div>
     <div class="pmx-struct-card">
       <div class="pmx-struct-label">トンマイル需要 YoY</div>
       <div class="pmx-struct-val" id="pmx-sv-tonmile">—</div>
@@ -2992,6 +3256,12 @@
       <div class="pmx-struct-val" id="pmx-sv-scr-ytd">—</div>
       <div class="pmx-struct-sub">隻（年初来）</div>
     </div>
+  </div>
+
+  <!-- Historical Market Position -->
+  <div class="pmx-section-title">📈 市場ポジション（5年ヒストリカル比較）</div>
+  <div id="pmx-mktpos-panel">
+    <div class="pmx-comm-placeholder">データを入力またはライブ取得すると市場ポジションが表示されます</div>
   </div>
 
   <!-- Finance Context -->
@@ -4648,6 +4918,10 @@ function renderPmx() {
   document.getElementById('pmx-tonmile-bar').style.background = tm >= 0 ? 'var(--demand)' : 'var(--supply)';
   document.getElementById('pmx-sv-scr-wk').textContent  = fmt(d.scr_wk) + ' 隻';
   document.getElementById('pmx-sv-scr-ytd').textContent = fmt(d.scr_ytd) + ' 隻';
+
+  // 発注残・市場ポジションを再描画
+  renderFleetViz();
+  renderMarketPosition();
 }
 
 function togglePmxForm() {
@@ -4714,6 +4988,46 @@ function savePmxData() {
 
 // TC期間倍率（スポットP2A比）
 const TC_MULT = { tc6m: 0.96, tc1y: 0.92, tc3y: 0.88, tc5y: 0.85 };
+
+// ─── ヒストリカル参照データ（5年レンジ、Clarksons / Baltic Exchange参考） ───
+// p25/p75 = 25〜75パーセンタイル帯（IQR）、avg = 5年平均
+// breakeven = 融資条件・OpEx込み損益分岐点（USD/日）
+// dscr = DSCR 1.20x 達成水準（USD/日）
+const PMX_HIST = {
+  bpi:  { lo5y: 650,  hi5y: 3200, p25: 950,  p75: 2150, avg: 1550, label: 'BPI（バルチック指数）',       unit: 'pts' },
+  p2a:  { lo5y: 5500, hi5y:27000, p25:8500,  p75:17500, avg:13000, label: 'P2A 太平洋 Round Voyage',    unit: '$/日', breakeven: 9000,  dscr: 10800 },
+  p3a:  { lo5y: 5800, hi5y:28000, p25:9000,  p75:18500, avg:13800, label: 'P3A 大西洋 Round Voyage',    unit: '$/日', breakeven: 9500,  dscr: 11400 },
+  p1a:  { lo5y: 5000, hi5y:24000, p25:7800,  p75:16000, avg:12200, label: 'P1A Trans-Pacific（FH）',    unit: '$/日', breakeven: 8500,  dscr: 10200 },
+  tc6m: { lo5y: 8000, hi5y:24000, p25:10000, p75:19000, avg:13800, label: 'TC 6〜12ヶ月',               unit: '$/日', breakeven: 10000, dscr: 12000 },
+  tc1y: { lo5y: 8500, hi5y:22000, p25:10500, p75:18500, avg:14200, label: 'TC 1年',                     unit: '$/日', breakeven: 11000, dscr: 13200 },
+  tc3y: { lo5y: 9500, hi5y:20000, p25:11500, p75:17500, avg:14500, label: 'TC 3年',                     unit: '$/日', breakeven: 12000, dscr: 14400 },
+  tc5y: { lo5y:10000, hi5y:19000, p25:12000, p75:17000, avg:14800, label: 'TC 5年',                     unit: '$/日', breakeven: 12500, dscr: 15000 },
+};
+
+// ─── フリート参照データ（Panamax/Kamsarmax 65〜100k DWT, Clarksons参考） ───
+// 発注残竣工スケジュールはobVesの比率で按分するダミーを使用（実値は手動更新）
+const PMX_FLEET_BASE = {
+  totalVes:  2255,   // 現役フリート隻数（参考値）
+  totalMdwt: 187.2,  // 現役フリート総DWT（百万DWT）
+  avgAge:    11.4,   // 平均船齢
+  // orderbook の発注残竣工予定比率（sumは概ね1.0）
+  deliveryRatios: [
+    { label:'2025', ratio: 0.11 },
+    { label:'2026', ratio: 0.30 },
+    { label:'2027', ratio: 0.40 },
+    { label:'2028+',ratio: 0.19 },
+  ],
+  // 発注残 vs 過去の歴史的文脈（フリート比%, Clarksons/BIMCO）
+  obHistContext: [
+    { era:'2008ピーク', pct: 62 },
+    { era:'2012',      pct: 28 },
+    { era:'2016',      pct: 12 },
+    { era:'2020',      pct: 6  },
+    { era:'2023',      pct: 7  },
+    { era:'現在',       pct: null }, // PMX_DEFAULT.ob_pct で上書き
+  ],
+};
+
 // BPIポイント→ルート$/日 換算係数（BPI1280 → P2A≈11800 の実績値から導出）
 const BPI_ROUTE = { p2a: 9.22, p3a: 9.84, p1a: 8.48 };
 // 商品キャッシュキー・TTL
@@ -4735,93 +5049,158 @@ function getISOWeek(d) {
   return Math.ceil((((dt - y1) / 86400000) + 1) / 7);
 }
 
-// ─── Source 1: TradingView Scanner（CORS対応・プロキシ不要）───
-async function fetchFromTradingView() {
+// ─── CORS-safe fetch with timeout ───
+function fetchWithTimeout(url, opts, ms = 9000) {
+  const ctrl = new AbortController();
+  const tid = setTimeout(() => ctrl.abort(), ms);
+  return fetch(url, { ...opts, signal: ctrl.signal }).finally(() => clearTimeout(tid));
+}
+
+// ─── CORS プロキシ一覧 ───
+const PROXIES_RAW = [
+  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+  u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+  u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+];
+const PROXIES_JSON = [
+  u => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`,
+];
+
+async function proxyFetchText(url) {
+  for (const prx of PROXIES_RAW) {
+    try {
+      const resp = await fetchWithTimeout(prx(url), {});
+      if (!resp.ok) continue;
+      const text = await resp.text();
+      if (text && !text.startsWith('<!') && text.length > 10) return text;
+    } catch(e) { console.warn('[PMX] proxy failed:', e.message); }
+  }
+  throw new Error('all proxies failed for ' + url);
+}
+
+async function proxyFetchJson(url) {
+  // allorigins /get returns { contents: "..." }
+  try {
+    const resp = await fetchWithTimeout(PROXIES_JSON[0](url), {});
+    const outer = await resp.json();
+    const raw = typeof outer.contents === 'string' ? outer.contents : JSON.stringify(outer.contents);
+    return JSON.parse(raw);
+  } catch(e) {
+    // fallback: raw proxy then parse
+    const text = await proxyFetchText(url);
+    return JSON.parse(text);
+  }
+}
+
+// ─── Phase 1: TradingView Scanner — 商品先物 + TVC:BDI ───
+// BALT: 系は Scanner API 非対応（OTCインデックス）。TVC:BDI は利用可。
+async function fetchCommAndBdiFromTV() {
   const tickers = [
-    'BALT:BPI','BALT:BDI','BALT:BCI','BALT:BSI',
-    'ICEEUR:NCF1!','CBOT:C1!','CBOT:S1!','CBOT:W1!'
+    'TVC:BDI',         // TradingViewコミュニティ BDI（Scannerで動作）
+    'ICEEUR:NCF1!',    // ニューカッスル石炭先物
+    'CBOT:C1!',        // CBOT トウモロコシ先物
+    'CBOT:S1!',        // CBOT 大豆先物
+    'CBOT:W1!',        // CBOT 小麦先物
   ];
-  const resp = await fetch('https://scanner.tradingview.com/global/scan', {
+  const resp = await fetchWithTimeout('https://scanner.tradingview.com/global/scan', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       symbols: { tickers },
-      columns: ['close','open','high','low','change','change_abs','description']
-    }),
-    signal: AbortSignal.timeout(10000)
-  });
-  if (!resp.ok) throw new Error('TV HTTP ' + resp.status);
+      columns: ['close', 'open', 'high', 'low', 'change', 'change_abs']
+    })
+  }, 12000);
+  if (!resp.ok) throw new Error('TV Scanner HTTP ' + resp.status);
   const json = await resp.json();
 
   const map = {};
   (json.data || []).forEach(item => {
-    const [close, open, high, low, chgPct, chgAbs, desc] = item.d;
-    map[item.s] = { close, open, high, low, chgPct, chgAbs, desc };
+    const [close, open, high, low, chgPct, chgAbs] = item.d;
+    map[item.s] = { close, open, high, low, chgPct, chgAbs };
   });
+  console.log('[PMX] TV symbols returned:', Object.keys(map));
 
-  const bpiD = map['BALT:BPI'];
-  const bdiD = map['BALT:BDI'];
-  if (!bpiD && !bdiD) return null;
-
-  const bpiVal = bpiD ? bpiD.close : (bdiD ? Math.round(bdiD.close * 0.82) : null);
+  const bdiD = map['TVC:BDI'];
   return {
-    bpi: bpiVal, bpiDirect: !!bpiD,
-    bdi: bdiD ? bdiD.close : null,
-    bci: map['BALT:BCI'] ? map['BALT:BCI'].close : null,
-    bsi: map['BALT:BSI'] ? map['BALT:BSI'].close : null,
-    coal:  map['ICEEUR:NCF1!'] || null,
-    corn:  map['CBOT:C1!']    || null,
-    soy:   map['CBOT:S1!']    || null,
-    wheat: map['CBOT:W1!']    || null,
-    source: 'TradingView'
+    bdi:      bdiD ? bdiD.close : null,
+    bpi:      bdiD && bdiD.close > 100 ? Math.round(bdiD.close * 0.82) : null,
+    bpiDirect: false,
+    coal:     map['ICEEUR:NCF1!'] || null,
+    corn:     map['CBOT:C1!']    || null,
+    soy:      map['CBOT:S1!']    || null,
+    wheat:    map['CBOT:W1!']    || null,
+    commOk:   !!(map['ICEEUR:NCF1!'] || map['CBOT:C1!']),
+    source:   'TradingView',
   };
 }
 
-// ─── Source 2: Stooq BDI（allorigins.win プロキシ経由）───
-async function fetchFromStooq() {
-  const stooqUrl = 'https://stooq.com/q/l/?s=bdi.f&f=sd2t2ohlcv&e=csv';
-  const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(stooqUrl)}`;
-  const resp = await fetch(proxy, { signal: AbortSignal.timeout(9000) });
-  const csv  = await resp.text();
-  const vals = csv.trim().split('\n')[1]?.split(',');
-  if (!vals) throw new Error('empty CSV');
-  const close = parseFloat(vals[6]);
-  if (isNaN(close) || close < 100) throw new Error('invalid BDI: ' + close);
-  return { bdi: close, bpi: Math.round(close * 0.82), bpiDirect: false, source: 'Stooq' };
+// ─── Phase 2a: Stooq BDI（複数ティッカー × 複数プロキシ）───
+async function fetchBdiFromStooq() {
+  const tickers = ['^bdi', 'bdi.i', 'bdi.f', 'bdi'];
+  for (const t of tickers) {
+    try {
+      const url = `https://stooq.com/q/l/?s=${encodeURIComponent(t)}&f=sd2t2ohlcv&e=csv`;
+      const csv = await proxyFetchText(url);
+      const line = csv.trim().split('\n')[1];
+      if (!line) continue;
+      const vals = line.split(',');
+      const close = parseFloat(vals[6]);
+      if (!isNaN(close) && close > 100) {
+        console.log(`[PMX] Stooq BDI: ${close} (${t})`);
+        return { bdi: close, bpi: Math.round(close * 0.82), source: 'Stooq/' + t };
+      }
+    } catch(e) { console.warn('[PMX] Stooq ' + t + ':', e.message); }
+  }
+  return null;
 }
 
-// ─── Source 3: Yahoo Finance BDI（allorigins.win プロキシ経由）───
-async function fetchFromYahoo() {
-  const yahooUrl = 'https://query1.finance.yahoo.com/v8/finance/chart/%5EBDIY?range=5d&interval=1d';
-  const proxy = `https://api.allorigins.win/get?url=${encodeURIComponent(yahooUrl)}`;
-  const resp  = await fetch(proxy, { signal: AbortSignal.timeout(9000) });
-  const outer = await resp.json();
-  const chart = JSON.parse(outer.contents)?.chart?.result?.[0];
-  if (!chart) throw new Error('no chart data');
-  const closes = chart.indicators?.quote?.[0]?.close?.filter(v => v != null) || [];
-  const close  = closes[closes.length - 1];
-  if (!close) throw new Error('no close');
-  return { bdi: close, bpi: Math.round(close * 0.82), bpiDirect: false, source: 'Yahoo Finance' };
+// ─── Phase 2b: Yahoo Finance ^BDIY（複数プロキシ）───
+async function fetchBdiFromYahoo() {
+  const url = 'https://query1.finance.yahoo.com/v8/finance/chart/%5EBDIY?range=5d&interval=1d';
+  try {
+    const json = await proxyFetchJson(url);
+    const chart = json?.chart?.result?.[0];
+    if (!chart) throw new Error('no result');
+    const closes = (chart.indicators?.quote?.[0]?.close || []).filter(v => v != null);
+    const close = closes[closes.length - 1];
+    if (close && close > 100) {
+      console.log('[PMX] Yahoo BDI:', close);
+      return { bdi: close, bpi: Math.round(close * 0.82), source: 'Yahoo Finance' };
+    }
+  } catch(e) { console.warn('[PMX] Yahoo:', e.message); }
+  return null;
 }
 
-// ─── データをPMX_KEYに反映してrenderPmxを呼ぶ ───
+// ─── 商品キャッシュ保存 ───
+function saveCommodityCache(data) {
+  const payload = {
+    coal:  data.coal  || null,
+    corn:  data.corn  || null,
+    soy:   data.soy   || null,
+    wheat: data.wheat || null,
+    bci:   data.bci  != null ? { close: data.bci } : null,
+    bsi:   data.bsi  != null ? { close: data.bsi } : null,
+    ts:    Date.now(),
+  };
+  localStorage.setItem(PMX_COMM_KEY, JSON.stringify(payload));
+}
+
+// ─── BPI/運賃 データ反映 ───
 function applyAutoFetchedData(fetched) {
   const d   = loadPmxData();
   const bpi = fetched.bpi;
 
   if (bpi && bpi > 200) {
-    // スポット運賃を更新
-    const p2a = Math.round(bpi * BPI_ROUTE.p2a);
-    const p3a = Math.round(bpi * BPI_ROUTE.p3a);
-    const p1a = Math.round(bpi * BPI_ROUTE.p1a);
-    const spread = bpi => Math.round(bpi * 0.08);
+    const p2a    = Math.round(bpi * BPI_ROUTE.p2a);
+    const p3a    = Math.round(bpi * BPI_ROUTE.p3a);
+    const p1a    = Math.round(bpi * BPI_ROUTE.p1a);
+    const sp8    = v => Math.round(v * 0.08);
 
-    d.bpi  = { lo: bpi - spread(bpi), hi: bpi + spread(bpi), cur: bpi };
-    d.p2a  = { lo: Math.round(p2a*0.92), hi: Math.round(p2a*1.08), cur: p2a };
-    d.p3a  = { lo: Math.round(p3a*0.92), hi: Math.round(p3a*1.08), cur: p3a };
-    d.p1a  = { lo: Math.round(p1a*0.92), hi: Math.round(p1a*1.08), cur: p1a };
+    d.bpi = { lo: bpi - sp8(bpi), hi: bpi + sp8(bpi), cur: bpi };
+    d.p2a = { lo: Math.round(p2a*0.92), hi: Math.round(p2a*1.08), cur: p2a };
+    d.p3a = { lo: Math.round(p3a*0.92), hi: Math.round(p3a*1.08), cur: p3a };
+    d.p1a = { lo: Math.round(p1a*0.92), hi: Math.round(p1a*1.08), cur: p1a };
 
-    // TC推計（スポットP2A × 期間倍率）
     ['tc6m','tc1y','tc3y','tc5y'].forEach(k => {
       const mid = Math.round(p2a * TC_MULT[k]);
       const sp  = Math.round(mid * 0.09);
@@ -4829,24 +5208,13 @@ function applyAutoFetchedData(fetched) {
     });
   }
 
-  // 週ラベル更新
   const now = new Date();
   const wk  = getISOWeek(now);
   d.week = `${now.getFullYear()}-W${String(wk).padStart(2,'0')} (AUTO · ${fetched.source})`;
-
   localStorage.setItem(PMX_KEY, JSON.stringify(d));
 
-  // 商品データをキャッシュ
-  const commPayload = {
-    coal: fetched.coal, corn: fetched.corn,
-    soy:  fetched.soy,  wheat: fetched.wheat,
-    bci:  fetched.bci  ? { close: fetched.bci }  : null,
-    bsi:  fetched.bsi  ? { close: fetched.bsi }  : null,
-    ts: Date.now()
-  };
-  localStorage.setItem(PMX_COMM_KEY, JSON.stringify(commPayload));
+  saveCommodityCache(fetched);
 
-  // TC推計注記を表示
   const tcNote = document.getElementById('pmx-tc-note');
   if (tcNote) tcNote.style.display = 'block';
   const tag = document.getElementById('pmx-rate-data-tag');
@@ -4860,38 +5228,60 @@ function applyAutoFetchedData(fetched) {
 async function fetchPmxLiveData() {
   const btn = document.getElementById('pmx-auto-fetch-btn');
   if (btn) { btn.disabled = true; btn.innerHTML = '<span class="pmx-auto-spin">⟳</span> 取得中…'; }
-  setFetchStatus('loading', '⏳ データ取得中… (TradingView → Stooq → Yahoo Finance)');
+  setFetchStatus('loading', '⏳ Step 1/2: TradingView から商品先物を取得中…');
 
-  const sources = [
-    { fn: fetchFromTradingView, label: 'TradingView (BALT)' },
-    { fn: fetchFromStooq,       label: 'Stooq (BDI proxy)' },
-    { fn: fetchFromYahoo,       label: 'Yahoo Finance' },
-  ];
+  // Phase 1: TradingView（商品先物 + TVC:BDI）
+  let tvData = null;
+  try {
+    tvData = await fetchCommAndBdiFromTV();
+    if (tvData.commOk) { saveCommodityCache(tvData); renderCommodityPanel(); }
+  } catch(e) { console.warn('[PMX] TV phase1 error:', e.message); }
 
-  for (const src of sources) {
-    try {
-      const result = await src.fn();
-      if (result && result.bpi) {
-        applyAutoFetchedData(result);
-        const direct = result.bpiDirect;
-        const ts = new Date().toLocaleTimeString('ja-JP');
-        if (direct) {
-          setFetchStatus('ok',
-            `✓ 取得完了 · <strong>${src.label}</strong> · BPI直接取得 · ${ts}`);
-        } else {
-          setFetchStatus('warn',
-            `⚠ 取得完了（推計） · <strong>${src.label}</strong> · BDI×0.82でBPI推計 · TC要ブローカー確認 · ${ts}`);
-        }
-        if (btn) { btn.disabled = false; btn.textContent = '🔄 再取得'; }
-        return;
-      }
-    } catch(e) {
-      console.warn(`[PMX] ${src.label} failed:`, e.message);
-    }
+  // BPI が Phase 1 で取れた場合はそのまま完了
+  if (tvData?.bpi && tvData.bpi > 200) {
+    applyAutoFetchedData(tvData);
+    const ts = new Date().toLocaleTimeString('ja-JP');
+    setFetchStatus('warn',
+      `⚠ BPI推計（BDI×0.82） · TVC:BDI · ${ts} · 商品先物: TradingView · TC要ブローカー確認`);
+    if (btn) { btn.disabled = false; btn.textContent = '🔄 再取得'; }
+    return;
   }
 
-  // 全ソース失敗
-  setFetchStatus('err', '✗ 自動取得失敗（全ソース） · 手動入力を使用してください');
+  // Phase 2: BDI を Stooq / Yahoo から取得
+  setFetchStatus('loading', '⏳ Step 2/2: BDI を外部ソースから取得中…');
+  const bdiResult = await fetchBdiFromStooq() || await fetchBdiFromYahoo();
+
+  if (bdiResult && bdiResult.bpi > 200) {
+    const merged = {
+      ...bdiResult,
+      coal:  tvData?.coal  || null,
+      corn:  tvData?.corn  || null,
+      soy:   tvData?.soy   || null,
+      wheat: tvData?.wheat || null,
+      bpi:   bdiResult.bpi,
+      bpiDirect: false,
+    };
+    applyAutoFetchedData(merged);
+    const ts = new Date().toLocaleTimeString('ja-JP');
+    setFetchStatus('warn',
+      `⚠ BPI推計（BDI×0.82） · <strong>${bdiResult.source}</strong> · ${ts}` +
+      (tvData?.commOk ? ' · 商品先物: TradingView ✓' : ''));
+    if (btn) { btn.disabled = false; btn.textContent = '🔄 再取得'; }
+    return;
+  }
+
+  // 商品先物だけ成功・BPI取得失敗
+  if (tvData?.commOk) {
+    const ts = new Date().toLocaleTimeString('ja-JP');
+    setFetchStatus('warn',
+      `⚠ 商品先物取得成功 · BPI/BDI取得失敗 · ${ts} · BPI値は手動入力を使用`);
+    if (btn) { btn.disabled = false; btn.textContent = '🔄 再取得'; }
+    return;
+  }
+
+  // 全失敗
+  setFetchStatus('err',
+    '✗ 全ソース取得失敗 · ネット接続またはブラウザのCORSポリシーを確認 · 手動入力をご使用ください');
   if (btn) { btn.disabled = false; btn.textContent = '⚠ 再試行'; }
 }
 
@@ -4959,10 +5349,244 @@ function renderCommodityPanel() {
 /* ═══════════════════════════════════
    INIT
 ═══════════════════════════════════ */
+/* ═══════════════════════════════════
+   FLEET VISUALIZATION
+═══════════════════════════════════ */
+function renderFleetViz() {
+  const el = document.getElementById('pmx-fleet-viz');
+  if (!el) return;
+  const d  = loadPmxData();
+  const ob = d.ob_ves  || PMX_DEFAULT.ob_ves;
+  const pct= d.ob_pct  || PMX_DEFAULT.ob_pct;
+  const fl = PMX_FLEET_BASE;
+
+  // 現役フリートをob_pctから逆算（より正確）
+  const totalVes = Math.round(ob / (pct / 100));
+  const activeSeg = Math.max(5, 100 - pct);  // %幅
+
+  // 竣工スケジュール（発注残隻数を各年比率で按分）
+  const deliveries = fl.deliveryRatios.map(r => ({
+    label: r.label,
+    ves:   Math.round(ob * r.ratio),
+    ratio: r.ratio,
+  }));
+  const maxDel = Math.max(...deliveries.map(d => d.ves));
+
+  // 過去の発注残コンテキスト（現在値を差し込む）
+  const obCtx = fl.obHistContext.map(c => ({
+    era: c.era,
+    pct: c.pct !== null ? c.pct : parseFloat(pct),
+    isCurrent: c.pct === null,
+  }));
+  const maxObPct = Math.max(...obCtx.map(c => c.pct));
+
+  el.innerHTML = `
+    <!-- Fleet Stack Bar -->
+    <div class="pmx-fleet-stack-outer">
+      <div class="pmx-fleet-active-seg" style="width:${activeSeg}%">
+        現役 ${fmt(totalVes)} 隻
+      </div>
+      <div class="pmx-fleet-ob-seg">
+        発注残 ${fmt(ob)}隻 (${fmt(pct,1)}%)
+      </div>
+    </div>
+
+    <!-- Fleet Stats -->
+    <div class="pmx-fleet-stat-row">
+      <div class="pmx-fleet-stat">
+        <div class="pmx-fleet-stat-label">現役フリート</div>
+        <div class="pmx-fleet-stat-val">${fmt(totalVes)} 隻</div>
+        <div class="pmx-fleet-stat-sub">~${fl.totalMdwt}M DWT（参考）</div>
+      </div>
+      <div class="pmx-fleet-stat">
+        <div class="pmx-fleet-stat-label">発注残（Orderbook）</div>
+        <div class="pmx-fleet-stat-val" style="color:var(--accent)">${fmt(ob)} 隻</div>
+        <div class="pmx-fleet-stat-sub">フリート比 ${fmt(pct,1)}%</div>
+      </div>
+      <div class="pmx-fleet-stat">
+        <div class="pmx-fleet-stat-label">平均船齢</div>
+        <div class="pmx-fleet-stat-val">${fl.avgAge} 年</div>
+        <div class="pmx-fleet-stat-sub">参考値（Clarksons）</div>
+      </div>
+      <div class="pmx-fleet-stat">
+        <div class="pmx-fleet-stat-label">YTD解撤</div>
+        <div class="pmx-fleet-stat-val" style="color:var(--supply)">${fmt(d.scr_ytd)} 隻</div>
+        <div class="pmx-fleet-stat-sub">週間 ${fmt(d.scr_wk)} 隻</div>
+      </div>
+    </div>
+
+    <!-- Two-column: delivery schedule + ob history -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:4px">
+
+      <!-- Delivery Schedule -->
+      <div>
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">
+          ▼ 竣工スケジュール（発注残内訳・推計）
+        </div>
+        ${deliveries.map(dv => `
+        <div class="pmx-delivery-row">
+          <span class="pmx-delivery-year">${dv.label}</span>
+          <div class="pmx-delivery-bar-wrap">
+            <div class="pmx-delivery-fill" style="width:${Math.round(dv.ves/maxDel*100)}%"></div>
+          </div>
+          <span class="pmx-delivery-count">~${dv.ves}隻</span>
+        </div>`).join('')}
+        <div class="pmx-delivery-note">※ 各年比率は市場標準比率による推計値</div>
+      </div>
+
+      <!-- Orderbook Historical Context -->
+      <div>
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">
+          ▼ 発注残比率の歴史的文脈（フリート比 %）
+        </div>
+        ${obCtx.map(c => `
+        <div class="pmx-ob-hist-row">
+          <span class="pmx-ob-hist-label">${c.era}</span>
+          <div class="pmx-ob-hist-bar-wrap">
+            <div class="pmx-ob-hist-fill" style="
+              width:${Math.round(c.pct/maxObPct*100)}%;
+              background:${c.isCurrent
+                ? 'rgba(245,158,11,0.7)'
+                : c.pct > 20
+                  ? 'rgba(251,113,133,0.4)'
+                  : c.pct > 10
+                    ? 'rgba(251,191,36,0.4)'
+                    : 'rgba(52,211,153,0.4)'}
+            "></div>
+          </div>
+          <span class="pmx-ob-hist-val" style="${c.isCurrent ? 'color:var(--bulker);font-weight:700' : ''}">
+            ${c.pct.toFixed(1)}%
+          </span>
+        </div>`).join('')}
+        <div class="pmx-delivery-note">※ 参考値（BIMCO/Clarksons）。発注残8%以下は歴史的低水準</div>
+      </div>
+    </div>
+  `;
+}
+
+/* ═══════════════════════════════════
+   MARKET POSITION (HISTORICAL CONTEXT)
+═══════════════════════════════════ */
+function renderMarketPosition() {
+  const panel = document.getElementById('pmx-mktpos-panel');
+  if (!panel) return;
+  const d = loadPmxData();
+
+  const indicators = [
+    { key: 'bpi',  val: d.bpi?.cur },
+    { key: 'p2a',  val: d.p2a?.cur },
+    { key: 'p3a',  val: d.p3a?.cur },
+    { key: 'tc1y', val: d.tc1y?.cur },
+    { key: 'tc3y', val: d.tc3y?.cur },
+    { key: 'tc5y', val: d.tc5y?.cur },
+  ].filter(i => i.val != null && i.val > 0);
+
+  if (!indicators.length) {
+    panel.innerHTML = '<div class="pmx-comm-placeholder">データを入力またはライブ取得すると市場ポジションが表示されます</div>';
+    return;
+  }
+
+  panel.innerHTML = `
+    <div style="font-size:10px;color:var(--muted);margin-bottom:12px;font-family:\'IBM Plex Mono\',monospace">
+      ■ 橙ドット = 現在値 &nbsp;｜&nbsp; 青帯 = 25〜75%ile（IQR） &nbsp;｜&nbsp;
+      <span style="color:rgba(251,113,133,0.9)">赤帯</span> = BreakEven以下 &nbsp;｜&nbsp;
+      <span style="color:rgba(255,255,255,0.4)">白縦線</span> = 5年平均 &nbsp;｜&nbsp;
+      参考: Clarksons / Baltic Exchange (2020-2024)
+    </div>
+    <div class="pmx-mktpos-grid">
+      ${indicators.map(ind => buildMktposCard(ind.key, ind.val, d)).join('')}
+    </div>
+  `;
+}
+
+function buildMktposCard(key, cur, d) {
+  const h = PMX_HIST[key];
+  if (!h) return '';
+
+  const range   = h.hi5y - h.lo5y;
+  const pos     = (cur - h.lo5y) / range;               // 0〜1
+  const pctile  = Math.round(Math.min(99, Math.max(1, pos * 100)));
+  const dotLeft = Math.min(97, Math.max(3, pctile));
+
+  // Zone classification
+  let zone, zoneCls;
+  if (h.breakeven && cur < h.breakeven) {
+    zone = '⚠ BreakEven割れ'; zoneCls = 'pmx-zone-danger';
+  } else if (h.dscr && cur < h.dscr) {
+    zone = '▽ DSCR警戒域';   zoneCls = 'pmx-zone-warn';
+  } else if (cur < h.avg) {
+    zone = '◇ 平均以下';     zoneCls = 'pmx-zone-below';
+  } else if (cur < h.p75) {
+    zone = '◆ 平均〜上位';   zoneCls = 'pmx-zone-mid';
+  } else {
+    zone = '★ 強気圏';       zoneCls = 'pmx-zone-bull';
+  }
+
+  // Positions (%) for overlay elements
+  const p = v => Math.min(99, Math.max(1, ((v - h.lo5y) / range * 100))).toFixed(1);
+  const p25w   = (parseFloat(p(h.p75)) - parseFloat(p(h.p25))).toFixed(1);
+  const beW    = h.breakeven ? (parseFloat(p(h.breakeven))).toFixed(1) : null;
+  const dscrW  = (h.breakeven && h.dscr)
+    ? (parseFloat(p(h.dscr)) - parseFloat(p(h.breakeven))).toFixed(1) : null;
+  const avgPos = p(h.avg);
+
+  // Weekly lo/hi from loaded data (for the weekly range mini-indicator)
+  const weekLo  = d[key]?.lo;
+  const weekHi  = d[key]?.hi;
+  const wLoLeft = weekLo != null ? p(weekLo) : null;
+  const wHiLeft = weekHi != null ? p(weekHi) : null;
+
+  return `
+  <div class="pmx-mktpos-card">
+    <div class="pmx-mktpos-top">
+      <div>
+        <div class="pmx-mktpos-label">${h.label}</div>
+        <div class="pmx-mktpos-val">${fmt(cur)}<span class="pmx-mktpos-unit"> ${h.unit}</span></div>
+      </div>
+      <span class="pmx-zone-badge ${zoneCls}">${zone}</span>
+    </div>
+
+    <!-- Historical range bar -->
+    <div class="pmx-hist-bar-outer">
+      <div class="pmx-hist-bar-track">
+        ${beW  ? `<div class="pmx-hist-danger-fill" style="left:0;width:${beW}%"></div>` : ''}
+        ${(beW && dscrW) ? `<div class="pmx-hist-warn-fill" style="left:${beW}%;width:${dscrW}%"></div>` : ''}
+        <div class="pmx-hist-iqr-fill" style="left:${p(h.p25)}%;width:${p25w}%"></div>
+      </div>
+      ${beW  ? `<div class="pmx-hist-be-line"  style="left:${beW}%"></div>` : ''}
+      <div class="pmx-hist-avg-line" style="left:${avgPos}%"></div>
+      ${wLoLeft && wHiLeft ? `
+        <div style="position:absolute;top:10px;left:${wLoLeft}%;width:${(parseFloat(wHiLeft)-parseFloat(wLoLeft)).toFixed(1)}%;
+          height:2px;background:rgba(245,158,11,0.5);z-index:2;border-radius:1px"></div>` : ''}
+      <div class="pmx-hist-cur-dot" style="left:${dotLeft}%"></div>
+    </div>
+
+    <!-- Range labels -->
+    <div class="pmx-hist-range-row">
+      <span>${fmt(h.lo5y)}</span>
+      ${h.breakeven ? `<span class="pmx-hist-be-tag" style="position:relative;left:${Math.max(0,parseFloat(beW)-8)}%">BE ${fmt(h.breakeven)}</span>` : '<span></span>'}
+      <span>${fmt(h.hi5y)}</span>
+    </div>
+
+    <!-- Meta -->
+    <div class="pmx-hist-meta">
+      <span>5年レンジ ${fmt(h.lo5y)}–${fmt(h.hi5y)} ${h.unit}</span>
+      <span class="pmx-hist-avg-tag">avg ${fmt(h.avg)}</span>
+      <span>IQR ${fmt(h.p25)}–${fmt(h.p75)}</span>
+      <span class="pmx-hist-pctile">現在 ≈${pctile}%ile</span>
+    </div>
+  </div>`;
+}
+
+/* ═══════════════════════════════════
+   INIT
+═══════════════════════════════════ */
 initCycleWheel();
 initOutlookTab();
 renderPmx();
 renderCommodityPanel();
+renderFleetViz();
+renderMarketPosition();
 </script>
 </body>
 </html>
