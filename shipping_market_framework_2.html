@@ -37,7 +37,7 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Meiryo', 'Meiryo UI', 'Noto Sans JP', sans-serif;
     font-size: 14px;
     line-height: 1.6;
     min-height: 100vh;
@@ -573,6 +573,231 @@
     margin-top: 2px;
   }
   .subtype-desc { font-size: 12px; color: var(--text); line-height: 1.5; }
+
+  .route-map-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+    margin: 12px 0 24px;
+  }
+  .route-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+    min-height: 170px;
+  }
+  .route-card.cape { border-left: 3px solid var(--bulker); }
+  .route-card.panamax { border-left: 3px solid #e8a33a; }
+  .route-card.supra { border-left: 3px solid #d4892a; }
+  .route-card.handy { border-left: 3px solid #c47020; }
+  .route-vessel {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .route-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    align-items: center;
+    margin: 10px 0;
+  }
+  .route-port {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 11px;
+    color: var(--text);
+    min-height: 48px;
+  }
+  .route-arrow {
+    color: var(--bulker);
+    font-weight: 700;
+  }
+  .cargo-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0;
+  }
+  .cargo-tag {
+    background: rgba(245,158,11,0.12);
+    border: 1px solid rgba(245,158,11,0.25);
+    border-radius: 999px;
+    color: #fbbf24;
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+  .route-note {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .route-atlas-note {
+    background: rgba(56,189,248,0.06);
+    border: 1px solid rgba(56,189,248,0.22);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin: 10px 0 14px;
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .route-atlas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin: 12px 0 24px;
+  }
+  .route-atlas-card {
+    background:
+      linear-gradient(180deg, rgba(15,23,42,0.82), rgba(15,23,42,0.96)),
+      radial-gradient(circle at 28% 20%, rgba(56,189,248,0.14), transparent 34%),
+      radial-gradient(circle at 78% 72%, rgba(245,158,11,0.12), transparent 34%);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--bulker);
+    border-radius: 6px;
+    min-height: 178px;
+    padding: 14px;
+  }
+  .route-atlas-card.panamax { border-left-color: #e8a33a; }
+  .route-atlas-card.cape { border-left-color: #38bdf8; }
+  .route-atlas-card.supra { border-left-color: #34d399; }
+  .route-atlas-card.handy { border-left-color: #c084fc; }
+  .route-atlas-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .route-code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: #fff;
+    font-weight: 700;
+  }
+  .route-weight {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: #fbbf24;
+    background: rgba(245,158,11,0.12);
+    border: 1px solid rgba(245,158,11,0.28);
+    border-radius: 999px;
+    padding: 2px 7px;
+    white-space: nowrap;
+  }
+  .route-name {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.45;
+    margin-top: 2px;
+  }
+  .route-path {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    align-items: center;
+    margin: 12px 0;
+  }
+  .route-node {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(2,6,23,0.42);
+    border: 1px solid rgba(148,163,184,0.24);
+    border-radius: 5px;
+    color: #e5edf8;
+    font-size: 11px;
+    line-height: 1.35;
+    padding: 8px;
+  }
+  .route-arrow-small {
+    color: var(--bulker);
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .route-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .route-chip {
+    border: 1px solid rgba(148,163,184,0.22);
+    background: rgba(148,163,184,0.08);
+    border-radius: 999px;
+    color: var(--text);
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+  .route-chip.cargo { color: #fbbf24; border-color: rgba(245,158,11,0.28); background: rgba(245,158,11,0.10); }
+  .route-chip.watch { color: #93c5fd; border-color: rgba(59,130,246,0.28); background: rgba(59,130,246,0.10); }
+  .route-legend {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+  .route-world-map-wrap {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: linear-gradient(180deg, rgba(15,23,42,0.9), rgba(2,6,23,0.95));
+    margin: 12px 0 18px;
+    overflow: hidden;
+  }
+  .route-world-map {
+    width: 100%;
+    min-height: 300px;
+    display: block;
+  }
+  .route-map-ocean { fill: #08111f; }
+  .route-map-land { fill: rgba(100,116,139,0.32); stroke: rgba(148,163,184,0.28); stroke-width: 1; }
+  .route-map-gridline { stroke: rgba(148,163,184,0.10); stroke-width: 1; }
+  .route-map-line { fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-dasharray: 7 6; opacity: 0.92; }
+  .route-map-line.cape { stroke: #38bdf8; }
+  .route-map-line.panamax { stroke: #f59e0b; }
+  .route-map-line.supra { stroke: #34d399; }
+  .route-map-line.handy { stroke: #c084fc; }
+  .route-map-point { fill: #fff; stroke: #0f172a; stroke-width: 2; }
+  .route-map-label {
+    fill: #e5edf8;
+    font-family: Meiryo, 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .route-map-caption {
+    fill: #94a3b8;
+    font-family: Meiryo, sans-serif;
+    font-size: 9px;
+  }
+  .route-map-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    padding: 0 14px 14px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .route-map-key span::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 3px;
+    border-radius: 999px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .route-map-key .cape::before { background: #38bdf8; }
+  .route-map-key .panamax::before { background: #f59e0b; }
+  .route-map-key .supra::before { background: #34d399; }
+  .route-map-key .handy::before { background: #c084fc; }
 
   /* ── Divider label ── */
   .divider-label {
@@ -1567,6 +1792,54 @@
     .pmx-fleet-stat-row { grid-template-columns: repeat(2,1fr); }
     .pmx-mktpos-grid { grid-template-columns: 1fr; }
   }
+
+  .pmx-kpi-grid { grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); }
+  .pmx-index-strip {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:10px;
+    margin:0 0 18px;
+  }
+  .pmx-index-pill {
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:10px 12px;
+  }
+  .pmx-index-pill span {
+    display:block;
+    font-size:9px;
+    color:var(--muted);
+    letter-spacing:.7px;
+    text-transform:uppercase;
+    margin-bottom:3px;
+  }
+  .pmx-index-pill strong {
+    color:#fff;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:16px;
+  }
+  .pmx-source-note {
+    font-size:10px;
+    color:var(--muted);
+    margin:-6px 0 18px;
+    line-height:1.5;
+  }
+  .news-original-title {
+    font-size:10px;
+    color:var(--muted);
+    line-height:1.45;
+    border-top:1px dashed var(--border);
+    padding-top:7px;
+    margin-top:6px;
+  }
+  .news-translation-note {
+    font-size:9px;
+    color:#fbbf24;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+  }
+
 </style>
 </head>
 <body>
@@ -1733,6 +2006,36 @@
         </ul>
       </div>
     </div>
+    <div class="divider-label">網羅性チェック：追加で見るべきSupply論点</div>
+    <div class="route-atlas-note">
+      上の3分類はSupply分析の入口としては正しい一方で、「全てを網羅」とは言い切れません。実務では、名目船腹量だけでなく、実際に市場へ出てくる有効船腹量を削る要因まで追う必要があります。
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-title"><span class="card-title-icon">⏱</span>竣工・稼働化のズレ</div>
+        <ul class="factor-list">
+          <li class="factor-item"><span class="factor-icon">→</span><div class="factor-text"><div class="factor-label">Delivery slippage / cancellation</div><div class="factor-desc">発注残はそのまま供給増ではない。造船所遅延、キャンセル、仕様変更で実際の竣工時期がずれる。</div></div></li>
+          <li class="factor-item"><span class="factor-icon">→</span><div class="factor-text"><div class="factor-label">特殊検査・Dry dock wave</div><div class="factor-desc">5年・10年・15年検査の集中は、短期的に有効船腹を削り、古齢船の売船・解撤判断にもつながる。</div></div></li>
+          <li class="factor-item"><span class="factor-icon">→</span><div class="factor-text"><div class="factor-label">Retrofit / off-hire</div><div class="factor-desc">スクラバー、BWTS、省エネ改造、代替燃料対応は、船を市場から一時的に外す要因。</div></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-title-icon">🧭</span>航路制約・再配置</div>
+        <ul class="factor-list">
+          <li class="factor-item"><span class="factor-icon">→</span><div class="factor-text"><div class="factor-label">Panama / Suez / Red Sea</div><div class="factor-desc">運河制限や紅海迂回は、同じ貨物量でもTon-Mileを増やし、船腹を吸収する。バルカー、コンテナ、タンカー全てに波及。</div></div></li>
+          <li class="factor-item"><span class="factor-icon">→</span><div class="factor-text"><div class="factor-label">Ballast ratio / triangulation</div><div class="factor-desc">空船回航が増えると有効供給は下がる。三角配船が組める局面では実質供給が増える。</div></div></li>
+          <li class="factor-item"><span class="factor-icon">→</span><div class="factor-text"><div class="factor-label">Port labor / weather / accidents</div><div class="factor-desc">ストライキ、荒天、事故、港湾閉鎖は局地的だが、短期市況では強い供給ショックになる。</div></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-title-icon">⚖</span>規制・信用・商業制約</div>
+        <ul class="factor-list">
+          <li class="factor-item"><span class="factor-icon">→</span><div class="factor-text"><div class="factor-label">CII / EU ETS / FuelEU / RightShip</div><div class="factor-desc">規制未達、格付け低下、用船者のESG基準で、船は存在しても雇用対象から外れることがある。</div></div></li>
+          <li class="factor-item"><span class="factor-icon">→</span><div class="factor-text"><div class="factor-label">Sanctions / shadow fleet</div><div class="factor-desc">タンカーでは制裁・保険・港湾受入基準により、compliant fleet と非compliant fleetを分けて見る必要がある。</div></div></li>
+          <li class="factor-item"><span class="factor-icon">→</span><div class="factor-text"><div class="factor-label">Finance availability</div><div class="factor-desc">金利、船価、LTV、銀行姿勢は新造発注と中古船売買を左右し、2〜3年後のSupplyを変える。</div></div></li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <!-- Market Cycle Position -->
@@ -1809,15 +2112,27 @@
       <tbody>
         <tr>
           <td>主要指標</td>
-          <td>BDI / BCI / BSI / BHSI</td>
-          <td>SCFI / CCFI / WCI</td>
-          <td>BDTI / BCTI / Aframax TC</td>
+          <td>BDI / BCI / BPI / BSI / BHSI</td>
+          <td>SCFI / CCFI / WCI / FBX / CTS</td>
+          <td>BDTI / BCTI / TD3C / TD20 / TC2</td>
         </tr>
         <tr>
           <td>需要の特徴</td>
           <td class="col-b">資源・食糧輸送<br>景気敏感・中国依存</td>
           <td class="col-c">消費財・工業品<br>先進国消費連動</td>
           <td class="col-t">エネルギー輸送<br>地政学・OPEC左右</td>
+        </tr>
+        <tr>
+          <td>需要先行指標</td>
+          <td class="col-b">中国粗鋼・鉄鉱石在庫<br>石炭輸入・穀物輸出</td>
+          <td class="col-c">CPI・小売売上<br>在庫/売上比率・PMI・港湾TEU</td>
+          <td class="col-t">EIA在庫・IEA/OPEC<br>製油所稼働率・原油フロー</td>
+        </tr>
+        <tr>
+          <td>供給先行指標</td>
+          <td class="col-b">Orderbook・解撤<br>ドック入り・運河制約</td>
+          <td class="col-c">新造竣工・blank sailing<br>港湾混雑・船速</td>
+          <td class="col-t">竣工/解撤・制裁船腹<br>保険/港湾受入・船齢</td>
         </tr>
         <tr>
           <td>ボラティリティ</td>
@@ -2016,6 +2331,228 @@
         <div class="subtype-dwt">200,000〜400,000 DWT（Vale Valemax・Chinamax等）</div>
       </div>
       <div class="subtype-desc">鉄鉱石専用超大型船。Valemaxはブラジル→中国専用。最近はボーキサイト輸送にも転用開始（ギニア貿易拡大に対応）。VLOC専用港が必要（青島・日照・宁波等）。</div>
+    </div>
+  </div>
+
+  <div class="divider-label">主要航路・貨物マップ（Routes & Cargo）</div>
+  <div class="route-map-grid">
+    <div class="route-card cape">
+      <div class="route-vessel">Capesize / Newcastlemax</div>
+      <div class="route-flow">
+        <div class="route-port">豪州・ブラジル・ギニア</div>
+        <div class="route-arrow">→</div>
+        <div class="route-port">中国・日本・韓国</div>
+      </div>
+      <div class="cargo-tags"><span class="cargo-tag">鉄鉱石</span><span class="cargo-tag">原料炭</span><span class="cargo-tag">ボーキサイト</span></div>
+      <div class="route-note">鉄鋼・アルミ需要とトンマイルが主役。Capeは距離が伸びるほど市況感応度が上がる。</div>
+    </div>
+    <div class="route-card panamax">
+      <div class="route-vessel">Panamax / Kamsarmax</div>
+      <div class="route-flow">
+        <div class="route-port">米国湾岸・ブラジル・インドネシア</div>
+        <div class="route-arrow">→</div>
+        <div class="route-port">中国・インド・東南アジア</div>
+      </div>
+      <div class="cargo-tags"><span class="cargo-tag">穀物</span><span class="cargo-tag">石炭</span><span class="cargo-tag">肥料原料</span></div>
+      <div class="route-note">穀物シーズンと石炭発電需要を読む船型。Cape高騰時の分割貨物も重要。</div>
+    </div>
+    <div class="route-card supra">
+      <div class="route-vessel">Supramax / Ultramax</div>
+      <div class="route-flow">
+        <div class="route-port">東南アジア・インド・黒海</div>
+        <div class="route-arrow">→</div>
+        <div class="route-port">中東・アフリカ・地中海</div>
+      </div>
+      <div class="cargo-tags"><span class="cargo-tag">セメント</span><span class="cargo-tag">鋼材</span><span class="cargo-tag">肥料</span><span class="cargo-tag">マイナーバルク</span></div>
+      <div class="route-note">港湾制約のある地域貨物に強い。地域景気・建設需要・農業資材を合わせて見る。</div>
+    </div>
+    <div class="route-card handy">
+      <div class="route-vessel">Handysize</div>
+      <div class="route-flow">
+        <div class="route-port">地方港・島しょ部・内海</div>
+        <div class="route-arrow">→</div>
+        <div class="route-port">近距離消費地</div>
+      </div>
+      <div class="cargo-tags"><span class="cargo-tag">木材</span><span class="cargo-tag">小麦</span><span class="cargo-tag">スクラップ</span><span class="cargo-tag">砂糖</span></div>
+      <div class="route-note">小口・多品種・短距離。景気感応度は低めだが、港湾混雑や地域供給で急変する。</div>
+    </div>
+  </div>
+
+  <div class="divider-label">Balticルート別マップ（Dry Bulk Route Atlas）</div>
+  <div class="route-atlas-note">
+    Panamax/Kamsarmaxは最低限、P5TCを構成する5本（P1A_82 / P2A_82 / P3A_82 / P4_82 / P6_82）を常時見る設計にしました。P5_82は5TC構成銘柄ではなく、South China/HK range Indo RVのインドネシア石炭を見る別枠ルートとして併記しています。
+  </div>
+  <div class="route-world-map-wrap">
+    <svg class="route-world-map" viewBox="0 0 1000 360" role="img" aria-label="主要ドライバルク航路の世界地図">
+      <rect class="route-map-ocean" x="0" y="0" width="1000" height="360"></rect>
+      <path class="route-map-gridline" d="M0 120H1000M0 210H1000M180 0V360M380 0V360M590 0V360M800 0V360"></path>
+      <path class="route-map-land" d="M120 78c45-28 113-22 153 8 25 19 25 58-10 72-35 13-41 41-27 76 11 29-4 59-38 70-47 15-82-4-88-45-6-36-31-53-61-63-42-15-50-52-23-80 22-22 56-20 94-38z"></path>
+      <path class="route-map-land" d="M302 214c45-10 83 16 94 55 10 36-11 68-47 76-36 9-69-12-82-48-14-39-2-74 35-83z"></path>
+      <path class="route-map-land" d="M448 70c69-26 165-23 225 7 48 24 43 61-2 75-42 13-74 21-96 56-24 38-79 33-105 4-26-29-63-38-92-50-39-16-29-69 70-92z"></path>
+      <path class="route-map-land" d="M641 196c45-18 111-1 129 37 17 36-12 72-64 77-47 5-91-21-96-58-4-26 7-45 31-56z"></path>
+      <path class="route-map-land" d="M750 86c67-24 157-15 190 19 26 27 8 59-42 62-46 3-75 26-101 49-29 25-75 15-87-19-12-34 3-88 40-111z"></path>
+      <path class="route-map-land" d="M812 240c35-16 79-7 95 20 16 29-4 63-43 72-41 9-80-10-91-41-10-27 6-42 39-51z"></path>
+
+      <path class="route-map-line cape" d="M365 245 C520 185 650 168 805 158"></path>
+      <path class="route-map-line cape" d="M795 260 C845 230 875 197 805 158"></path>
+      <path class="route-map-line cape" d="M470 192 C585 172 690 162 805 158"></path>
+      <path class="route-map-line panamax" d="M245 172 C410 118 620 96 820 166"></path>
+      <path class="route-map-line panamax" d="M330 254 C510 210 665 190 820 166"></path>
+      <path class="route-map-line panamax" d="M812 174 C807 205 795 225 765 235"></path>
+      <path class="route-map-line supra" d="M515 96 C610 120 730 145 825 170"></path>
+      <path class="route-map-line supra" d="M245 172 C390 172 515 178 650 220"></path>
+      <path class="route-map-line handy" d="M550 110 C585 135 590 165 570 190"></path>
+      <path class="route-map-line handy" d="M760 210 C790 205 815 198 850 188"></path>
+
+      <circle class="route-map-point" cx="365" cy="245" r="5"></circle>
+      <text class="route-map-label" x="372" y="242">Brazil</text>
+      <text class="route-map-caption" x="372" y="255">C3 / grain</text>
+      <circle class="route-map-point" cx="795" cy="260" r="5"></circle>
+      <text class="route-map-label" x="803" y="259">W.Australia</text>
+      <text class="route-map-caption" x="803" y="272">C5</text>
+      <circle class="route-map-point" cx="805" cy="158" r="5"></circle>
+      <text class="route-map-label" x="812" y="154">China / Japan</text>
+      <text class="route-map-caption" x="812" y="168">discharge / redelivery</text>
+      <circle class="route-map-point" cx="245" cy="172" r="5"></circle>
+      <text class="route-map-label" x="194" y="158">US Gulf</text>
+      <text class="route-map-caption" x="190" y="171">grain</text>
+      <circle class="route-map-point" cx="330" cy="254" r="5"></circle>
+      <text class="route-map-label" x="292" y="274">ECSA</text>
+      <text class="route-map-caption" x="292" y="287">soy/corn</text>
+      <circle class="route-map-point" cx="765" cy="235" r="5"></circle>
+      <text class="route-map-label" x="709" y="231">Indonesia</text>
+      <text class="route-map-caption" x="705" y="244">P5_82 coal</text>
+      <circle class="route-map-point" cx="470" cy="192" r="5"></circle>
+      <text class="route-map-label" x="420" y="188">Guinea</text>
+      <text class="route-map-caption" x="418" y="201">bauxite</text>
+      <circle class="route-map-point" cx="515" cy="96" r="5"></circle>
+      <text class="route-map-label" x="465" y="91">Black Sea</text>
+      <text class="route-map-caption" x="459" y="104">grain</text>
+      <circle class="route-map-point" cx="550" cy="110" r="5"></circle>
+      <text class="route-map-label" x="558" y="108">Skaw/Gib</text>
+      <text class="route-map-caption" x="558" y="121">P1A/P2A</text>
+      <circle class="route-map-point" cx="760" cy="210" r="5"></circle>
+      <text class="route-map-label" x="771" y="213">SE Asia</text>
+      <text class="route-map-caption" x="771" y="226">Supra/Handy</text>
+    </svg>
+    <div class="route-map-key">
+      <span class="cape">Capesize: 鉄鉱石・ボーキサイト</span>
+      <span class="panamax">Panamax/Kamsarmax: 穀物・石炭</span>
+      <span class="supra">Supramax/Ultramax: 穀物・肥料・鋼材</span>
+      <span class="handy">Handysize: 小口・地方港貨物</span>
+    </div>
+  </div>
+  <div class="route-atlas-grid">
+    <div class="route-atlas-card panamax">
+      <div class="route-atlas-head"><div><div class="route-code">P1A_82</div><div class="route-name">Skaw/Gibraltar transatlantic round voyage</div></div><span class="route-weight">P5TC 25%</span></div>
+      <div class="route-path"><div class="route-node">Skaw / Gibraltar</div><div class="route-arrow-small">→</div><div class="route-node">Atlantic RV<br>Skaw / Gibraltar</div></div>
+      <div class="route-meta"><span class="route-chip cargo">石炭</span><span class="route-chip cargo">穀物</span><span class="route-chip watch">Atlantic</span></div>
+      <div class="route-legend">大西洋域の需給と欧州向け/戻り荷の強さを見る。Atlantic premiumの基準。</div>
+    </div>
+    <div class="route-atlas-card panamax">
+      <div class="route-atlas-head"><div><div class="route-code">P2A_82</div><div class="route-name">Skaw/Gibraltar trip to Taiwan/Japan</div></div><span class="route-weight">P5TC 10%</span></div>
+      <div class="route-path"><div class="route-node">Skaw / Gibraltar</div><div class="route-arrow-small">→</div><div class="route-node">Taiwan / Japan<br>H.K. / S.Korea</div></div>
+      <div class="route-meta"><span class="route-chip cargo">穀物</span><span class="route-chip cargo">石炭</span><span class="route-chip watch">Fronthaul</span></div>
+      <div class="route-legend">大西洋からアジアへの片道トンマイル。米湾岸・南米穀物シーズンと連動。</div>
+    </div>
+    <div class="route-atlas-card panamax">
+      <div class="route-atlas-head"><div><div class="route-code">P3A_82</div><div class="route-name">H.K./S.Korea/Taiwan Pacific round voyage</div></div><span class="route-weight">P5TC 25%</span></div>
+      <div class="route-path"><div class="route-node">H.K. / S.Korea<br>Taiwan</div><div class="route-arrow-small">→</div><div class="route-node">Pacific RV<br>Asia redelivery</div></div>
+      <div class="route-meta"><span class="route-chip cargo">豪州炭</span><span class="route-chip cargo">インドネシア炭</span><span class="route-chip watch">Pacific</span></div>
+      <div class="route-legend">太平洋域の実需を最も素直に映す。中国・インド・東南アジアの石炭需要に敏感。</div>
+    </div>
+    <div class="route-atlas-card panamax">
+      <div class="route-atlas-head"><div><div class="route-code">P4_82</div><div class="route-name">H.K./S.Korea trip to Skaw/Gibraltar</div></div><span class="route-weight">P5TC 10%</span></div>
+      <div class="route-path"><div class="route-node">H.K. / S.Korea<br>Taiwan</div><div class="route-arrow-small">→</div><div class="route-node">Skaw / Gibraltar<br>Passero</div></div>
+      <div class="route-meta"><span class="route-chip cargo">石炭</span><span class="route-chip cargo">穀物</span><span class="route-chip watch">Backhaul</span></div>
+      <div class="route-legend">アジアから大西洋へ船を戻すルート。Backhaul採算と船腹偏在を読む。</div>
+    </div>
+    <div class="route-atlas-card panamax">
+      <div class="route-atlas-head"><div><div class="route-code">P6_82</div><div class="route-name">Singapore/Busan round voyage via Atlantic</div></div><span class="route-weight">P5TC 30%</span></div>
+      <div class="route-path"><div class="route-node">Singapore / Busan</div><div class="route-arrow-small">→</div><div class="route-node">Atlantic RV<br>H.K. / S.Korea</div></div>
+      <div class="route-meta"><span class="route-chip cargo">米湾岸穀物</span><span class="route-chip cargo">南米穀物</span><span class="route-chip watch">Longest leg</span></div>
+      <div class="route-legend">P5TC最大ウェイト。穀物シーズンと空船回航が市況を大きく動かす。</div>
+    </div>
+    <div class="route-atlas-card panamax">
+      <div class="route-atlas-head"><div><div class="route-code">P5_82</div><div class="route-name">South China/HK range Indo RV</div></div><span class="route-weight">BEP Asia</span></div>
+      <div class="route-path"><div class="route-node">South China<br>Fuzhou / H.K.</div><div class="route-arrow-small">→</div><div class="route-node">Indonesia RV<br>South China</div></div>
+      <div class="route-meta"><span class="route-chip cargo">石炭</span><span class="route-chip watch">20-25 days</span><span class="route-chip watch">Asia coal</span></div>
+      <div class="route-legend">アジア石炭の短期体温計。中国・インド・ASEAN電力需要とインドネシア輸出に強く反応。</div>
+    </div>
+
+    <div class="route-atlas-card cape">
+      <div class="route-atlas-head"><div><div class="route-code">C3</div><div class="route-name">Tubarao to Qingdao</div></div><span class="route-weight">Cape ore</span></div>
+      <div class="route-path"><div class="route-node">Brazil<br>Tubarao</div><div class="route-arrow-small">→</div><div class="route-node">China<br>Qingdao</div></div>
+      <div class="route-meta"><span class="route-chip cargo">鉄鉱石</span><span class="route-chip watch">Long-haul</span></div>
+      <div class="route-legend">Brazil-ChinaはCapeのトンマイル中核。Vale出荷、天候、港湾滞船を合わせて見る。</div>
+    </div>
+    <div class="route-atlas-card cape">
+      <div class="route-atlas-head"><div><div class="route-code">C5</div><div class="route-name">West Australia to Qingdao</div></div><span class="route-weight">Cape ore</span></div>
+      <div class="route-path"><div class="route-node">West Australia</div><div class="route-arrow-small">→</div><div class="route-node">China<br>Qingdao</div></div>
+      <div class="route-meta"><span class="route-chip cargo">鉄鉱石</span><span class="route-chip watch">Short-haul</span></div>
+      <div class="route-legend">豪州出荷の頻度が高い基準航路。C3との相対でBrazil premiumを読む。</div>
+    </div>
+    <div class="route-atlas-card cape">
+      <div class="route-atlas-head"><div><div class="route-code">C7 / C9</div><div class="route-name">Atlantic round voyage / Continent-Med</div></div><span class="route-weight">Cape TC</span></div>
+      <div class="route-path"><div class="route-node">Continent / Med</div><div class="route-arrow-small">→</div><div class="route-node">Atlantic RV<br>Continent / Med</div></div>
+      <div class="route-meta"><span class="route-chip cargo">石炭</span><span class="route-chip cargo">鉄鉱石</span><span class="route-chip watch">Atlantic balance</span></div>
+      <div class="route-legend">大西洋船腹のタイトさを確認。欧州エネルギーと西アフリカ貨物に反応。</div>
+    </div>
+    <div class="route-atlas-card cape">
+      <div class="route-atlas-head"><div><div class="route-code">C14 / C16</div><div class="route-name">China-Brazil / China-Australia RV</div></div><span class="route-weight">Cape TC</span></div>
+      <div class="route-path"><div class="route-node">China</div><div class="route-arrow-small">↔</div><div class="route-node">Brazil / Australia</div></div>
+      <div class="route-meta"><span class="route-chip cargo">鉄鉱石</span><span class="route-chip watch">China demand</span></div>
+      <div class="route-legend">中国着ベースの往復採算。鉄鋼生産、港湾在庫、Vale/Rio/BHP出荷を接続する。</div>
+    </div>
+    <div class="route-atlas-card cape">
+      <div class="route-atlas-head"><div><div class="route-code">C17</div><div class="route-name">West Africa / Guinea to China</div></div><span class="route-weight">Bauxite</span></div>
+      <div class="route-path"><div class="route-node">Guinea / W.Africa</div><div class="route-arrow-small">→</div><div class="route-node">China</div></div>
+      <div class="route-meta"><span class="route-chip cargo">ボーキサイト</span><span class="route-chip cargo">鉄鉱石</span><span class="route-chip watch">Aluminium</span></div>
+      <div class="route-legend">近年重要度が上がるギニア貨物。アルミ需要と港湾制約もCape市況に効く。</div>
+    </div>
+
+    <div class="route-atlas-card supra">
+      <div class="route-atlas-head"><div><div class="route-code">S1B / S1C</div><div class="route-name">Atlantic to Far East trips</div></div><span class="route-weight">Supramax</span></div>
+      <div class="route-path"><div class="route-node">Black Sea / US Gulf</div><div class="route-arrow-small">→</div><div class="route-node">China / Japan<br>S.Korea</div></div>
+      <div class="route-meta"><span class="route-chip cargo">穀物</span><span class="route-chip cargo">肥料</span><span class="route-chip watch">Fronthaul</span></div>
+      <div class="route-legend">穀物・肥料の長距離航路。地政学と作柄で急変しやすい。</div>
+    </div>
+    <div class="route-atlas-card supra">
+      <div class="route-atlas-head"><div><div class="route-code">S2 / S3</div><div class="route-name">North Asia Pacific RV / West Africa trip</div></div><span class="route-weight">Supramax</span></div>
+      <div class="route-path"><div class="route-node">N.China / Japan<br>S.Korea</div><div class="route-arrow-small">→</div><div class="route-node">Pacific RV<br>or W.Africa</div></div>
+      <div class="route-meta"><span class="route-chip cargo">石炭</span><span class="route-chip cargo">鋼材</span><span class="route-chip watch">Regional</span></div>
+      <div class="route-legend">北アジアの小口貨物と戻り荷を見る。鋼材輸出と地域船腹が鍵。</div>
+    </div>
+    <div class="route-atlas-card supra">
+      <div class="route-atlas-head"><div><div class="route-code">S4A / S4B</div><div class="route-name">US Gulf to Europe / Europe to US Gulf</div></div><span class="route-weight">Supramax</span></div>
+      <div class="route-path"><div class="route-node">US Gulf</div><div class="route-arrow-small">↔</div><div class="route-node">Skaw / Passero</div></div>
+      <div class="route-meta"><span class="route-chip cargo">穀物</span><span class="route-chip cargo">ペットコーク</span><span class="route-chip watch">Atlantic</span></div>
+      <div class="route-legend">大西洋域の短中距離採算。米湾岸出荷、欧州需要、船腹偏在に反応。</div>
+    </div>
+    <div class="route-atlas-card supra">
+      <div class="route-atlas-head"><div><div class="route-code">S5 / S8 / S9</div><div class="route-name">ECSA / West Africa / SE Asia baskets</div></div><span class="route-weight">Supramax</span></div>
+      <div class="route-path"><div class="route-node">ECSA / W.Africa<br>SE Asia</div><div class="route-arrow-small">→</div><div class="route-node">N.China / India<br>Regional</div></div>
+      <div class="route-meta"><span class="route-chip cargo">穀物</span><span class="route-chip cargo">セメント</span><span class="route-chip cargo">肥料</span></div>
+      <div class="route-legend">Supramaxらしい多品種航路。地域需給のノイズを拾いやすい。</div>
+    </div>
+
+    <div class="route-atlas-card handy">
+      <div class="route-atlas-head"><div><div class="route-code">HS1 / HS2</div><div class="route-name">Continent / Mediterranean Handysize</div></div><span class="route-weight">Handy</span></div>
+      <div class="route-path"><div class="route-node">Continent / Med</div><div class="route-arrow-small">→</div><div class="route-node">Atlantic / Med<br>coastal ports</div></div>
+      <div class="route-meta"><span class="route-chip cargo">鋼材</span><span class="route-chip cargo">木材</span><span class="route-chip cargo">小麦</span></div>
+      <div class="route-legend">小口・地方港。港湾混雑や地域景気の影響が大きい。</div>
+    </div>
+    <div class="route-atlas-card handy">
+      <div class="route-atlas-head"><div><div class="route-code">HS3 / HS4</div><div class="route-name">ECSA / US Gulf Handysize</div></div><span class="route-weight">Handy</span></div>
+      <div class="route-path"><div class="route-node">ECSA / US Gulf</div><div class="route-arrow-small">→</div><div class="route-node">Europe / Caribbean<br>Far East</div></div>
+      <div class="route-meta"><span class="route-chip cargo">穀物</span><span class="route-chip cargo">砂糖</span><span class="route-chip cargo">肥料</span></div>
+      <div class="route-legend">穀物・農産物の小口輸送。季節性と河川水位、港湾事情を重ねる。</div>
+    </div>
+    <div class="route-atlas-card handy">
+      <div class="route-atlas-head"><div><div class="route-code">HS5 / HS6</div><div class="route-name">SE Asia / Far East regional</div></div><span class="route-weight">Handy</span></div>
+      <div class="route-path"><div class="route-node">SE Asia / Far East</div><div class="route-arrow-small">→</div><div class="route-node">India / China<br>Island ports</div></div>
+      <div class="route-meta"><span class="route-chip cargo">木材</span><span class="route-chip cargo">スクラップ</span><span class="route-chip cargo">マイナーバルク</span></div>
+      <div class="route-legend">地域船腹の需給差が出やすい。小型港アクセスと天候が市況を動かす。</div>
     </div>
   </div>
 
@@ -3109,6 +3646,14 @@
     </span>
   </div>
 
+  <div class="pmx-index-strip">
+    <div class="pmx-index-pill"><span>BDI</span><strong id="pmx-idx-bdi">—</strong></div>
+    <div class="pmx-index-pill"><span>BPI</span><strong id="pmx-idx-bpi">—</strong></div>
+    <div class="pmx-index-pill"><span>BCI</span><strong id="pmx-idx-bci">—</strong></div>
+    <div class="pmx-index-pill"><span>BSI</span><strong id="pmx-idx-bsi">—</strong></div>
+  </div>
+  <div class="pmx-source-note">2026-W19 public snapshot: TradingEconomics 2026-05-05 / Baltic P5TC transition / Fairway ETA / Riviera / Pacific Basin. P5_82 is shown as estimate where exact Baltic/FIS public print is unavailable.</div>
+
   <!-- KPI Cards -->
   <div class="pmx-kpi-grid" id="pmx-kpi-grid">
     <div class="pmx-kpi">
@@ -3122,6 +3667,12 @@
       <div class="pmx-kpi-val" id="pmx-kv-p2a">—</div>
       <div class="pmx-kpi-sub">USD/日</div>
       <div class="pmx-kpi-range" id="pmx-kr-p2a">週間レンジ: —</div>
+    </div>
+    <div class="pmx-kpi">
+      <div class="pmx-kpi-label">TC5Route / P5_82（南中国・香港レンジ Indonesia RV）</div>
+      <div class="pmx-kpi-val" id="pmx-kv-p5">—</div>
+      <div class="pmx-kpi-sub">USD/日・推計</div>
+      <div class="pmx-kpi-range" id="pmx-kr-p5">週間レンジ: —</div>
     </div>
     <div class="pmx-kpi">
       <div class="pmx-kpi-label">1年TC レート</div>
@@ -3169,6 +3720,9 @@
       <div class="pmx-field"><label>P1A Trans-Pacific Lo</label><input id="fi-p1a-lo" type="number" placeholder="9800"></div>
       <div class="pmx-field"><label>P1A Trans-Pacific Hi</label><input id="fi-p1a-hi" type="number" placeholder="13000"></div>
       <div class="pmx-field"><label>P1A 週末終値</label><input id="fi-p1a-cur" type="number" placeholder="11000"></div>
+      <div class="pmx-field"><label>TC5Route / P5_82 Lo</label><input id="fi-p5-lo" type="number" placeholder="17000"></div>
+      <div class="pmx-field"><label>TC5Route / P5_82 Hi</label><input id="fi-p5-hi" type="number" placeholder="20000"></div>
+      <div class="pmx-field"><label>TC5Route / P5_82 週末終値</label><input id="fi-p5-cur" type="number" placeholder="18486"></div>
     </div>
     <div style="font-size:12px;color:var(--muted);margin-bottom:12px">▼ 期間傭船料</div>
     <div class="pmx-form-grid">
@@ -3282,17 +3836,17 @@
     <div class="pmx-struct-card">
       <div class="pmx-struct-label">損益分岐運賃（BreakEven）</div>
       <div class="pmx-struct-val" style="font-size:16px;color:var(--bulker)">$8,500〜$12,000</div>
-      <div class="pmx-struct-sub">USD/日（融資条件・船齢で変動）</div>
+      <div class="pmx-struct-sub">USD/日。P5_82推計$18k台ならDSCR余裕は比較的良好</div>
     </div>
     <div class="pmx-struct-card">
-      <div class="pmx-struct-label">LTV目安（新造）</div>
-      <div class="pmx-struct-val" style="font-size:16px;color:var(--accent)">60〜70%</div>
-      <div class="pmx-struct-sub">中古10年: 55〜65%、15年+: &lt;50%</div>
+      <div class="pmx-struct-label">Kamsarmax新造船価</div>
+      <div class="pmx-struct-val" style="font-size:16px;color:var(--accent)">$33〜$38M</div>
+      <div class="pmx-struct-sub">82k DWT。Fairway ETA 2026-05公開レンジ</div>
     </div>
     <div class="pmx-struct-card">
-      <div class="pmx-struct-label">DSCR最低水準</div>
-      <div class="pmx-struct-val" style="font-size:16px;color:var(--demand)">1.15〜1.20x</div>
-      <div class="pmx-struct-sub">健全水準: &gt;1.30x</div>
+      <div class="pmx-struct-label">中古船価目安</div>
+      <div class="pmx-struct-val" style="font-size:16px;color:var(--demand)">5年 $30〜35M</div>
+      <div class="pmx-struct-sub">10年 $19〜25M / 15年 $12〜16M</div>
     </div>
   </div>
 
@@ -3327,8 +3881,8 @@
 
   <!-- ─── Energy Chart Grid ─── -->
   <div class="dash-section-title">
-    ⛽ エネルギー先物（運賃の先行指標）
-    <span class="count-badge">埋め込みチャート · 8指標</span>
+    ⛽ エネルギー・商品・リスク資産（運賃の先行指標）
+    <span class="count-badge">埋め込みチャート · 14指標</span>
   </div>
 
   <div class="chart-grid">
@@ -3501,12 +4055,138 @@
       </div>
     </div>
 
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-name">Gold</div>
+          <div class="chart-sub">TVC:GOLD</div>
+        </div>
+      </div>
+      <div class="tv-container">
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"TVC:GOLD","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          </script>
+        </div>
+      </div>
+      <div class="chart-relevance">
+        <span class="chart-relevance-label">RELEVANCE</span>
+        安全資産。地政学リスク、実質金利、ドル動向を通じて船主株・資源フローのリスク温度を測る
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-name">Silver</div>
+          <div class="chart-sub">TVC:SILVER</div>
+        </div>
+      </div>
+      <div class="tv-container">
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"TVC:SILVER","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          </script>
+        </div>
+      </div>
+      <div class="chart-relevance">
+        <span class="chart-relevance-label">RELEVANCE</span>
+        貴金属であり工業金属でもある。景気期待とリスク回避の両面を確認する補助指標
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-name">Bitcoin</div>
+          <div class="chart-sub">BITSTAMP:BTCUSD</div>
+        </div>
+      </div>
+      <div class="tv-container">
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"BITSTAMP:BTCUSD","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          </script>
+        </div>
+      </div>
+      <div class="chart-relevance">
+        <span class="chart-relevance-label">RELEVANCE</span>
+        リスク選好の高速センサー。海運株そのものではないが、グローバル資金の温度確認に使う
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-name">Corn Futures</div>
+          <div class="chart-sub">CBOT:ZC1!</div>
+        </div>
+      </div>
+      <div class="tv-container">
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"CBOT:ZC1!","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          </script>
+        </div>
+      </div>
+      <div class="chart-relevance">
+        <span class="chart-relevance-label">RELEVANCE</span>
+        Panamax/Kamsarmaxの穀物フローに直結。米湾岸・南米シーズンの運賃上昇を先読み
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-name">Wheat Futures</div>
+          <div class="chart-sub">CBOT:ZW1!</div>
+        </div>
+      </div>
+      <div class="tv-container">
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"CBOT:ZW1!","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          </script>
+        </div>
+      </div>
+      <div class="chart-relevance">
+        <span class="chart-relevance-label">RELEVANCE</span>
+        黒海・米湾岸・豪州の輸出採算に関係。Supramax/Handyの穀物・肥料航路にも波及
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-name">Soybean Futures</div>
+          <div class="chart-sub">CBOT:ZS1!</div>
+        </div>
+      </div>
+      <div class="tv-container">
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"CBOT:ZS1!","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          </script>
+        </div>
+      </div>
+      <div class="chart-relevance">
+        <span class="chart-relevance-label">RELEVANCE</span>
+        中国向け穀物需要の代表指標。Brazil/US Gulfからアジア向けPanamax需要を読む
+      </div>
+    </div>
+
   </div>
 
   <!-- ─── FX & Rates ─── -->
   <div class="dash-section-title">
     💱 為替・金利（マクロ環境）
-    <span class="count-badge">埋め込みチャート · 4指標</span>
+    <span class="count-badge">埋め込みチャート · 6指標</span>
   </div>
 
   <div class="chart-grid">
@@ -3595,6 +4275,48 @@
       </div>
     </div>
 
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-name">EUR/JPY</div>
+          <div class="chart-sub">FX:EURJPY</div>
+        </div>
+      </div>
+      <div class="tv-container">
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"FX:EURJPY","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          </script>
+        </div>
+      </div>
+      <div class="chart-relevance">
+        <span class="chart-relevance-label">RELEVANCE</span>
+        欧州向けコンテナ航路、欧州船主株、邦船の円建て業績感応度を見る補助指標
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-name">CHF/JPY</div>
+          <div class="chart-sub">FX:CHFJPY</div>
+        </div>
+      </div>
+      <div class="tv-container">
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"FX:CHFJPY","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          </script>
+        </div>
+      </div>
+      <div class="chart-relevance">
+        <span class="chart-relevance-label">RELEVANCE</span>
+        リスク回避・安全通貨の温度計。船舶金融と欧州信用環境の補助確認に使う
+      </div>
+    </div>
+
   </div>
 
   <!-- ─── Shipping Stocks ─── -->
@@ -3603,68 +4325,73 @@
     <span class="count-badge">埋め込みチャート · 8銘柄</span>
   </div>
 
+  <div class="caveat-card">
+    <div class="caveat-title">JAPAN STOCKS</div>
+    TradingViewの外部Widgetでは、TSE本株に「This symbol is only available on TradingView」が出る場合があります。日本郵船・商船三井・川崎汽船はTSEコードを表示しつつ、画面内チャートは米国OTC ADRを代理表示しています。
+  </div>
+
   <div class="chart-grid">
 
     <div class="chart-card">
       <div class="chart-header">
         <div>
-          <div class="chart-name">日本郵船 (NYK)</div>
-          <div class="chart-sub">TSE:9101</div>
+          <div class="chart-name">日本郵船 ADR (NYK / 9101)</div>
+          <div class="chart-sub">OTC:NPNYY · TSE:9101</div>
         </div>
       </div>
       <div class="tv-container">
         <div class="tradingview-widget-container" style="height:100%;width:100%">
           <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"TSE:9101","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          {"symbol":"OTC:NPNYY","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
           </script>
         </div>
       </div>
       <div class="chart-relevance">
         <span class="chart-relevance-label">RELEVANCE</span>
-        邦船最大手。ONE持分25%保有
+        TSE本株は外部TradingView Widget制限が出るためADR代理表示。邦船最大手。ONE持分25%保有
       </div>
     </div>
 
     <div class="chart-card">
       <div class="chart-header">
         <div>
-          <div class="chart-name">商船三井 (MOL)</div>
-          <div class="chart-sub">TSE:9104</div>
+          <div class="chart-name">商船三井 ADR (MOL / 9104)</div>
+          <div class="chart-sub">OTC:MSLOY · TSE:9104</div>
         </div>
       </div>
       <div class="tv-container">
         <div class="tradingview-widget-container" style="height:100%;width:100%">
           <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"TSE:9104","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          {"symbol":"OTC:MSLOY","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
           </script>
         </div>
       </div>
       <div class="chart-relevance">
         <span class="chart-relevance-label">RELEVANCE</span>
-        邦船2位。LNG・エネルギー輸送に強み
+        TSE本株は外部TradingView Widget制限が出るためADR代理表示。邦船2位。LNG・エネルギー輸送に強み
       </div>
     </div>
 
     <div class="chart-card">
       <div class="chart-header">
         <div>
-          <div class="chart-name">川崎汽船 (K Line)</div>
-          <div class="chart-sub">TSE:9107</div>
+          <div class="chart-name">川崎汽船 ADR (K Line / 9107)</div>
+          <div class="chart-sub">OTC:KAIKY · TSE:9107</div>
         </div>
       </div>
       <div class="tv-container">
         <div class="tradingview-widget-container" style="height:100%;width:100%">
           <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"TSE:9107","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
+          {"symbol":"OTC:KAIKY","width":"100%","height":"100%","locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":true}
           </script>
         </div>
       </div>
       <div class="chart-relevance">
         <span class="chart-relevance-label">RELEVANCE</span>
-        邦船3位。自動車船・ドライバルクが主軸
+        TSE本株は外部TradingView Widget制限が出るためADR代理表示。邦船3位。自動車船・ドライバルクが主軸
       </div>
     </div>
 
@@ -3893,6 +4620,50 @@
       <div class="link-note">コンテナ市況の最重要先行指標。Inventory-to-Sales Ratioが上昇→destocking→輸入激減パターン。</div>
     </a>
 
+  </div>
+
+  <!-- ─── LINK: Container Demand Indicators ─── -->
+  <div class="dash-section-title">
+    📦 コンテナ需要・在庫先行指標
+    <span class="count-badge">公式ソース · 6指標</span>
+  </div>
+
+  <div class="caveat-card">
+    <div class="caveat-title">ANALYST NOTE</div>
+    CPIはコンテナ「数量」そのものではなく、消費者の購買力・値上げ圧力を見る価格指標です。数量面は小売売上、在庫/売上比率、PMI、港湾TEUを組み合わせて確認します。
+  </div>
+
+  <div class="link-grid">
+    <a href="https://www.bls.gov/cpi/" target="_blank" class="link-card">
+      <div class="link-title"><span class="link-freq-tag freq-tag-monthly">MONTHLY</span>U.S. CPI / Core Goods</div>
+      <div class="link-source">U.S. Bureau of Labor Statistics</div>
+      <div class="link-note">消費財価格と実質購買力を確認。Core goodsの鈍化は輸入財需要・在庫調整と合わせて見る。</div>
+    </a>
+    <a href="https://www.census.gov/retail/index.html" target="_blank" class="link-card">
+      <div class="link-title"><span class="link-freq-tag freq-tag-monthly">MONTHLY</span>U.S. Retail Sales / Retail Inventories</div>
+      <div class="link-source">U.S. Census Bureau</div>
+      <div class="link-note">家具、衣料、家電などコンテナ化貨物の需要を読む。販売鈍化と在庫増は輸入減の警戒サイン。</div>
+    </a>
+    <a href="https://www.census.gov/mtis/index.html" target="_blank" class="link-card">
+      <div class="link-title"><span class="link-freq-tag freq-tag-monthly">MONTHLY</span>Business Inventories / Sales Ratio</div>
+      <div class="link-source">U.S. Census Bureau MTIS</div>
+      <div class="link-note">製造・卸売・小売を統合した在庫/売上比率。上昇が続くとdestockingでコンテナ輸入が弱まりやすい。</div>
+    </a>
+    <a href="https://nrf.com/research-insights/global-port-tracker" target="_blank" class="link-card">
+      <div class="link-title"><span class="link-freq-tag freq-tag-monthly">MONTHLY</span>NRF Global Port Tracker</div>
+      <div class="link-source">National Retail Federation / Hackett Associates</div>
+      <div class="link-note">米国主要港の輸入コンテナ見通し。小売業者の発注・入荷計画を見る実務寄りの先行指標。</div>
+    </a>
+    <a href="https://www.portoflosangeles.org/business/statistics/container-statistics" target="_blank" class="link-card">
+      <div class="link-title"><span class="link-freq-tag freq-tag-monthly">MONTHLY</span>Port of Los Angeles TEU</div>
+      <div class="link-source">Port of Los Angeles</div>
+      <div class="link-note">Trans-Pacific東航の代表港。実入り輸入TEU、空コンテナ、総取扱量を分けて見る。</div>
+    </a>
+    <a href="https://polb.com/business/port-statistics/" target="_blank" class="link-card">
+      <div class="link-title"><span class="link-freq-tag freq-tag-monthly">MONTHLY</span>Port of Long Beach TEU</div>
+      <div class="link-source">Port of Long Beach</div>
+      <div class="link-note">LAと合わせて米国西岸需要を確認。労使・港湾混雑・前倒し輸入の検知に有効。</div>
+    </a>
   </div>
 
   <!-- ─── LINK: News & Research ─── -->
@@ -4472,30 +5243,61 @@ const SHIPPING_FEEDS = [
   { name: 'Splash247',           url: 'https://splash247.com/feed/',                             emoji: '💧', lang: 'en' },
   { name: 'Maritime Executive',  url: 'https://maritime-executive.com/rss.xml',                  emoji: '📋', lang: 'en' },
   { name: 'ShipInsight',         url: 'https://shipinsight.com/feed/',                           emoji: '🔧', lang: 'en' },
-  // 日本語フィード（Google News RSS — 日本語・日本関連記事）
   { name: '日本海運ニュース',    url: 'https://news.google.com/rss/search?q=海運+バルカー+タンカー+コンテナ船&hl=ja&gl=JP&ceid=JP:ja', emoji: '🇯🇵', lang: 'ja' },
-  { name: '邦船・造船ニュース',  url: 'https://news.google.com/rss/search?q=日本郵船+商船三井+川崎汽船+造船&hl=ja&gl=JP&ceid=JP:ja',  emoji: '🇯🇵', lang: 'ja' },
+  { name: '邦船3社ニュース',     url: 'https://news.google.com/rss/search?q=日本郵船+商船三井+川崎汽船+ONE+海運&hl=ja&gl=JP&ceid=JP:ja', emoji: '🇯🇵', lang: 'ja' },
+  { name: '日本造船ニュース',    url: 'https://news.google.com/rss/search?q=今治造船+JMU+名村造船+常石造船+新造船&hl=ja&gl=JP&ceid=JP:ja', emoji: '🇯🇵', lang: 'ja' },
+  { name: '日本港湾ニュース',    url: 'https://news.google.com/rss/search?q=港湾+コンテナ+海運+日本&hl=ja&gl=JP&ceid=JP:ja', emoji: '🇯🇵', lang: 'ja' },
+  { name: '船舶金融ニュース',    url: 'https://news.google.com/rss/search?q=船舶金融+船価+融資+リース+海運&hl=ja&gl=JP&ceid=JP:ja', emoji: '🇯🇵', lang: 'ja' },
+  { name: '日本タンカーニュース', url: 'https://news.google.com/rss/search?q=タンカー+原油+LNG+LPG+海運+日本&hl=ja&gl=JP&ceid=JP:ja', emoji: '🇯🇵', lang: 'ja' },
+  { name: '日本バルカーニュース', url: 'https://news.google.com/rss/search?q=バルカー+ドライバルク+鉄鉱石+石炭+穀物+海運&hl=ja&gl=JP&ceid=JP:ja', emoji: '🇯🇵', lang: 'ja' },
+  { name: '日本コンテナニュース', url: 'https://news.google.com/rss/search?q=コンテナ船+SCFI+港湾+物流+海運&hl=ja&gl=JP&ceid=JP:ja', emoji: '🇯🇵', lang: 'ja' },
 ];
 
-const CAT_KW = {
-  bulker:     ['bulker','dry bulk','capesize','panamax','supramax','handysize','BDI','baltic dry','iron ore','coal','grain','bauxite','bulk carrier',
-               'バルカー','バルク','ドライバルク','ケープサイズ','パナマックス','スープラマックス','ハンディ','鉄鉱石','石炭','穀物'],
-  container:  ['container','liner','SCFI','CCFI','maersk','MSC','cma cgm','hapag','TEU','trans-pacific','box ship','feeder','ZIM','evergreen',
-               'コンテナ','コンテナ船','ライナー','定期船','コンテナ運賃'],
-  tanker:     ['tanker','VLCC','suezmax','aframax','crude oil','product tanker','LNG','LPG','frontline','euronav','DHT','oil tanker',
-               'タンカー','原油タンカー','プロダクト','液化天然ガス','液化石油'],
-  finance:    ['finance','loan','credit','bond','acquisition','valuation','charter hire','sale and purchase','secondhand','newbuilding price','bank',
-               'ファイナンス','融資','船舶金融','船価','新造船','中古船','用船料'],
-  regulation: ['IMO','CII','EEXI','decarboniz','methanol','ammonia','LNG fuel','ESG','carbon','emission','green shipping',
-               '脱炭素','環境規制','GHG','排出','メタノール','アンモニア','グリーン'],
+const CAT_RULES = {
+  tanker: {
+    strong: ['vlcc','suezmax','aframax','lr2','lr1','mr tanker','product tanker','crude tanker','oil tanker','lng carrier','lpg carrier','refinery','oil flow','dirty tanker','clean tanker','strait of hormuz','hormuz','middle east gulf','war risk','p&i',
+             'タンカー','原油タンカー','プロダクトタンカー','vlcc','スエズマックス','アフラマックス','lng船','lpg船','精製','原油輸送'],
+    normal: ['tanker','crude','diesel','gasoline','naphtha','frontline','euronav','dht','hafnia','scorpio tankers','bdti','bcti','worldscale']
+  },
+  bulker: {
+    strong: ['dry bulk','bulker','bulk carrier','capesize','panamax','kamsarmax','supramax','ultramax','handysize','bdi','bpi','bci','bsi','iron ore','coal','grain','bauxite',
+             'バルカー','ドライバルク','ケープサイズ','パナマックス','カムサマックス','スープラマックス','鉄鉱石','石炭','穀物'],
+    normal: ['bulk','ore','wheat','soybean','corn','fertilizer','minor bulk']
+  },
+  container: {
+    strong: ['container ship','container shipping','liner','scfi','ccfi','wci','fbx','teu','feu','trans-pacific','asia-europe','maersk','msc','cma cgm','hapag-lloyd','zim','evergreen',
+             'コンテナ船','コンテナ運賃','定期船','ライナー','teu'],
+    normal: ['container','port congestion','blank sailing','freight rate']
+  },
+  finance: {
+    strong: ['ship finance','shipping finance','loan','credit facility','bond','refinancing','sale and purchase','secondhand','newbuilding price','vessel value','charter hire','lease',
+             '船舶金融','融資','船価','新造船','中古船','用船料','リース'],
+    normal: ['finance','bank','valuation','acquisition','orderbook','ipo','dividend']
+  },
+  regulation: {
+    strong: ['imo','cii','eexi','eu ets','fueleu','decarbonization','methanol','ammonia','carbon','emissions','ghg','green shipping',
+             '環境規制','脱炭素','排出','メタノール','アンモニア','ghg','燃料規制'],
+    normal: ['regulation','sanction','compliance','esg','scrubber','ship recycling','recycling','demolition','scrapping']
+  },
 };
 
-function categorize(title, desc) {
+function categoryScores(title, desc) {
   const t = (title + ' ' + (desc || '')).toLowerCase();
-  for (const [cat, kws] of Object.entries(CAT_KW)) {
-    if (kws.some(k => t.includes(k.toLowerCase()))) return cat;
+  const scores = {};
+  for (const [cat, rule] of Object.entries(CAT_RULES)) {
+    scores[cat] = 0;
+    rule.strong.forEach(k => { if (t.includes(k.toLowerCase())) scores[cat] += 3; });
+    rule.normal.forEach(k => { if (t.includes(k.toLowerCase())) scores[cat] += 1; });
   }
-  return 'general';
+  return scores;
+}
+
+function categorize(title, desc) {
+  const scores = categoryScores(title, desc);
+  const ranked = Object.entries(scores).sort((a,b) => b[1] - a[1]);
+  if (!ranked.length || ranked[0][1] <= 0) return 'general';
+  if (ranked[0][0] === 'tanker' && ranked[0][1] >= ranked[1][1]) return 'tanker';
+  return ranked[0][0];
 }
 
 function fmtDate(d) {
@@ -4504,12 +5306,165 @@ function fmtDate(d) {
 
 const CAT_LABELS = { bulker:'バルカー', container:'コンテナ', tanker:'タンカー', finance:'ファイナンス', regulation:'規制・環境', general:'総合', japan:'日本関連' };
 
-const JAPAN_KW = ['japan','japanese','nyk','mol','k-line','kawasaki kisen','nippon yusen','mitsui osk','imabari','tsuneishi','JMU','namura','tokyo','osaka','kobe','yokohama','yen','jsanet','nippon','japan shipowners','japanese bank','smbc','mizuho','mufg','showa','shin kurushima'];
+const JAPAN_KW = ['japan','japanese','nyk','mol','k-line','k line','kawasaki kisen','nippon yusen','mitsui osk','ocean network express','one','imabari','tsuneishi','jmu','namura','tokyo','osaka','kobe','yokohama','yen','jsanet','nippon','japan shipowners','japanese bank','smbc','mizuho','mufg','showa','shin kurushima',
+  '日本','邦船','日本郵船','商船三井','川崎汽船','今治造船','常石造船','名村造船','ジャパンマリンユナイテッド','jmu','横浜港','神戸港','東京港','大阪港','日本船主協会'];
 
 function isJapanRelated(article) {
-  if (article.isJapan) return true;
-  const t = (article.title + ' ' + article.snippet).toLowerCase();
-  return JAPAN_KW.some(k => t.includes(k));
+  if (article.isJapan || article.japanRelated) return true;
+  const t = (article.title + ' ' + article.snippet + ' ' + article.source).toLowerCase();
+  return JAPAN_KW.some(k => t.includes(k.toLowerCase()));
+}
+
+function stripHtml(v) {
+  return (v || '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
+}
+
+function stripGoogleSource(title) {
+  return (title || '').replace(/\s+-\s+[^-]{2,80}$/,'').trim();
+}
+
+function escapeHtml(v) {
+  return String(v || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+const NEWS_TERM_JA = [
+  [/VLCC/gi,'VLCC'], [/Suezmax/gi,'スエズマックス'], [/Aframax/gi,'アフラマックス'], [/product tanker/gi,'プロダクトタンカー'],
+  [/crude tanker/gi,'原油タンカー'], [/tanker/gi,'タンカー'], [/dry bulk/gi,'ドライバルク'], [/bulker/gi,'バルカー'],
+  [/capesize/gi,'ケープサイズ'], [/panamax/gi,'パナマックス'], [/kamsarmax/gi,'カムサマックス'], [/supramax/gi,'スープラマックス'],
+  [/container shipping/gi,'コンテナ海運'], [/container ship/gi,'コンテナ船'], [/liner/gi,'定期船社'],
+  [/newbuilding/gi,'新造船'], [/secondhand/gi,'中古船'], [/orderbook/gi,'発注残'], [/charter/gi,'用船'],
+  [/freight rates?/gi,'運賃'], [/fleet/gi,'船隊'], [/port/gi,'港湾'], [/shipping/gi,'海運'], [/shipowners?/gi,'船主'],
+  [/decarboni[sz]ation/gi,'脱炭素'], [/emissions?/gi,'排出'], [/sanctions?/gi,'制裁'], [/refinery/gi,'製油所'],
+  [/oil/gi,'原油'], [/coal/gi,'石炭'], [/grain/gi,'穀物'], [/iron ore/gi,'鉄鉱石']
+];
+
+const NEWS_TITLE_PATTERNS = [
+  {
+    re: /US and Iran Closing in on Memorandum to End War/i,
+    title: '米国とイラン、戦争終結に向けた覚書で合意に近づく',
+    summary: '米国とイランが湾岸戦争終結に向けた覚書で合意に近づいているとの報道。中東リスク、保険料、タンカー航路への波及を確認する材料。'
+  },
+  {
+    re: /Ship recycling.?s ambition problem/i,
+    title: '船舶リサイクル業界、野心的目標と現実のギャップが課題に',
+    summary: '船舶解撤モデルの維持と高い環境目標の両立が難しく、解撤能力・規制対応・老齢船処理の実効性が論点になっている。'
+  },
+  {
+    re: /Japanese owners cash in as Aframax prices hit record highs/i,
+    title: 'アフラマックス船価が過去最高圏、日本船主が売却益を確保',
+    summary: '近代的なアフラマックスの資産価値が歴史的高水準となり、日本船主の売船判断が注目される。タンカー船価と中古船需給の強さを示す記事。'
+  },
+  {
+    re: /Matson.?s Fleet Expansion Moves Into Full Production/i,
+    title: 'Matsonの船隊拡張計画、Hanwha Philly造船所で本格建造へ',
+    summary: 'MatsonのAloha Class更新計画がHanwha Philly Shipyardで本格生産段階に入った。米国籍船・造船能力・コンテナ船隊更新の観点で確認したいニュース。'
+  },
+  {
+    re: /Crowley Confirms US-Flagged CS Anthem Safely Transited Strait of Hormuz/i,
+    title: 'Crowley、米国籍CS Anthemのホルムズ海峡安全通航を確認',
+    summary: 'Crowleyが米国籍船CS Anthemのホルムズ海峡通航を確認。中東航行リスク、保険、船主の迂回判断を読むための地政学ニュース。'
+  }
+];
+
+const NEWS_SUBJECTS = [
+  [/us and iran/i, '米国とイラン'],
+  [/ship recycling/i, '船舶リサイクル業界'],
+  [/japanese owners?/i, '日本船主'],
+  [/aframax/i, 'アフラマックス市場'],
+  [/vlcc/i, 'VLCC市場'],
+  [/suezmax/i, 'スエズマックス市場'],
+  [/matson/i, 'Matson'],
+  [/crowley/i, 'Crowley'],
+  [/hanwha philly/i, 'Hanwha Philly造船所'],
+  [/strait of hormuz|hormuz/i, 'ホルムズ海峡'],
+  [/shipowners?/i, '船主'],
+  [/container/i, 'コンテナ船市場'],
+  [/dry bulk|bulker/i, 'ドライバルク市場'],
+  [/tanker/i, 'タンカー市場'],
+  [/newbuilding/i, '新造船市場'],
+  [/secondhand/i, '中古船市場']
+];
+
+const NEWS_ACTIONS = [
+  [/closing in on .*memorandum.*end war/i, '戦争終結に向けた覚書で合意に近づく'],
+  [/prices? hit record highs?|hit record highs?/i, '価格が過去最高圏に上昇'],
+  [/cash in/i, '売却益を確保'],
+  [/moves? into full production/i, '本格生産段階へ移行'],
+  [/confirms?.*safely transited/i, '安全通航を確認'],
+  [/ambition problem/i, '目標と実行力のギャップが課題に'],
+  [/rates? jump|rates? surge|soar/i, '運賃が急伸'],
+  [/rates? fall|rates? slide|weaken/i, '運賃が軟化'],
+  [/orders?|orderbook/i, '発注・船腹供給が焦点に'],
+  [/sanctions?|war risk|iran|russia/i, '制裁・戦争リスクが焦点に'],
+  [/fleet expansion/i, '船隊拡張が進展'],
+  [/shipyard|newbuilding/i, '造船・新造船の動きが進展']
+];
+
+function matchNewsPattern(article) {
+  const raw = stripGoogleSource(stripHtml(article.title));
+  return NEWS_TITLE_PATTERNS.find(p => p.re.test(raw));
+}
+
+function toJapaneseShippingText(text) {
+  let out = stripGoogleSource(stripHtml(text));
+  NEWS_TERM_JA.forEach(([re, ja]) => { out = out.replace(re, ja); });
+  [
+    [/record highs?/gi, '過去最高圏'],
+    [/prices?/gi, '価格'],
+    [/rates?/gi, '運賃'],
+    [/cash in/gi, '売却益を確保'],
+    [/confirms?/gi, '確認'],
+    [/safely transited/gi, '安全に通航'],
+    [/moves? into full production/gi, '本格生産段階へ移行'],
+    [/closing in on/gi, '合意に近づく'],
+    [/memorandum/gi, '覚書'],
+    [/end war/gi, '戦争終結'],
+    [/ambition problem/gi, '目標と現実のギャップ'],
+    [/owners?/gi, '船主'],
+    [/shipyard/gi, '造船所'],
+    [/recycling/gi, 'リサイクル']
+  ].forEach(([re, ja]) => { out = out.replace(re, ja); });
+  return out;
+}
+
+function newsJapaneseTitle(article) {
+  const raw = stripGoogleSource(stripHtml(article.title));
+  if (article.isJapan) return raw;
+  const matched = matchNewsPattern(article);
+  if (matched) return matched.title;
+  const subject = NEWS_SUBJECTS.find(([re]) => re.test(raw))?.[1];
+  const action = NEWS_ACTIONS.find(([re]) => re.test(raw))?.[1];
+  if (subject && action) return `${subject}、${action}`;
+  if (action) return `${CAT_LABELS[article.category] || '海事'}、${action}`;
+  const converted = toJapaneseShippingText(raw);
+  return converted !== raw ? converted : `${CAT_LABELS[article.category] || '海事'}ニュース`;
+}
+
+function newsJapaneseSnippet(article) {
+  const raw = stripHtml(article.snippet || article.title);
+  if (article.isJapan) return stripGoogleSource(raw).slice(0, 190);
+  const matched = matchNewsPattern(article);
+  if (matched?.summary) return matched.summary;
+  const prefix = {
+    tanker: 'タンカー市況',
+    bulker: 'バルカー市況',
+    container: 'コンテナ市況',
+    finance: '船舶金融・船価',
+    regulation: '規制・環境',
+    general: '総合海事'
+  }[article.category] || '総合海事';
+  const title = newsJapaneseTitle(article);
+  const nums = (raw.match(/\$?\d[\d,.]*(?:\s?(?:%|m|bn|billion|million|k|M|bpd|TEU|DWT|隻))?/gi) || []).slice(0, 3);
+  const data = nums.length ? `主な数値: ${nums.join(' / ')}。` : '';
+  const impact = {
+    tanker: '原油・精製品フロー、保険料、船腹需給への波及を確認。',
+    bulker: '鉄鉱石・石炭・穀物の荷動き、トンマイル、船腹需給への波及を確認。',
+    container: '船隊投入、港湾混雑、運賃指数への影響を確認。',
+    finance: '中古船価・新造船価・用船料・銀行与信への影響を確認。',
+    regulation: '船主コスト、燃料選択、投資判断への影響を確認。',
+    general: '海運市況に波及する地政学・企業動向として確認。'
+  }[article.category] || '海運市況への影響を確認。';
+  return `${prefix}: ${title}。${data}${impact}`.slice(0, 190);
 }
 
 async function fetchFeed(feed) {
@@ -4530,25 +5485,28 @@ async function fetchFeed(feed) {
       const xml  = new DOMParser().parseFromString(text, 'text/xml');
       const items = Array.from(xml.querySelectorAll('item'));
       if (!items.length) continue;
-      return items.slice(0, 8).map(it => {
+      return items.slice(0, 10).map(it => {
         const get = tag => it.querySelector(tag)?.textContent?.trim() || '';
-        const title = get('title'), desc = get('description');
+        const title = stripHtml(get('title')), desc = stripHtml(get('description'));
         let link = get('link');
         if (!link) link = it.querySelector('link')?.nextSibling?.textContent?.trim() || '';
-        // Google News RSS: <source url="..."> contains original publisher name
         const sourceEl = it.querySelector('source');
         const displaySource = (feed.lang === 'ja' && sourceEl)
-          ? sourceEl.textContent.trim()
+          ? stripHtml(sourceEl.textContent.trim())
           : feed.name;
-        return {
+        const category = categorize(title, desc);
+        const article = {
           title, link,
           pubDate:  new Date(get('pubDate') || Date.now()),
           source:   displaySource,
           emoji:    feed.emoji,
-          snippet:  desc.replace(/<[^>]+>/g, '').slice(0, 160),
-          category: categorize(title, desc),
+          snippet:  desc.slice(0, 220),
+          category,
           isJapan:  feed.lang === 'ja',
+          japanRelated: false,
         };
+        article.japanRelated = isJapanRelated(article);
+        return article;
       });
     } catch { continue; }
   }
@@ -4562,7 +5520,15 @@ async function loadAllNews() {
   if (btn) btn.disabled = true;
 
   const results = await Promise.all(SHIPPING_FEEDS.map(fetchFeed));
-  const all = results.flat().sort((a, b) => b.pubDate - a.pubDate);
+  const seen = new Set();
+  const all = results.flat()
+    .filter(a => {
+      const key = (a.link || a.title || '').toLowerCase();
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .sort((a, b) => b.pubDate - a.pubDate);
   window._allNews = all;
 
   const ts = document.getElementById('news-last-updated');
@@ -4575,7 +5541,6 @@ async function loadAllNews() {
   }
   renderNews(all, 'all');
 
-  // wire up filter buttons
   document.querySelectorAll('.news-filter-btn').forEach(fb => {
     fb.addEventListener('click', () => {
       document.querySelectorAll('.news-filter-btn').forEach(x => x.classList.remove('nf-active'));
@@ -4594,17 +5559,24 @@ function renderNews(articles, filter) {
     grid.innerHTML = '<div class="news-loading">このカテゴリの記事は見つかりませんでした。</div>';
     return;
   }
-  grid.innerHTML = list.map(a => `
-    <a class="news-card" href="${a.link}" target="_blank" rel="noopener noreferrer">
+  grid.innerHTML = list.map(a => {
+    const jaTitle = newsJapaneseTitle(a);
+    const jaSnippet = newsJapaneseSnippet(a);
+    const original = stripGoogleSource(stripHtml(a.title));
+    const showOriginal = original && original !== jaTitle;
+    return `
+    <a class="news-card" href="${escapeHtml(a.link)}" target="_blank" rel="noopener noreferrer">
       <div class="news-card-top">
-        <span class="news-source-badge">${a.emoji} ${a.source}</span>
+        <span class="news-source-badge">${a.emoji} ${escapeHtml(a.source)}</span>
         <span class="news-cat-tag ${a.category}">${CAT_LABELS[a.category]}</span>
       </div>
-      <div class="news-title">${a.title}</div>
-      ${a.snippet ? `<div class="news-snippet">${a.snippet}…</div>` : ''}
-      <div class="news-date">${fmtDate(a.pubDate)}</div>
-    </a>
-  `).join('');
+      <div class="news-translation-note">日本語要約（自動）</div>
+      <div class="news-title">${escapeHtml(jaTitle)}</div>
+      <div class="news-snippet">${escapeHtml(jaSnippet)}…</div>
+      ${showOriginal ? `<div class="news-original-title">原題: ${escapeHtml(original)}</div>` : ''}
+      <div class="news-date">${fmtDate(a.pubDate)}${isJapanRelated(a) ? ' · 日本関連' : ''}</div>
+    </a>`;
+  }).join('');
 }
 
 function openMorningReading() {
@@ -4851,29 +5823,52 @@ function initOutlookTab() {
 const PMX_KEY = 'panamax_weekly_data';
 
 const PMX_DEFAULT = {
-  week: '2026-W17',
-  bpi:  { lo: 1100, hi: 1450, cur: 1280 },
-  p2a:  { lo: 10500, hi: 13500, cur: 11800 },
-  p3a:  { lo: 11000, hi: 14500, cur: 12500 },
-  p1a:  { lo: 9800,  hi: 13000, cur: 11000 },
-  tc6m: { lo: 10500, hi: 13500, cur: 12000 },
-  tc1y: { lo: 11000, hi: 13500, cur: 12300 },
-  tc3y: { lo: 12000, hi: 14500, cur: 13200 },
-  tc5y: { lo: 12500, hi: 15000, cur: 13800 },
-  nb:   { lo: 38,    hi: 42,    cur: 40    },
+  _version: '2026-W19-p5-route',
+  week: '2026-W19',
+  data_note: '公開情報＋推計（TradingEconomics 2026-05-05 / Baltic P5TC移行 / Fairway ETA / Riviera / Pacific Basin）',
+  bdi:  { cur: 2832 },
+  bci:  { cur: 4703 },
+  bsi:  { cur: 1508 },
+  bpi:  { lo: 1992, hi: 2054, cur: 2054 },
+  p2a:  { lo: 18366, hi: 18936, cur: 18936 },
+  p3a:  { lo: 19597, hi: 20211, cur: 20211 },
+  p1a:  { lo: 16892, hi: 17414, cur: 17414 },
+  p5:   { lo: 17928, hi: 19044, cur: 18486, estimated: true },
+  tc6m: { lo: 16535, hi: 18178, cur: 18178 },
+  tc1y: { lo: 15842, hi: 17421, cur: 17421 },
+  tc3y: { lo: 15149, hi: 16664, cur: 16664 },
+  tc5y: { lo: 14630, hi: 16096, cur: 16096 },
+  nb:   { lo: 33,    hi: 38,    cur: 35.5  },
   s5:   { lo: 30,    hi: 35,    cur: 32.5  },
-  s10:  { lo: 22,    hi: 27,    cur: 24.5  },
-  s15:  { lo: 15,    hi: 19,    cur: 17    },
-  s20:  { lo: 9,     hi: 13,    cur: 11    },
+  s10:  { lo: 19,    hi: 25,    cur: 22    },
+  s15:  { lo: 12,    hi: 16,    cur: 14    },
+  s20:  { lo: 8,     hi: 12,    cur: 10    },
   s25:  { lo: 5,     hi: 8,     cur: 6.5   },
-  ob_ves: 185, ob_pct: 8.2,
-  tonmile: 2.5,
+  ob_ves: 300, ob_pct: 13.3,
+  tonmile: 1.6,
   scr_wk: 2, scr_ytd: 18,
 };
 
+function deepMergePmx(defaults, saved) {
+  if (!saved || typeof saved !== 'object') return structuredClone(defaults);
+  const out = structuredClone(defaults);
+  Object.entries(saved).forEach(([key, val]) => {
+    if (val && typeof val === 'object' && !Array.isArray(val) && out[key] && typeof out[key] === 'object') {
+      out[key] = { ...out[key], ...val };
+    } else if (val !== undefined && val !== null && val !== '') {
+      out[key] = val;
+    }
+  });
+  return out;
+}
+
 function loadPmxData() {
-  try { return JSON.parse(localStorage.getItem(PMX_KEY)) || PMX_DEFAULT; }
-  catch(e) { return PMX_DEFAULT; }
+  try {
+    const saved = JSON.parse(localStorage.getItem(PMX_KEY));
+    if (saved && saved._version !== PMX_DEFAULT._version) return structuredClone(PMX_DEFAULT);
+    return deepMergePmx(PMX_DEFAULT, saved);
+  }
+  catch(e) { return structuredClone(PMX_DEFAULT); }
 }
 
 function fmt(n, dec=0) {
@@ -4897,8 +5892,15 @@ function renderPmx() {
 
   document.getElementById('pmx-kv-bpi').textContent  = fmt(d.bpi.cur);
   document.getElementById('pmx-kr-bpi').textContent  = `週間レンジ: ${fmt(d.bpi.lo)} – ${fmt(d.bpi.hi)}`;
+  document.getElementById('pmx-idx-bdi').textContent = fmt(d.bdi?.cur || PMX_DEFAULT.bdi.cur);
+  document.getElementById('pmx-idx-bpi').textContent = fmt(d.bpi?.cur || PMX_DEFAULT.bpi.cur);
+  document.getElementById('pmx-idx-bci').textContent = fmt(d.bci?.cur || PMX_DEFAULT.bci.cur);
+  document.getElementById('pmx-idx-bsi').textContent = fmt(d.bsi?.cur || PMX_DEFAULT.bsi.cur);
+
   document.getElementById('pmx-kv-p2a').textContent  = '$' + fmt(d.p2a.cur);
   document.getElementById('pmx-kr-p2a').textContent  = `週間レンジ: $${fmt(d.p2a.lo)} – $${fmt(d.p2a.hi)}`;
+  document.getElementById('pmx-kv-p5').textContent   = '$' + fmt(d.p5.cur);
+  document.getElementById('pmx-kr-p5').textContent   = `週間レンジ: $${fmt(d.p5.lo)} – $${fmt(d.p5.hi)}${d.p5.estimated ? ' · 推計' : ''}`;
   document.getElementById('pmx-kv-tc1y').textContent = '$' + fmt(d.tc1y.cur);
   document.getElementById('pmx-kr-tc1y').textContent = `週間レンジ: $${fmt(d.tc1y.lo)} – $${fmt(d.tc1y.hi)}`;
   document.getElementById('pmx-kv-ob').textContent   = fmt(d.ob_pct, 1) + '%';
@@ -4909,6 +5911,7 @@ function renderPmx() {
     { name:'P2A 太平洋 Round Voyage', unit:'$/日', d:d.p2a },
     { name:'P3A 大西洋 Round Voyage', unit:'$/日', d:d.p3a },
     { name:'P1A Trans-Pacific（FH）', unit:'$/日', d:d.p1a },
+    { name:'TC5Route / P5_82: South China/HK range Indo RV', unit:'$/日', d:d.p5 },
     { name:'TC 6〜12ヶ月',           unit:'$/日', d:d.tc6m },
     { name:'TC 1年',                  unit:'$/日', d:d.tc1y },
     { name:'TC 3年',                  unit:'$/日', d:d.tc3y },
@@ -4963,6 +5966,7 @@ function togglePmxForm() {
       'fi-p2a-lo':d.p2a.lo,'fi-p2a-hi':d.p2a.hi,'fi-p2a-cur':d.p2a.cur,
       'fi-p3a-lo':d.p3a.lo,'fi-p3a-hi':d.p3a.hi,'fi-p3a-cur':d.p3a.cur,
       'fi-p1a-lo':d.p1a.lo,'fi-p1a-hi':d.p1a.hi,'fi-p1a-cur':d.p1a.cur,
+      'fi-p5-lo':d.p5.lo,'fi-p5-hi':d.p5.hi,'fi-p5-cur':d.p5.cur,
       'fi-tc6m-lo':d.tc6m.lo,'fi-tc6m-hi':d.tc6m.hi,'fi-tc6m-cur':d.tc6m.cur,
       'fi-tc1y-lo':d.tc1y.lo,'fi-tc1y-hi':d.tc1y.hi,'fi-tc1y-cur':d.tc1y.cur,
       'fi-tc3y-lo':d.tc3y.lo,'fi-tc3y-hi':d.tc3y.hi,'fi-tc3y-cur':d.tc3y.cur,
@@ -4987,11 +5991,14 @@ function savePmxData() {
   const g = id => { const el = document.getElementById(id); return el ? Number(el.value) : 0; };
   const gs = id => { const el = document.getElementById(id); return el ? el.value : ''; };
   const d = {
+    _version: PMX_DEFAULT._version,
+    data_note: PMX_DEFAULT.data_note,
     week: gs('fi-week'),
     bpi:  { lo:g('fi-bpi-lo'),   hi:g('fi-bpi-hi'),   cur:g('fi-bpi-cur') },
     p2a:  { lo:g('fi-p2a-lo'),   hi:g('fi-p2a-hi'),   cur:g('fi-p2a-cur') },
     p3a:  { lo:g('fi-p3a-lo'),   hi:g('fi-p3a-hi'),   cur:g('fi-p3a-cur') },
     p1a:  { lo:g('fi-p1a-lo'),   hi:g('fi-p1a-hi'),   cur:g('fi-p1a-cur') },
+    p5:   { lo:g('fi-p5-lo'),    hi:g('fi-p5-hi'),    cur:g('fi-p5-cur'), estimated:false },
     tc6m: { lo:g('fi-tc6m-lo'),  hi:g('fi-tc6m-hi'),  cur:g('fi-tc6m-cur') },
     tc1y: { lo:g('fi-tc1y-lo'),  hi:g('fi-tc1y-hi'),  cur:g('fi-tc1y-cur') },
     tc3y: { lo:g('fi-tc3y-lo'),  hi:g('fi-tc3y-hi'),  cur:g('fi-tc3y-cur') },
@@ -5027,6 +6034,7 @@ const PMX_HIST = {
   p2a:  { lo5y: 5500, hi5y:27000, p25:8500,  p75:17500, avg:13000, label: 'P2A 太平洋 Round Voyage',    unit: '$/日', breakeven: 9000,  dscr: 10800 },
   p3a:  { lo5y: 5800, hi5y:28000, p25:9000,  p75:18500, avg:13800, label: 'P3A 大西洋 Round Voyage',    unit: '$/日', breakeven: 9500,  dscr: 11400 },
   p1a:  { lo5y: 5000, hi5y:24000, p25:7800,  p75:16000, avg:12200, label: 'P1A Trans-Pacific（FH）',    unit: '$/日', breakeven: 8500,  dscr: 10200 },
+  p5:   { lo5y: 7000, hi5y:26000, p25:9500,  p75:19000, avg:14500, label: 'TC5Route / P5_82 Indo RV',  unit: '$/日', breakeven: 9000,  dscr: 10800 },
   tc6m: { lo5y: 8000, hi5y:24000, p25:10000, p75:19000, avg:13800, label: 'TC 6〜12ヶ月',               unit: '$/日', breakeven: 10000, dscr: 12000 },
   tc1y: { lo5y: 8500, hi5y:22000, p25:10500, p75:18500, avg:14200, label: 'TC 1年',                     unit: '$/日', breakeven: 11000, dscr: 13200 },
   tc3y: { lo5y: 9500, hi5y:20000, p25:11500, p75:17500, avg:14500, label: 'TC 3年',                     unit: '$/日', breakeven: 12000, dscr: 14400 },
@@ -5038,13 +6046,14 @@ const PMX_HIST = {
 const PMX_FLEET_BASE = {
   totalVes:  2255,   // 現役フリート隻数（参考値）
   totalMdwt: 187.2,  // 現役フリート総DWT（百万DWT）
-  avgAge:    11.4,   // 平均船齢
+  avgAge:    12.3,   // 平均船齢（Clarksons系公開コメント参考）
+  supplyGrowth26: 4.2, // Panamax/Kamsarmax 2026F supply growth
   // orderbook の発注残竣工予定比率（sumは概ね1.0）
   deliveryRatios: [
-    { label:'2025', ratio: 0.11 },
-    { label:'2026', ratio: 0.30 },
-    { label:'2027', ratio: 0.40 },
-    { label:'2028+',ratio: 0.19 },
+    { label:'2026', ratio: 0.32 },
+    { label:'2027', ratio: 0.36 },
+    { label:'2028', ratio: 0.22 },
+    { label:'2029+',ratio: 0.10 },
   ],
   // 発注残 vs 過去の歴史的文脈（フリート比%, Clarksons/BIMCO）
   obHistContext: [
@@ -5058,7 +6067,7 @@ const PMX_FLEET_BASE = {
 };
 
 // BPIポイント→ルート$/日 換算係数（BPI1280 → P2A≈11800 の実績値から導出）
-const BPI_ROUTE = { p2a: 9.22, p3a: 9.84, p1a: 8.48 };
+const BPI_ROUTE = { p2a: 9.22, p3a: 9.84, p1a: 8.48, p5: 9.00 };
 // 商品キャッシュキー・TTL
 const PMX_COMM_KEY = 'pmx_comm_cache';
 const PMX_COMM_TTL = 4 * 3600 * 1000; // 4時間
@@ -5277,12 +6286,14 @@ function applyAutoFetchedData(fetched) {
     const p2a    = Math.round(bpi * BPI_ROUTE.p2a);
     const p3a    = Math.round(bpi * BPI_ROUTE.p3a);
     const p1a    = Math.round(bpi * BPI_ROUTE.p1a);
+    const p5     = Math.round(bpi * BPI_ROUTE.p5);
     const sp8    = v => Math.round(v * 0.08);
 
     d.bpi = { lo: bpi - sp8(bpi), hi: bpi + sp8(bpi), cur: bpi };
     d.p2a = { lo: Math.round(p2a*0.92), hi: Math.round(p2a*1.08), cur: p2a };
     d.p3a = { lo: Math.round(p3a*0.92), hi: Math.round(p3a*1.08), cur: p3a };
     d.p1a = { lo: Math.round(p1a*0.92), hi: Math.round(p1a*1.08), cur: p1a };
+    d.p5  = { lo: Math.round(p5*0.97),  hi: Math.round(p5*1.03),  cur: p5, estimated: true };
 
     ['tc6m','tc1y','tc3y','tc5y'].forEach(k => {
       const mid = Math.round(p2a * TC_MULT[k]);
@@ -5517,7 +6528,7 @@ function renderFleetViz() {
       <div class="pmx-fleet-stat">
         <div class="pmx-fleet-stat-label">平均船齢</div>
         <div class="pmx-fleet-stat-val">${fl.avgAge} 年</div>
-        <div class="pmx-fleet-stat-sub">参考値（Clarksons）</div>
+        <div class="pmx-fleet-stat-sub">Panamax平均船齢。供給増26F +${fl.supplyGrowth26}%</div>
       </div>
       <div class="pmx-fleet-stat">
         <div class="pmx-fleet-stat-label">YTD解撤</div>
@@ -5587,6 +6598,7 @@ function renderMarketPosition() {
     { key: 'bpi',  val: d.bpi?.cur },
     { key: 'p2a',  val: d.p2a?.cur },
     { key: 'p3a',  val: d.p3a?.cur },
+    { key: 'p5',   val: d.p5?.cur },
     { key: 'tc1y', val: d.tc1y?.cur },
     { key: 'tc3y', val: d.tc3y?.cur },
     { key: 'tc5y', val: d.tc5y?.cur },
@@ -5602,7 +6614,7 @@ function renderMarketPosition() {
       ■ 橙ドット = 現在値 &nbsp;｜&nbsp; 青帯 = 25〜75%ile（IQR） &nbsp;｜&nbsp;
       <span style="color:rgba(251,113,133,0.9)">赤帯</span> = BreakEven以下 &nbsp;｜&nbsp;
       <span style="color:rgba(255,255,255,0.4)">白縦線</span> = 5年平均 &nbsp;｜&nbsp;
-      参考: Clarksons / Baltic Exchange (2020-2024)
+      参考: Clarksons / Baltic Exchange (2020-2024) ｜ 現状評価: 強気圏だが、発注残13%台とPanamax/Kamsarmax供給増+4.2%で供給リスク上昇
     </div>
     <div class="pmx-mktpos-grid">
       ${indicators.map(ind => buildMktposCard(ind.key, ind.val, d)).join('')}
@@ -5725,6 +6737,7 @@ async function runAIOutlook() {
       const pmx = JSON.parse(localStorage.getItem('panamax_weekly_data') || '{}');
       if (pmx.bpi?.cur)   mktCtx += `BPI現在値: ${pmx.bpi.cur} pts\n`;
       if (pmx.p2a?.cur)   mktCtx += `P2A太平洋運賃: $${pmx.p2a.cur}/日\n`;
+      if (pmx.p5?.cur)    mktCtx += `TC5Route/P5_82: $${pmx.p5.cur}/日${pmx.p5.estimated ? '（推計）' : ''}\n`;
       if (pmx.tc1y?.cur)  mktCtx += `1年TC: $${pmx.tc1y.cur}/日\n`;
       if (pmx.ob_pct)     mktCtx += `発注残比率: ${pmx.ob_pct}%\n`;
     } catch {}
